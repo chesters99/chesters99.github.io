@@ -1,0 +1,17 @@
+/* fix for iPython notebook formatting */
+span.n, span.o, span.p {
+    color: #444 !important;
+}
+table>thead>tr>th, table>thead>tr>td {
+    border-style: solid;
+    border-width: 1px 1px 1px 1px !important;
+    border-color: black;
+    padding: 3px;
+}
+table>tbody>tr>th, table>tbody>tr>td {
+    border-style: solid;
+    border-width: 1px 1px 1px 1px !important;
+    border-color: black;
+    padding: 3px;
+}
+/* end of fix for iPython notebook formatting */
