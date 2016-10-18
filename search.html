@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Authors - GCHESTER.COM</title>
+    <title>Search - GCHESTER.COM
+</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -93,12 +94,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-9">
-        <ol class="breadcrumb">
-            <li><a href="http://localhost:8000" title="GCHESTER.COM"><i class="fa fa-home fa-lg"></i></a></li>
-            <li class="active">Authors</li>
-        </ol>
-    <h1>Authors on GCHESTER.COM</h1>
-        <li><a href="http://localhost:8000/author/graham-chester.html">Graham Chester</a> (4)</li>
+<div id="tipue_search_content"></div>
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
@@ -247,5 +243,17 @@
     </script>
     <!-- End Disqus Code -->
 
+    <script type="text/javascript" src="http://localhost:8000/theme/tipuesearch/tipuesearch_set.js"></script>
+    <script type="text/javascript" src="http://localhost:8000/theme/tipuesearch/tipuesearch.min.js"></script>
+    <script>
+    $(document).ready(function() {
+      $('#tipue_search_input').tipuesearch({
+        'mode' : 'json',
+        'show': 10,
+        'newWindow': false,
+        'contentLocation': 'tipuesearch_content.json'
+      });
+    });
+    </script>
 </body>
 </html>

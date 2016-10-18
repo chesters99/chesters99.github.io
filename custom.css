@@ -14,4 +14,21 @@ table>tbody>tr>th, table>tbody>tr>td {
     border-color: black;
     padding: 3px;
 }
-/* end of fix for iPython notebook formatting */
+
+/* fix tipue search box expand to fit navbar height */
+#tipue_search_input {
+    font: inherit;
+    padding: 14px 12px 22px 40px;
+}
+
+/* fix for group items being too widely spaced and too large font*/
+.list-group-item {
+    padding: 5px 15px;
+    font: inherit;
+}
+
+/* fix for comments being too close to article */
+.comments {
+    margin-top: 30px;
+}
+
