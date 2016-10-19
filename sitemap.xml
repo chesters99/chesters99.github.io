@@ -4,112 +4,112 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://localhost:8000/</loc>
-<lastmod>2016-10-19T14:34:42-00:00</lastmod>
+<loc>http://chesters99.github.io/</loc>
+<lastmod>2016-10-19T14:39:11-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/archives.html</loc>
-<lastmod>2016-10-19T14:34:42-00:00</lastmod>
+<loc>http://chesters99.github.io/archives.html</loc>
+<lastmod>2016-10-19T14:39:11-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/categories.html</loc>
-<lastmod>2016-10-19T14:34:42-00:00</lastmod>
+<loc>http://chesters99.github.io/categories.html</loc>
+<lastmod>2016-10-19T14:39:11-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/pages/about.html</loc>
+<loc>http://chesters99.github.io/pages/about.html</loc>
 <lastmod>2016-10-16T11:40:26+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/useful-training.html</loc>
+<loc>http://chesters99.github.io/useful-training.html</loc>
 <lastmod>2016-10-18T00:00:00+01:00</lastmod>
 <changefreq>always</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/useful-tools.html</loc>
+<loc>http://chesters99.github.io/useful-tools.html</loc>
 <lastmod>2016-10-17T00:00:00+01:00</lastmod>
 <changefreq>always</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/stock-prices.html</loc>
+<loc>http://chesters99.github.io/stock-prices.html</loc>
 <lastmod>2016-10-16T00:00:00+01:00</lastmod>
 <changefreq>always</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/useful-books.html</loc>
+<loc>http://chesters99.github.io/useful-books.html</loc>
 <lastmod>2016-10-16T00:00:00+01:00</lastmod>
 <changefreq>always</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/category/data-science.html</loc>
+<loc>http://chesters99.github.io/category/data-science.html</loc>
 <lastmod>2016-10-16T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/category/getting-started.html</loc>
+<loc>http://chesters99.github.io/category/getting-started.html</loc>
 <lastmod>2016-10-18T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/tag/data-science.html</loc>
+<loc>http://chesters99.github.io/tag/data-science.html</loc>
 <lastmod>2016-10-18T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/tag/finance.html</loc>
+<loc>http://chesters99.github.io/tag/python.html</loc>
+<lastmod>2016-10-18T00:00:00-00:01</lastmod>
+<changefreq>hourly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://chesters99.github.io/tag/finance.html</loc>
 <lastmod>2016-10-16T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/tag/getting-started.html</loc>
+<loc>http://chesters99.github.io/tag/getting-started.html</loc>
 <lastmod>2016-10-18T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/tag/ipython.html</loc>
+<loc>http://chesters99.github.io/tag/ipython.html</loc>
 <lastmod>2016-10-16T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/tag/python.html</loc>
-<lastmod>2016-10-18T00:00:00-00:01</lastmod>
-<changefreq>hourly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://localhost:8000/author/graham-chester.html</loc>
+<loc>http://chesters99.github.io/author/graham-chester.html</loc>
 <lastmod>2016-10-18T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
