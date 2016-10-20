@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>GCHESTER.COM</title><link href="http://blog.gchester.com/" rel="alternate"></link><link href="http://blog.gchester.com/feeds/getting-started.atom.xml" rel="self"></link><id>http://blog.gchester.com/</id><updated>2016-10-20T00:00:00+01:00</updated><entry><title>Setting up a GitHub Pages blog with Pelican - Part 2</title><link href="http://blog.gchester.com/pelican-github-blog-finesse.html" rel="alternate"></link><published>2016-10-20T00:00:00+01:00</published><updated>2016-10-20T00:00:00+01:00</updated><author><name>Graham Chester</name></author><id>tag:blog.gchester.com,2016-10-20:pelican-github-blog-finesse.html</id><summary type="html">&lt;h2&gt;Finessing the Blog&lt;/h2&gt;
+&lt;p&gt;So your blog looks good but your a perfectionist, so there's a few more things you can do to make it  a little more 'professional'&lt;/p&gt;
+&lt;h3&gt;Setup a nice 404 page&lt;/h3&gt;
+&lt;p&gt;You may like to show a more friendly and personalised 404 page. Pelican can generate one for you from a markdown file something like the example below. Note that this page should go in the ghpages/content/pages directory - if you put it in ghpages/content it will be interpreted by pelican as a blog article.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat content/pages/404.md
+Title: Sorry, cant find that page!
+save_as: 404.html
+status: hidden
+
+&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;
+&lt;span class="c1"&gt;####The page you requested cant be found on this site.&lt;/span&gt;
+&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;
+&lt;span class="c1"&gt;####Please click ***[here](http://blog.xxxxxxxx.com)*** to return&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Setup for Google indexing&lt;/h3&gt;
+&lt;p&gt;You may also like to setup a robots.txt file specifying a sitemap file (configured in pelicanconf.py above) to make it easier for the google bots to index your site. Also you can set a favicon and include any custom css - all held in the static directory in pelicanconf.py&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat robots.txt
+User-Agent: *
+Disallow:
+Sitemap: http://blog.xxxxxxxx.com/sitemap.xml
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Setup for Google Analytics&lt;/h3&gt;
+&lt;p&gt;If you'd like to see stats on your website you can register for a google analytics id and specify it in your publishconf.py file as listed in the previous blog.&lt;/p&gt;
+&lt;h3&gt;Setting up a custom domain&lt;/h3&gt;
+&lt;p&gt;While it's fine to host your blog at http://yourusername.github.io perhaps you would like to use your domain name, for example http://blog.yourdomain.com. To do this requires:&lt;/p&gt;
+&lt;p&gt;1) Setup a CNAME alias with your domain name provider that points blog.yourdomain.com to http://yourusername.github.io&lt;/p&gt;
+&lt;p&gt;2) Provide a file called CNAME file in the root directory of your repository to let GitHub know you are using a custom domain. Create a file CNAME with one line:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat content/static/CNAME
+blog.yourdomain.com
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Add a line to &lt;em&gt;EXTRA_PATHS_METADATA&lt;/em&gt; in pelicanconf.py to tell pelican to include the CNAME file without any processing - along with other static content.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;EXTRA_  PATH_METADATA = {
+    &amp;#39;static/robots.txt&amp;#39;: {&amp;#39;path&amp;#39;: &amp;#39;robots.txt&amp;#39;},
+    &amp;#39;static/favicon.ico&amp;#39;: {&amp;#39;path&amp;#39;: &amp;#39;favicon.ico&amp;#39;},
+    &amp;#39;static/custom.css&amp;#39;: {&amp;#39;path&amp;#39;: &amp;#39;custom.css&amp;#39;},
+    &amp;#39;static/CNAME&amp;#39;: {&amp;#39;path&amp;#39;: &amp;#39;CNAME&amp;#39;},
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then Add, Commit, and Push to GitHub as per the Deployment section in the previous article.&lt;/p&gt;
+&lt;h3&gt;You're Done!&lt;/h3&gt;
+&lt;p&gt;Hopefully these two posts were helpful in setting up a great looking blog for not too much effort. &lt;/p&gt;
+&lt;p&gt;Comments, suggestions, improvements more than welcome&lt;/p&gt;</summary><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Setting up a GitHub Pages blog with Pelican</title><link href="http://blog.gchester.com/pelican-github-blog.html" rel="alternate"></link><published>2016-10-19T00:00:00+01:00</published><updated>2016-10-19T00:00:00+01:00</updated><author><name>Graham Chester</name></author><id>tag:blog.gchester.com,2016-10-19:pelican-github-blog.html</id><summary type="html">&lt;p&gt;I wanted to setup a blog website in the simplest way, and leveraging existing/known tools as mush as possible. I like Python (a lot) so after reading some reviews chose Pelican as the website generator. Pelican supports markdown and iPython notebooks amonsgt many other things - which seemed ideal. The folks at GitHub have kindly provided &lt;em&gt;GitHub Pages&lt;/em&gt; which serves your website from a GitHub repo - nice. &lt;a href="https://pages.github.com/"&gt;All described here&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;The code/config for my website is available &lt;a href="https://github.com/chesters99/ghpages"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Basic Blog Setup&lt;/h2&gt;
+&lt;p&gt;Setting up a basic blog using GitHub is a relatively simple task, as much of the setup defaults for you. In the next section I'll cover how to finesse your blog with a custom domain and get it setup on google analytics (amongst other things) &lt;/p&gt;
+&lt;h3&gt;Installation&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Login to GitHub with your userid (or create one), and create two new repositories&lt;/strong&gt; as explained &lt;a href="https://pages.github.com/"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Create a repo for the website (output HTML, CSS) called &lt;em&gt;yourusername.github.io&lt;/em&gt; &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a repo for your content called &lt;em&gt;ghpages&lt;/em&gt; (or name of your choice)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Clone the repo to your machine - to a &lt;em&gt;ghpages&lt;/em&gt; directory&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone https://github.com/yourusername.github.io-src ghpages
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Add a submodule for the pelican output ie the actual website HTML/CSS&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git submodule add https://github.com/yourusername.github.io.git output
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Install pelican&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install pelican
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Create a basic config/template with answers as follows:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pelican-quickstart
+
+Welcome to pelican-quickstart v3.6.3.
+This script will &lt;span class="nb"&gt;help&lt;/span&gt; you create a new Pelican-based website.
+Please answer the following questions so this script can generate the files needed by Pelican.
+
+Where &lt;span class="k"&gt;do&lt;/span&gt; you want to create your new web site? &lt;span class="o"&gt;[&lt;/span&gt;.&lt;span class="o"&gt;]&lt;/span&gt;
+What will be the title of this web site? Your Blog&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s name
+Who will be the author of this web site? Your Name
+What will be the default language of this web site? &lt;span class="o"&gt;[&lt;/span&gt;en&lt;span class="o"&gt;]&lt;/span&gt;
+Do you want to specify a URL prefix? e.g., http://example.com   &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; Y
+What is your URL prefix? &lt;span class="o"&gt;(&lt;/span&gt;see above example&lt;span class="p"&gt;;&lt;/span&gt; no trailing slash&lt;span class="o"&gt;)&lt;/span&gt; http://yourusername.github.io
+Do you want to &lt;span class="nb"&gt;enable&lt;/span&gt; article pagination? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; Y
+How many articles per page &lt;span class="k"&gt;do&lt;/span&gt; you want? &lt;span class="o"&gt;[&lt;/span&gt;10&lt;span class="o"&gt;]&lt;/span&gt; 5
+What is your &lt;span class="nb"&gt;time&lt;/span&gt; zone? &lt;span class="o"&gt;[&lt;/span&gt;Europe/Paris&lt;span class="o"&gt;]&lt;/span&gt; Europe/London
+Do you want to generate a Fabfile/Makefile to automate generation and publishing? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; Y
+Do you want an auto-reload &lt;span class="p"&gt;&amp;amp;&lt;/span&gt; simpleHTTP script to assist with theme and site development? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; Y
+Do you want to upload your website using FTP? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; n
+Do you want to upload your website using SSH? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; n
+Do you want to upload your website using Dropbox? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; n
+Do you want to upload your website using S3? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; n
+Do you want to upload your website using Rackspace Cloud Files? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; n
+Do you want to upload your website using GitHub Pages? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; Y
+Is this your personal page &lt;span class="o"&gt;(&lt;/span&gt;username.github.io&lt;span class="o"&gt;)&lt;/span&gt;? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; Y
+Done. Your new project is available at xxxxxxxxxxxxx&lt;span class="se"&gt;\g&lt;/span&gt;hpages
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This will create content and output directories, the pelicanconf.py and publishconf.py files and some supporting files. Essentially you put your content in content, then run &lt;em&gt;make&lt;/em&gt; as described below and pelican writes the html/css in the output directory.&lt;/p&gt;
+&lt;p&gt;It is helpful to create three subdirectories in the content directory &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd content
+mkdir pages static images
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Your non-blog pages (eg about) go in the pages directory, images in images(doh!), and any content you just want pelican to copy across directory goes in static.&lt;/p&gt;
+&lt;h3&gt;Install Themes and plugins&lt;/h3&gt;
+&lt;p&gt;This is an optional step depending on your requirements. If you want more choice with css themes or additional functionality for generating sitemaps, or search bar, or reading iPython notebooks (and many others) then: &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd ghpages
+git clone https://github.com/getpelican/pelican-themes.git themes
+git clone https://github.com/getpelican/pelican-plugins.git plugins
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The example pelicanconf.py below shows how these can be used.&lt;/p&gt;
+&lt;h3&gt;Configuration&lt;/h3&gt;
+&lt;p&gt;While the essential config requires little update, there are many options to control your site behaviour. The config for the dev/test server is in &lt;em&gt;pelicanconf.py&lt;/em&gt; and this is overridden by the 'production' config in &lt;em&gt;publishconf.py&lt;/em&gt;. Please see my pelicanconf.py file as a working example. The config is described in some detail in the pelican documentation&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="n"&gt;pelicanconf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="c1"&gt;#!/usr/bin/env python&lt;/span&gt;
+&lt;span class="c1"&gt;# -*- coding: utf-8 -*- #&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;unicode_literals&lt;/span&gt;
+
+&lt;span class="n"&gt;AUTHOR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Graham Chester&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;GCHESTER.COM&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;SITEURL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://localhost:8000&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;THEME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;themes/pelican-bootstrap3&amp;#39;&lt;/span&gt; 
+
+&lt;span class="n"&gt;PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;content&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;TIMEZONE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Europe/London&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_LANG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;en&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Feed generation is usually not desired when developing&lt;/span&gt;
+&lt;span class="n"&gt;FEED_ALL_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_FEED_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+&lt;span class="n"&gt;TRANSLATION_FEED_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+&lt;span class="n"&gt;AUTHOR_FEED_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+&lt;span class="n"&gt;AUTHOR_FEED_RSS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Blogroll&lt;/span&gt;
+&lt;span class="n"&gt;LINKS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;KD Nuggets&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://kdnuggets.com/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Kaggle&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://kaggle.com/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+         &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Open Data Science&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://opendatascience.com/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+         &lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Social widget&lt;/span&gt;
+&lt;span class="n"&gt;SOCIAL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Facebook&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://facebook.com/xxxxxxxxxxxxxx&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Twitter&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://twitter.com/xxxxxxxxxx&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;LinkedIn&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://www.linkedin.com/in/xxxxxxxxxxxxxxxxxxxxxx&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;StackOverflow&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://stackoverflow.com/users/xxxxxxx/xxxxxxxx?tab=profile&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;DEFAULT_PAGINATION&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+&lt;span class="c1"&gt;#RELATIVE_URLS = False&lt;/span&gt;
+
+&lt;span class="c1"&gt;# GC custom settings&lt;/span&gt;
+&lt;span class="n"&gt;MD_EXTENSIONS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;codehilite&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;extra&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;DIRECT_TEMPLATES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;index&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;categories&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;authors&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;archives&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;search&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_DATE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;fs&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;DELETE_OUTPUT_DIRECTORY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;OUTPUT_RETENTION&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.git&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.gitignore&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  &lt;span class="c1"&gt;# delete output directory at each build but preserve git files&lt;/span&gt;
+&lt;span class="n"&gt;TWITTER_USERNAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;xxxxxxxxxx&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;static&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;images&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pdfs&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;EXTRA_PATH_METADATA&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;static/robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;path&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;static/favicon.ico&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;path&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;favicon.ico&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;static/custom.css&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;path&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;custom.css&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;static/CNAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;path&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;CNAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;PLUGIN_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;plugins&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;PLUGINS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;tag_cloud&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;ipynb.markup&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;tipue_search&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;sitemap&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;MARKUP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;md&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;rst&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;ipynb&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;TAG_CLOUD_STEPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;TAG_CLOUD_MAX_ITEMS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;
+
+&lt;span class="n"&gt;ARCHIVES_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;archives.html&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;SITELOGO&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;images/xxxxxxxx.png&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;ABOUT_ME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Financial Systems Consultant, Python Developer and aspiring Data Scientist&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;BANNER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;images/space.jpg&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;BANNER_SUBTITLE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Data Science and Python&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;BANNER_ALL_PAGES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+
+&lt;span class="n"&gt;GITHUB_SHOW_USER_LINK&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;GITHUB_USER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;xxxxxxxxxx&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;GITHUB_REPO_COUNT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;span class="n"&gt;GITHUB_SKIP_FORK&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+
+&lt;span class="n"&gt;BOOTSTRAP_THEME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;flatly&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;BOOTSTRAP_NAVBAR_INVERSE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;BOOTSTRAP_FLUID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;DISPLAY_BREADCRUMBS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;DISPLAY_CATEGORY_IN_BREADCRUMBS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;DISPLAY_ARTICLE_INFO_ON_INDEX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+
+&lt;span class="n"&gt;SHOW_ARTICLE_AUTHOR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;SHOW_DATE_MODIFIED&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;SHOW_ARTICLE_CATEGORY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+
+&lt;span class="n"&gt;DISPLAY_TAGS_ON_SIDEBAR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;DISPLAY_RECENT_POSTS_ON_SIDEBAR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt; 
+&lt;span class="n"&gt;USE_OPEN_GRAPH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;CUSTOM_CSS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;custom.css&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;DISPLAY_CATEGORIES_ON_MENU&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;DISPLAY_PAGES_ON_MENU&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_CATEGORY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;General&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;DISQUS_SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;gchester&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Configuration for the &amp;quot;sitemap&amp;quot; plugin&lt;/span&gt;
+&lt;span class="n"&gt;SITEMAP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;format&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;xml&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;priorities&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;articles&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;indexes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;pages&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;changefreqs&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;articles&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;always&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;indexes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;hourly&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;pages&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;monthly&amp;#39;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The production config is much simpler in publishconf.py. Only the site url, google analytics needed to be set. &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="n"&gt;publishconf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="c1"&gt;#!/usr/bin/env python&lt;/span&gt;
+&lt;span class="c1"&gt;# -*- coding: utf-8 -*- #&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;unicode_literals&lt;/span&gt;
+
+&lt;span class="c1"&gt;# This file is only used if you use `make publish` or&lt;/span&gt;
+&lt;span class="c1"&gt;# explicitly specify it as your config file.&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;curdir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pelicanconf&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+
+&lt;span class="n"&gt;SITEURL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://blog.xxxxxxxx.com&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;RELATIVE_URLS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+
+&lt;span class="n"&gt;FEED_ALL_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;feeds/all.atom.xml&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_FEED_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;feeds/&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s1"&gt;.atom.xml&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;DELETE_OUTPUT_DIRECTORY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Following items are often useful when publishing&lt;/span&gt;
+
+&lt;span class="n"&gt;GOOGLE_ANALYTICS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;UA-xxxxxxxx-x&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Local Testing&lt;/h3&gt;
+&lt;p&gt;Simple....&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make html 
+$ make serve
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In your browser go to http://localhost:8000&lt;/p&gt;
+&lt;h3&gt;Deployment to GitHub Pages&lt;/h3&gt;
+&lt;p&gt;As described above, your ghpages directory needs to be pushed to two GitHub repos. One for your config, articles, pages, themes, plugins etc. And another for the pelican-generated website files.&lt;/p&gt;
+&lt;p&gt;Firstly make sure you have a .gitignore file in your ghpages directoryi, something like:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat .gitignore
+output/
+plugins/
+themes/
+__pycache__/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To push all your content/config changes to GitHub:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; ghpages
+$ git add .
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;decriptive commit message&amp;quot;&lt;/span&gt;
+$ git push -u origin master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then to generate and push your website HTML/CSS etc to GitHub to be served&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make publish
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; output
+$ git add .
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;update website&amp;quot;&lt;/span&gt;
+$ git push -u origin master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Checkout your new blog&lt;/h3&gt;
+&lt;p&gt;In your browser goto http://yourusername.github.io and revel in the glory of your new blog!&lt;/p&gt;
+&lt;p&gt;In the second article I'll cover some ways to make your blog a little more professsional&lt;/p&gt;</summary><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Getting Started - Useful Training Courses</title><link href="http://blog.gchester.com/useful-training.html" rel="alternate"></link><published>2016-10-18T00:00:00+01:00</published><updated>2016-10-18T00:00:00+01:00</updated><author><name>Graham Chester</name></author><id>tag:blog.gchester.com,2016-10-18:useful-training.html</id><summary type="html">&lt;h3&gt;Python Online Training&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Udemy.com - Python For Data Structures, Algorithms, and Interviews - Jose Portilla&lt;/em&gt;&lt;/strong&gt; -
+A hugely comprehensive intermediate level course focusing on Python from a getting-a-job-perspective. Just do it. Covers everything from how to prepare a resume, to programming techniques likely to be in job interviews. There are often Udemy discount periods, or discount vouchers available online to reduce the course cost. US$19 for 20+ hours of video - excellent value!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;YouTube Videos&lt;/em&gt;&lt;/strong&gt; -
+So many of these, so where to start... I started with videos from old PyCon conferences for a broad range of topics in the Python world. Checkout Raymond Hettinger for some amazing advice.
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;Django Online Training&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;YouTube - GoDjango&lt;/em&gt;&lt;/strong&gt; -
+A great range of free Django videos. The author has additional paid-for videos on his website.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;YouTube - DjangoCon&lt;/em&gt;&lt;/strong&gt; -
+Old DjangoCon videos offer a broad range of interesting topics and tutorials.
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;Data Science Online Training&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Coursera.com - Machine Learning (Stanford University) - Andrew Ng&lt;/em&gt;&lt;/strong&gt;
+A great course - though heavy on the theory. If your linear algebra and calculus aren't great then it may be a struggle, but if your maths is up to it, this is the definitive machine learning course. Unfortunately for Pythonistas the exercises are in Matlab. Andrew Ng is a founder of Coursera and is on a mission to provide quality education to all - to that end, the course is free if you don't need a certificate at the end. Good on you Andrew!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Udemy.com - Learning Python for Data Analysis and Visualisation - Jose Portilla&lt;/em&gt;&lt;/strong&gt; -
+Another great course by Jose (see above). Takes a very hands-on/practical approach to data analysis. Not overly theoretical. Discount vouchers are often available - google it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Udemy.com - Data Science and Machine Learning with Python - Frank Kane&lt;/em&gt;&lt;/strong&gt; - 
+Frank gives a comprehensive and practical overview of many machine learning algorithms - a great course. Discount vouchers are often available -google it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;YouTube - PyData&lt;/em&gt;&lt;/strong&gt; -
+Old PyData videos offer a broad range of interesting topics and tutorials.
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;In-person training&lt;/h3&gt;
+&lt;p&gt;I've only attended Data Science courses with Cambridge Coding Academy in London, UK - really great people who know their stuff.
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;</summary><category term="Python"></category><category term="Data Science"></category><category term="Getting Started"></category></entry><entry><title>Getting Started - Python Environment</title><link href="http://blog.gchester.com/useful-tools.html" rel="alternate"></link><published>2016-10-17T00:00:00+01:00</published><updated>2016-10-17T00:00:00+01:00</updated><author><name>Graham Chester</name></author><id>tag:blog.gchester.com,2016-10-17:useful-tools.html</id><summary type="html">&lt;h3&gt;Python&lt;/h3&gt;
+&lt;p&gt;There are a number of Python run-times (interpreters and compilers) available. The one most used is called &lt;strong&gt;&lt;em&gt;CPython&lt;/em&gt;&lt;/strong&gt; (because it is written in C). It is installed by default on Linux and Macs, and can be installed on Windows (see below for Windows).&lt;/p&gt;
+&lt;p&gt;Unfortunately there are two versions of Python (2 and 3). Python 3 was released as a replacement for Python 2 but due to the need to make some substantial improvements, they are not particularly compatible. Sure with a bit of effort you can write code that will run on both, but few developers seem to to that.  There is a very large code base on Python 2 which would require an enormous effort to migrate to 3, and yet 2 is planned to be desupported by 2020.... is there an elephant in the room?  The latest release of Python 2 is Python 2.7 - there will be no more Python 2 releases apparently. As of the date of this blog, the latest release of Python 3 is Python 3.5 with Python 3.6 due soon.&lt;/p&gt;
+&lt;p&gt;There are a number of other Python run-times available such as:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Numba&lt;/em&gt;&lt;/strong&gt; - JIT (just in time) compiler offering massive speed improvements compared to CPython. Generally should be used to speed up problem code only, rather than be applied universally&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Cython&lt;/em&gt;&lt;/strong&gt; - Python compiler with additional syntax to declare variable types. Compiles to C code, then to machine code. Also offers massive speed improvements compared to CPython - at the expense of compatible syntax. Generally should be used to speed up problem code only, rather than be applied universally. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Jython&lt;/em&gt;&lt;/strong&gt; - Python interpreter that generates Java byte code to run on the Java virtual machine&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Iron Python&lt;/em&gt;&lt;/strong&gt; - Python interpreter that runs on the Microsoft C# platform&lt;/p&gt;
+&lt;p&gt;Confused? Unless you have a very specific environment or a major performance issue, just use Python 3 (CPython) if you can, or Python 2 (CPython) if you must.
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;Python Editors/IDEs&lt;/h3&gt;
+&lt;p&gt;There are a number of Python Editors/IDEs (Integrated Development Environments) available. Editors purely edit the code usually with some syntax checking, whereas IDE's provide a workbench covering debugging, database manipulation, command line access, etc etc.&lt;/p&gt;
+&lt;p&gt;Popular editors include Vim or Emacs (not that easy to learn. often used by those with a Linux/Unix background). Notepad++ for Windows or Sublime Text for Mac.&lt;/p&gt;
+&lt;p&gt;IDE include PyCharm (my favourite, but not cheap), and Spyder (Free). An IDE can be a lot to learn initially as there is so much going on on the screen, but once used to it they are my recommended option (see Books I recommend blog post for 'Mastering PyCharm'. &lt;/p&gt;
+&lt;p&gt;But many people prefer a simpler setup using a sophisticated editor such as Sublime Text.
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;Operating Systems&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Windows -&lt;/em&gt;&lt;/strong&gt; has been something of a neglected platform in the Python world as 'serious' developers use Linux or Mac..... but I think it hasn't been a great idea to alienate used of the most popular OS by far. Anyway life is much better now for Windows users with the release of Anaconda by Continuum Analytics. It's a free download and I would suggest don't even think of any another approach if you are a Windows user. Note though it does come with a LOT of packages pre-installed! Note also that some Python packages require a C compiler to install and Windows does not come with one pre-installed. Consider &lt;em&gt;mingw&lt;/em&gt; for something lightweight, or Visual Studio for the gorilla approach.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Mac OS -&lt;/em&gt;&lt;/strong&gt; is well supported and in fact comes with Python 2 pre-installed. I suggest you install &lt;em&gt;Homebrew&lt;/em&gt;, and then Python 3, or if you plan to do some data analysis/science then Anaconda is your friend. Personally I find the Mac provides the best combination of user-friendly GUI, and a Unix-like system under the hood to support development.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Linux -&lt;/em&gt;&lt;/strong&gt; comes in many flavours, though Linux Mint and Ubuntu seem to be the leaders. Personally I found I needed a lot of Linux knowledge to figure out how to fix things when they went wrong. While Linux has made great strides in user-friendliness in recent years, due to past struggles I prefer to see it in the server-space rather than the desktop (personal opinion only!)
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;Development Utilities&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Unittest or Pytest-&lt;/em&gt;&lt;/strong&gt; for testing. Write tests as you go and run them frequently. It's painful and wastes time to let your code get to far ahead of your test scripts. &lt;/p&gt;
+&lt;p&gt;TBC.......&lt;/p&gt;</summary><category term="Python"></category><category term="Getting Started"></category></entry><entry><title>Getting Started - Useful Books</title><link href="http://blog.gchester.com/useful-books.html" rel="alternate"></link><published>2016-10-16T00:00:00+01:00</published><updated>2016-10-16T00:00:00+01:00</updated><author><name>Graham Chester</name></author><id>tag:blog.gchester.com,2016-10-16:useful-books.html</id><summary type="html">&lt;p&gt;Below are a number of Python-related books that I've found useful. No links are included as things move around - Google is your friend.&lt;/p&gt;
+&lt;h3&gt;Beginner&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Python 3 Object Oriented Programming - Dusty Philips (Not Free)&lt;/em&gt;&lt;/strong&gt; -
+A good starting point for beginners to Python and who may not have much or any object oriented programming experience&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Dive Into Python - Mark Pilgrim (Free)&lt;/em&gt;&lt;/strong&gt; -
+An excellent intro to Python and it's free! Good on you Mark.....&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Learn Python the Hard Way - (Sort of Free)&lt;/em&gt;&lt;/strong&gt; -
+The book is available as HTML pages on the authors website, but if you want the hard-copy or PDF then you can buy from several places listed on the authors website.
+The author drives you hard to enter and run all the exercises yourself. He's tough but once you've finished you should find the content 'sticks' much more than just reading or tinkering.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Data Wrangling with Python - Katharine Jarmul -&lt;/em&gt;&lt;/strong&gt;
+An excellent introduction to getting data from the web, cleaning and analysing. Covers a lot of ground simply, and with useful 'further reading options'
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;Upper-Beginner&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Writing Idiomatic Python - Jeff Knupp (Not Free)&lt;/em&gt;&lt;/strong&gt; - 
+Once you've got some of the basics then you might as well learn how to do things properly. The author details how you might write code in another language (e.g. C) and how that approach should be done in a Pythonic manner.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;The Little Book of Python Anti-patterns (Free)&lt;/em&gt;&lt;/strong&gt; - 
+How NOT to write Python - good companion for the Jeff Knupp book above&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Effective Python: 59 Specific Ways to Write Better Python&lt;/em&gt;&lt;/strong&gt; -
+Excellent book on how to ermmm write better Python. My personal favourite.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Mastering PyCharm - Quazi Nafiul Islam (Not Free)&lt;/em&gt;&lt;/strong&gt; -
+Once you get to the point of wanting to write a 'proper' program, you'll need some sort of development environment (see my other blog post on Python Development Tools. PyCharm is a great choice if you're happy to pay for it, and this is a great book on how to best use what can be a daunting product when first used.
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;Intermediate&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Python Cookbook - David Beazely (Not Free)&lt;/em&gt;&lt;/strong&gt; -
+An comprehensive reference of algorithms and how to implement them in Python. Perhaps better dipped into when you need to rather than an end-to-end read.
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;Intermediate to Advanced&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;The Elements of Statistical Learning - Trevor Hastie -&lt;/em&gt;&lt;/strong&gt;
+The bible of machine learning according to many
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;Web Development Frameworks&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Flask Web Development: Developing Web Application with Flask - Miguel Grinberg&lt;/em&gt;&lt;/strong&gt; -
+The bible for the Flask framework, but very accessible.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Django Unleashed - Andrew Pinkham&lt;/em&gt;&lt;/strong&gt; -
+An excellent reference to the Django framework.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;High Performance Django - Peter Baumgartner&lt;/em&gt;&lt;/strong&gt; -
+A more advanced book on tuning Django - lots of very practical advice for those running websites where performance is a concern.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Two Scoops of Django - Daniel Roy Greenfeld, Audrey Roy&lt;/em&gt;&lt;/strong&gt; -
+A definitive book on how to approach Django project the right way - best read after you know a bit of Django already, but not too much that you have a fully established way of working
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;</summary><category term="Python"></category><category term="Getting Started"></category></entry></feed>
