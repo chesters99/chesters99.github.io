@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Setting up a GitHub Pages blog with Pelican - GCHESTER.COM</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="./pelican-github-blog.html">
+
+        <meta name="author" content="Graham Chester" />
+        <meta name="keywords" content="Python,GitHub" />
+        <meta name="description" content="How to setup a blog on GitHub with Pelican" />
+
+        <meta property="og:site_name" content="GCHESTER.COM" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Setting up a GitHub Pages blog with Pelican"/>
+        <meta property="og:url" content="./pelican-github-blog.html"/>
+        <meta property="og:description" content="How to setup a blog on GitHub with Pelican"/>
+        <meta property="article:published_time" content="2016-10-19" />
+            <meta property="article:section" content="Getting Started" />
+            <meta property="article:tag" content="Python" />
+            <meta property="article:tag" content="GitHub" />
+            <meta property="article:author" content="Graham Chester" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="./theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="./theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="./theme/css/pygments/native.css" rel="stylesheet">
+    <link href="./theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <link rel="stylesheet" href="./theme/css/style.css" type="text/css"/>
+        <link href="./custom.css" rel="stylesheet">
+
+        <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="GCHESTER.COM ATOM Feed"/>
+
+
+
+        <link href="./feeds/getting-started.atom.xml" type="application/atom+xml" rel="alternate"
+              title="GCHESTER.COM Getting Started ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="./" class="navbar-brand">
+<img class="img-responsive pull-left gap-right" src="./images/gchester.png" width=""/> GCHESTER.COM            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="./pages/about.html">
+                             ABOUT
+                          </a></li>
+                        <li >
+                            <a href="./category/data-science.html">Data science</a>
+                        </li>
+                        <li class="active">
+                            <a href="./category/getting-started.html">Getting started</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><span>
+                <form class="navbar-search" action="/search.html">
+                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+                </form></span>
+              </li>
+              <li><a href="./archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<style>
+	#banner{
+	    background-image:url("./images/space.jpg");
+	}
+</style>
+
+<div id="banner">
+	<div class="container-fluid">
+		<div class="copy">
+			<h1>GCHESTER.COM</h1>
+				<p class="intro">Data Science and Python</p>
+		</div>
+	</div>
+</div><!-- End Banner -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9">
+            <ol class="breadcrumb">
+                <li><a href="." title="GCHESTER.COM"><i class="fa fa-home fa-lg"></i></a></li>
+                <li><a href="./category/getting-started.html" title="Getting Started">Getting Started</a></li>
+                <li class="active">Setting up a GitHub Pages blog with Pelican</li>
+            </ol>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="./pelican-github-blog.html"
+                       rel="bookmark"
+                       title="Permalink to Setting up a GitHub Pages blog with Pelican">
+                        Setting up a GitHub Pages blog with Pelican
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-10-19T00:00:00+01:00"> Wed 19 October 2016</time>
+    </span>
+
+
+            <span class="label label-default">By</span>
+            <a href="./author/graham-chester.html"><i class="fa fa-user"></i> Graham Chester</a>
+
+        <span class="label label-default">Category</span>
+        <a href="./category/getting-started.html">Getting Started</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="./tag/python.html">Python</a>
+        /
+	<a href="./tag/github.html">GitHub</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>I wanted to setup a blog website in the simplest way, and leveraging existing/known tools as mush as possible. I like Python (a lot) so after reading some reviews chose Pelican as the website generator. Pelican supports markdown and iPython notebooks amonsgt many other things - which seemed ideal. The folks at GitHub have kindly provided <em>GitHub Pages</em> which serves your website from a GitHub repo - nice. <a href="https://pages.github.com/">All described here</a>. </p>
+<p>The code/config for my website is available <a href="https://github.com/chesters99/ghpages">here</a></p>
+<h2>Basic Blog Setup</h2>
+<p>Setting up a basic blog using GitHub is a relatively simple task, as much of the setup defaults for you. In the next section I'll cover how to finesse your blog with a custom domain and get it setup on google analytics (amongst other things) </p>
+<h3>Installation</h3>
+<p><strong>Login to GitHub with your userid (or create one), and create two new repositories</strong> as explained <a href="https://pages.github.com/">here</a></p>
+<ul>
+<li>
+<p>Create a repo for the website (output HTML, CSS) called <em>yourusername.github.io</em> </p>
+</li>
+<li>
+<p>Create a repo for your content called <em>ghpages</em> (or name of your choice)</p>
+</li>
+</ul>
+<p><strong>Clone the repo to your machine - to a <em>ghpages</em> directory</strong></p>
+<div class="codehilite"><pre><span></span>$ git clone https://github.com/yourusername.github.io-src ghpages
+</pre></div>
+
+
+<p><strong>Add a submodule for the pelican output ie the actual website HTML/CSS</strong></p>
+<div class="codehilite"><pre><span></span>$ git submodule add https://github.com/yourusername.github.io.git output
+</pre></div>
+
+
+<p><strong>Install pelican</strong></p>
+<div class="codehilite"><pre><span></span>$ pip install pelican
+</pre></div>
+
+
+<p><strong>Create a basic config/template with answers as follows:</strong></p>
+<div class="codehilite"><pre><span></span>$ pelican-quickstart
+
+Welcome to pelican-quickstart v3.6.3.
+This script will <span class="nb">help</span> you create a new Pelican-based website.
+Please answer the following questions so this script can generate the files needed by Pelican.
+
+Where <span class="k">do</span> you want to create your new web site? <span class="o">[</span>.<span class="o">]</span>
+What will be the title of this web site? Your Blog<span class="err">&#39;</span>s name
+Who will be the author of this web site? Your Name
+What will be the default language of this web site? <span class="o">[</span>en<span class="o">]</span>
+Do you want to specify a URL prefix? e.g., http://example.com   <span class="o">(</span>Y/n<span class="o">)</span> Y
+What is your URL prefix? <span class="o">(</span>see above example<span class="p">;</span> no trailing slash<span class="o">)</span> http://yourusername.github.io
+Do you want to <span class="nb">enable</span> article pagination? <span class="o">(</span>Y/n<span class="o">)</span> Y
+How many articles per page <span class="k">do</span> you want? <span class="o">[</span>10<span class="o">]</span> 5
+What is your <span class="nb">time</span> zone? <span class="o">[</span>Europe/Paris<span class="o">]</span> Europe/London
+Do you want to generate a Fabfile/Makefile to automate generation and publishing? <span class="o">(</span>Y/n<span class="o">)</span> Y
+Do you want an auto-reload <span class="p">&amp;</span> simpleHTTP script to assist with theme and site development? <span class="o">(</span>Y/n<span class="o">)</span> Y
+Do you want to upload your website using FTP? <span class="o">(</span>y/N<span class="o">)</span> n
+Do you want to upload your website using SSH? <span class="o">(</span>y/N<span class="o">)</span> n
+Do you want to upload your website using Dropbox? <span class="o">(</span>y/N<span class="o">)</span> n
+Do you want to upload your website using S3? <span class="o">(</span>y/N<span class="o">)</span> n
+Do you want to upload your website using Rackspace Cloud Files? <span class="o">(</span>y/N<span class="o">)</span> n
+Do you want to upload your website using GitHub Pages? <span class="o">(</span>y/N<span class="o">)</span> Y
+Is this your personal page <span class="o">(</span>username.github.io<span class="o">)</span>? <span class="o">(</span>y/N<span class="o">)</span> Y
+Done. Your new project is available at xxxxxxxxxxxxx<span class="se">\g</span>hpages
+</pre></div>
+
+
+<p>This will create content and output directories, the pelicanconf.py and publishconf.py files and some supporting files. Essentially you put your content in content, then run <em>make</em> as described below and pelican writes the html/css in the output directory.</p>
+<p>It is helpful to create three subdirectories in the content directory </p>
+<div class="codehilite"><pre><span></span>cd content
+mkdir pages static images
+</pre></div>
+
+
+<p>Your non-blog pages (eg about) go in the pages directory, images in images(doh!), and any content you just want pelican to copy across directory goes in static.</p>
+<h3>Install Themes and plugins</h3>
+<p>This is an optional step depending on your requirements. If you want more choice with css themes or additional functionality for generating sitemaps, or search bar, or reading iPython notebooks (and many others) then: </p>
+<div class="codehilite"><pre><span></span>cd ghpages
+git clone https://github.com/getpelican/pelican-themes.git themes
+git clone https://github.com/getpelican/pelican-plugins.git plugins
+</pre></div>
+
+
+<p>The example pelicanconf.py below shows how these can be used.</p>
+<h3>Configuration</h3>
+<p>While the essential config requires little update, there are many options to control your site behaviour. The config for the dev/test server is in <em>pelicanconf.py</em> and this is overridden by the 'production' config in <em>publishconf.py</em>. Please see my pelicanconf.py file as a working example. The config is described in some detail in the pelican documentation</p>
+<div class="codehilite"><pre><span></span><span class="err">$</span> <span class="n">cat</span> <span class="n">pelicanconf</span><span class="o">.</span><span class="n">py</span>
+<span class="c1">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*- #</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+
+<span class="n">AUTHOR</span> <span class="o">=</span> <span class="s1">&#39;Graham Chester&#39;</span>
+<span class="n">SITENAME</span> <span class="o">=</span> <span class="s1">&#39;GCHESTER.COM&#39;</span>
+<span class="n">SITEURL</span> <span class="o">=</span> <span class="s1">&#39;http://localhost:8000&#39;</span>
+<span class="n">THEME</span> <span class="o">=</span> <span class="s1">&#39;themes/pelican-bootstrap3&#39;</span> 
+
+<span class="n">PATH</span> <span class="o">=</span> <span class="s1">&#39;content&#39;</span>
+<span class="n">TIMEZONE</span> <span class="o">=</span> <span class="s1">&#39;Europe/London&#39;</span>
+<span class="n">DEFAULT_LANG</span> <span class="o">=</span> <span class="s1">&#39;en&#39;</span>
+
+<span class="c1"># Feed generation is usually not desired when developing</span>
+<span class="n">FEED_ALL_ATOM</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">CATEGORY_FEED_ATOM</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">TRANSLATION_FEED_ATOM</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">AUTHOR_FEED_ATOM</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">AUTHOR_FEED_RSS</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="c1"># Blogroll</span>
+<span class="n">LINKS</span> <span class="o">=</span> <span class="p">((</span><span class="s1">&#39;KD Nuggets&#39;</span><span class="p">,</span> <span class="s1">&#39;http://kdnuggets.com/&#39;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Kaggle&#39;</span><span class="p">,</span> <span class="s1">&#39;http://kaggle.com/&#39;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;Open Data Science&#39;</span><span class="p">,</span> <span class="s1">&#39;http://opendatascience.com/&#39;</span><span class="p">),</span>
+         <span class="p">)</span>
+
+<span class="c1"># Social widget</span>
+<span class="n">SOCIAL</span> <span class="o">=</span> <span class="p">((</span><span class="s1">&#39;Facebook&#39;</span><span class="p">,</span> <span class="s1">&#39;http://facebook.com/xxxxxxxxxxxxxx&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;Twitter&#39;</span><span class="p">,</span> <span class="s1">&#39;http://twitter.com/xxxxxxxxxx&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;LinkedIn&#39;</span><span class="p">,</span> <span class="s1">&#39;http://www.linkedin.com/in/xxxxxxxxxxxxxxxxxxxxxx&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;StackOverflow&#39;</span><span class="p">,</span> <span class="s1">&#39;http://stackoverflow.com/users/xxxxxxx/xxxxxxxx?tab=profile&#39;</span><span class="p">),</span>
+          <span class="p">)</span>
+
+<span class="n">DEFAULT_PAGINATION</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="c1">#RELATIVE_URLS = False</span>
+
+<span class="c1"># GC custom settings</span>
+<span class="n">MD_EXTENSIONS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;codehilite&#39;</span><span class="p">,</span> <span class="s1">&#39;extra&#39;</span><span class="p">]</span>
+<span class="n">DIRECT_TEMPLATES</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="s1">&#39;categories&#39;</span><span class="p">,</span> <span class="s1">&#39;authors&#39;</span><span class="p">,</span> <span class="s1">&#39;archives&#39;</span><span class="p">,</span> <span class="s1">&#39;search&#39;</span><span class="p">)</span>
+<span class="n">DEFAULT_DATE</span> <span class="o">=</span> <span class="s1">&#39;fs&#39;</span>
+<span class="n">DELETE_OUTPUT_DIRECTORY</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">OUTPUT_RETENTION</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.git&#39;</span><span class="p">,</span><span class="s1">&#39;.gitignore&#39;</span><span class="p">]</span>  <span class="c1"># delete output directory at each build but preserve git files</span>
+<span class="n">TWITTER_USERNAME</span> <span class="o">=</span> <span class="s1">&#39;xxxxxxxxxx&#39;</span>
+
+<span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;static&#39;</span><span class="p">,</span> <span class="s1">&#39;images&#39;</span><span class="p">,</span> <span class="s1">&#39;pdfs&#39;</span><span class="p">]</span>
+<span class="n">EXTRA_PATH_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;static/robots.txt&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;robots.txt&#39;</span><span class="p">},</span>
+    <span class="s1">&#39;static/favicon.ico&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;favicon.ico&#39;</span><span class="p">},</span>
+    <span class="s1">&#39;static/custom.css&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;custom.css&#39;</span><span class="p">},</span>
+    <span class="s1">&#39;static/CNAME&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;CNAME&#39;</span><span class="p">},</span>
+<span class="p">}</span>
+<span class="n">PLUGIN_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;plugins&#39;</span><span class="p">]</span>
+<span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tag_cloud&#39;</span><span class="p">,</span> <span class="s1">&#39;ipynb.markup&#39;</span><span class="p">,</span><span class="s1">&#39;tipue_search&#39;</span><span class="p">,</span><span class="s1">&#39;sitemap&#39;</span><span class="p">]</span>
+<span class="n">MARKUP</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;md&#39;</span><span class="p">,</span> <span class="s1">&#39;rst&#39;</span><span class="p">,</span> <span class="s1">&#39;ipynb&#39;</span><span class="p">)</span>
+<span class="n">TAG_CLOUD_STEPS</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">TAG_CLOUD_MAX_ITEMS</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">ARCHIVES_SAVE_AS</span> <span class="o">=</span> <span class="s1">&#39;archives.html&#39;</span>
+<span class="n">SITELOGO</span> <span class="o">=</span> <span class="s1">&#39;images/xxxxxxxx.png&#39;</span>
+<span class="n">ABOUT_ME</span> <span class="o">=</span> <span class="s1">&#39;Financial Systems Consultant, Python Developer and aspiring Data Scientist&#39;</span>
+<span class="n">BANNER</span> <span class="o">=</span> <span class="s1">&#39;images/space.jpg&#39;</span>
+<span class="n">BANNER_SUBTITLE</span> <span class="o">=</span> <span class="s1">&#39;Data Science and Python&#39;</span>
+<span class="n">BANNER_ALL_PAGES</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="n">GITHUB_SHOW_USER_LINK</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">GITHUB_USER</span> <span class="o">=</span> <span class="s1">&#39;xxxxxxxxxx&#39;</span>
+<span class="n">GITHUB_REPO_COUNT</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">GITHUB_SKIP_FORK</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="n">BOOTSTRAP_THEME</span> <span class="o">=</span> <span class="s1">&#39;flatly&#39;</span>
+<span class="n">BOOTSTRAP_NAVBAR_INVERSE</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">BOOTSTRAP_FLUID</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">DISPLAY_BREADCRUMBS</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">DISPLAY_CATEGORY_IN_BREADCRUMBS</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">DISPLAY_ARTICLE_INFO_ON_INDEX</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="n">SHOW_ARTICLE_AUTHOR</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">SHOW_DATE_MODIFIED</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">SHOW_ARTICLE_CATEGORY</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="n">DISPLAY_TAGS_ON_SIDEBAR</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">DISPLAY_RECENT_POSTS_ON_SIDEBAR</span> <span class="o">=</span> <span class="bp">False</span> 
+<span class="n">USE_OPEN_GRAPH</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">CUSTOM_CSS</span> <span class="o">=</span> <span class="s1">&#39;custom.css&#39;</span>
+<span class="n">DISPLAY_CATEGORIES_ON_MENU</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">DISPLAY_PAGES_ON_MENU</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">DEFAULT_CATEGORY</span> <span class="o">=</span> <span class="s2">&quot;General&quot;</span>
+<span class="n">DISQUS_SITENAME</span> <span class="o">=</span> <span class="s1">&#39;gchester&#39;</span>
+
+<span class="c1"># Configuration for the &quot;sitemap&quot; plugin</span>
+<span class="n">SITEMAP</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;xml&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;priorities&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;articles&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s1">&#39;indexes&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="s1">&#39;pages&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;changefreqs&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;articles&#39;</span><span class="p">:</span> <span class="s1">&#39;always&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;indexes&#39;</span><span class="p">:</span> <span class="s1">&#39;hourly&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;pages&#39;</span><span class="p">:</span> <span class="s1">&#39;monthly&#39;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The production config is much simpler in publishconf.py. Only the site url, google analytics needed to be set. </p>
+<div class="codehilite"><pre><span></span><span class="err">$</span> <span class="n">cat</span> <span class="n">publishconf</span><span class="o">.</span><span class="n">py</span>
+<span class="c1">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*- #</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+
+<span class="c1"># This file is only used if you use `make publish` or</span>
+<span class="c1"># explicitly specify it as your config file.</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pelicanconf</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">SITEURL</span> <span class="o">=</span> <span class="s1">&#39;http://blog.xxxxxxxx.com&#39;</span>
+<span class="n">RELATIVE_URLS</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="n">FEED_ALL_ATOM</span> <span class="o">=</span> <span class="s1">&#39;feeds/all.atom.xml&#39;</span>
+<span class="n">CATEGORY_FEED_ATOM</span> <span class="o">=</span> <span class="s1">&#39;feeds/</span><span class="si">%s</span><span class="s1">.atom.xml&#39;</span>
+
+<span class="n">DELETE_OUTPUT_DIRECTORY</span> <span class="o">=</span> <span class="bp">False</span>
+
+<span class="c1"># Following items are often useful when publishing</span>
+
+<span class="n">GOOGLE_ANALYTICS</span> <span class="o">=</span> <span class="s1">&#39;UA-xxxxxxxx-x&#39;</span>
+</pre></div>
+
+
+<h3>Local Testing</h3>
+<p>Simple....</p>
+<div class="codehilite"><pre><span></span>$ make html 
+$ make serve
+</pre></div>
+
+
+<p>In your browser go to http://localhost:8000</p>
+<h3>Deployment to GitHub Pages</h3>
+<p>As described above, your ghpages directory needs to be pushed to two GitHub repos. One for your config, articles, pages, themes, plugins etc. And another for the pelican-generated website files.</p>
+<p>Firstly make sure you have a .gitignore file in your ghpages directoryi, something like:</p>
+<div class="codehilite"><pre><span></span>$ cat .gitignore
+output/
+plugins/
+themes/
+__pycache__/
+</pre></div>
+
+
+<p>To push all your content/config changes to GitHub:</p>
+<div class="codehilite"><pre><span></span>$ <span class="nb">cd</span> ghpages
+$ git add .
+$ git commit -m <span class="s2">&quot;decriptive commit message&quot;</span>
+$ git push -u origin master
+</pre></div>
+
+
+<p>Then to generate and push your website HTML/CSS etc to GitHub to be served</p>
+<div class="codehilite"><pre><span></span>$ make publish
+$ <span class="nb">cd</span> output
+$ git add .
+$ git commit -m <span class="s2">&quot;update website&quot;</span>
+$ git push -u origin master
+</pre></div>
+
+
+<h3>Checkout your new blog</h3>
+<p>In your browser goto http://yourusername.github.io and revel in the glory of your new blog!</p>
+<p>In the second article I'll cover some ways to make your blog a little more professsional</p>
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'gchester'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = 'pelican-github-blog';
+                var disqus_url = './pelican-github-blog.html';
+
+            var disqus_config = function () {
+                this.language = "en";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<div id="aboutme">
+    <p>
+        <strong>About Graham Chester</strong><br/>
+        Financial Systems Consultant, Python Developer and aspiring Data Scientist
+    </p>
+</div>
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="http://facebook.com/graham.chester"><i class="fa fa-facebook-square fa-lg"></i> Facebook</a></li>
+                <li class="list-group-item"><a href="http://twitter.com/gchester99"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
+                <li class="list-group-item"><a href="http://www.linkedin.com/in/graham-chester-051b176"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
+                <li class="list-group-item"><a href="http://stackoverflow.com/users/3972759/graham-c?tab=profile"><i class="fa fa-stackoverflow-square fa-lg"></i> StackOverflow</a></li>
+              </ul>
+            </li>
+
+
+
+            <li class="list-group-item"><a href="./"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group " id="tags">
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/data-science.html">
+                            Data Science
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/ipython.html">
+                            iPython
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/python.html">
+                            Python
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/getting-started.html">
+                            Getting Started
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/finance.html">
+                            Finance
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/github.html">
+                            GitHub
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+
+    <li class="list-group-item"><h4><i class="fa fa-github fa-lg"></i><span class="icon-label">GitHub Repos</span></h4>
+        <div id="gh_repos">
+            <p class="list-group-item">Status updating...</p>
+        </div>
+            <a href="https://github.com/chesters99">@chesters99</a> on GitHub
+    </li>
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://kdnuggets.com/" target="_blank">
+                KD Nuggets
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://kaggle.com/" target="_blank">
+                Kaggle
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://opendatascience.com/" target="_blank">
+                Open Data Science
+            </a>
+        </li>
+      </ul>
+    </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container-fluid">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 Graham Chester
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="./theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="./theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="./theme/js/respond.min.js"></script>
+
+    <script src="./theme/js/bodypadding.js"></script>
+    <!-- GitHub JS -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if (!window.jXHR) {
+                var jxhr = document.createElement('script');
+                jxhr.type = 'text/javascript';
+                jxhr.src = './theme/js/jXHR.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(jxhr, s);
+            }
+
+            github.showRepos({
+                user: 'chesters99',
+                count: 3,
+                skip_forks: true,
+                target: '#gh_repos'
+            });
+        });
+    </script>
+    <script src="./theme/js/github.js" type="text/javascript"></script>
+    <!-- End GitHub JS Code -->
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'gchester'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-55102590-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>
