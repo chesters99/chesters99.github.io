@@ -9,9 +9,9 @@ save_as: 404.html
 status: hidden
 
 &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;
-&lt;span class="c1"&gt;####The page you requested cant be found on this site.&lt;/span&gt;
+####The page you requested cant be found on this site.
 &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;
-&lt;span class="c1"&gt;####Please click ***[here](http://blog.xxxxxxxx.com)*** to return&lt;/span&gt;
+####Please click ***[here](http://blog.xxxxxxxx.com)*** to return
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -36,12 +36,12 @@ blog.yourdomain.com
 
 
 &lt;p&gt;Add a line to &lt;em&gt;EXTRA_PATHS_METADATA&lt;/em&gt; in pelicanconf.py to tell pelican to include the CNAME file without any processing - along with other static content.&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;EXTRA_  PATH_METADATA = {
-    &amp;#39;static/robots.txt&amp;#39;: {&amp;#39;path&amp;#39;: &amp;#39;robots.txt&amp;#39;},
-    &amp;#39;static/favicon.ico&amp;#39;: {&amp;#39;path&amp;#39;: &amp;#39;favicon.ico&amp;#39;},
-    &amp;#39;static/custom.css&amp;#39;: {&amp;#39;path&amp;#39;: &amp;#39;custom.css&amp;#39;},
-    &amp;#39;static/CNAME&amp;#39;: {&amp;#39;path&amp;#39;: &amp;#39;CNAME&amp;#39;},
-}
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;EXTRA_&lt;/span&gt;  &lt;span class="n"&gt;PATH_METADATA&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;static/robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;path&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;static/favicon.ico&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;path&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;favicon.ico&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;static/custom.css&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;path&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;custom.css&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;static/CNAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;path&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;CNAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -81,52 +81,51 @@ blog.yourdomain.com
 &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pelican-quickstart
 
 Welcome to pelican-quickstart v3.6.3.
-This script will &lt;span class="nb"&gt;help&lt;/span&gt; you create a new Pelican-based website.
+This script will help you create a new Pelican-based website.
 Please answer the following questions so this script can generate the files needed by Pelican.
 
-Where &lt;span class="k"&gt;do&lt;/span&gt; you want to create your new web site? &lt;span class="o"&gt;[&lt;/span&gt;.&lt;span class="o"&gt;]&lt;/span&gt;
-What will be the title of this web site? Your Blog&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s name
+Where do you want to create your new web site? [.]
+What will be the title of this web site? Your Blog&amp;#39;s name
 Who will be the author of this web site? Your Name
-What will be the default language of this web site? &lt;span class="o"&gt;[&lt;/span&gt;en&lt;span class="o"&gt;]&lt;/span&gt;
-Do you want to specify a URL prefix? e.g., http://example.com   &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; Y
-What is your URL prefix? &lt;span class="o"&gt;(&lt;/span&gt;see above example&lt;span class="p"&gt;;&lt;/span&gt; no trailing slash&lt;span class="o"&gt;)&lt;/span&gt; http://yourusername.github.io
-Do you want to &lt;span class="nb"&gt;enable&lt;/span&gt; article pagination? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; Y
-How many articles per page &lt;span class="k"&gt;do&lt;/span&gt; you want? &lt;span class="o"&gt;[&lt;/span&gt;10&lt;span class="o"&gt;]&lt;/span&gt; 5
-What is your &lt;span class="nb"&gt;time&lt;/span&gt; zone? &lt;span class="o"&gt;[&lt;/span&gt;Europe/Paris&lt;span class="o"&gt;]&lt;/span&gt; Europe/London
-Do you want to generate a Fabfile/Makefile to automate generation and publishing? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; Y
-Do you want an auto-reload &lt;span class="p"&gt;&amp;amp;&lt;/span&gt; simpleHTTP script to assist with theme and site development? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; Y
-Do you want to upload your website using FTP? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; n
-Do you want to upload your website using SSH? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; n
-Do you want to upload your website using Dropbox? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; n
-Do you want to upload your website using S3? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; n
-Do you want to upload your website using Rackspace Cloud Files? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; n
-Do you want to upload your website using GitHub Pages? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; Y
-Is this your personal page &lt;span class="o"&gt;(&lt;/span&gt;username.github.io&lt;span class="o"&gt;)&lt;/span&gt;? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; Y
-Done. Your new project is available at xxxxxxxxxxxxx&lt;span class="se"&gt;\g&lt;/span&gt;hpages
+What will be the default language of this web site? [en]
+Do you want to specify a URL prefix? e.g., http://example.com   (Y/n) Y
+What is your URL prefix? (see above example; no trailing slash) http://yourusername.github.io
+Do you want to enable article pagination? (Y/n) Y
+How many articles per page do you want? [10] 5
+What is your time zone? [Europe/Paris] Europe/London
+Do you want to generate a Fabfile/Makefile to automate generation and publishing? (Y/n) Y
+Do you want an auto-reload &amp;amp; simpleHTTP script to assist with theme and site development? (Y/n) Y
+Do you want to upload your website using FTP? (y/N) n
+Do you want to upload your website using SSH? (y/N) n
+Do you want to upload your website using Dropbox? (y/N) n
+Do you want to upload your website using S3? (y/N) n
+Do you want to upload your website using Rackspace Cloud Files? (y/N) n
+Do you want to upload your website using GitHub Pages? (y/N) Y
+Is this your personal page (username.github.io)? (y/N) Y
+Done. Your new project is available at xxxxxxxxxxxxx\ghpages
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;This will create content and output directories, the pelicanconf.py and publishconf.py files and some supporting files. Essentially you put your content in content, then run &lt;em&gt;make&lt;/em&gt; as described below and pelican writes the html/css in the output directory.&lt;/p&gt;
 &lt;p&gt;It is helpful to create three subdirectories in the content directory &lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd content
-mkdir pages static images
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cd content
+$ mkdir pages static images
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Your non-blog pages (eg about) go in the pages directory, images in images(doh!), and any content you just want pelican to copy across directory goes in static.&lt;/p&gt;
 &lt;h3&gt;Install Themes and plugins&lt;/h3&gt;
 &lt;p&gt;This is an optional step depending on your requirements. If you want more choice with css themes or additional functionality for generating sitemaps, or search bar, or reading iPython notebooks (and many others) then: &lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd ghpages
-git clone https://github.com/getpelican/pelican-themes.git themes
-git clone https://github.com/getpelican/pelican-plugins.git plugins
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cd ghpages
+$ git clone https://github.com/getpelican/pelican-themes.git themes
+$ git clone https://github.com/getpelican/pelican-plugins.git plugins
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The example pelicanconf.py below shows how these can be used.&lt;/p&gt;
 &lt;h3&gt;Configuration&lt;/h3&gt;
 &lt;p&gt;While the essential config requires little update, there are many options to control your site behaviour. The config for the dev/test server is in &lt;em&gt;pelicanconf.py&lt;/em&gt; and this is overridden by the 'production' config in &lt;em&gt;publishconf.py&lt;/em&gt;. Please see my pelicanconf.py file as a working example. The config is described in some detail in the pelican documentation&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="n"&gt;pelicanconf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
-&lt;span class="c1"&gt;#!/usr/bin/env python&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env python&lt;/span&gt;
 &lt;span class="c1"&gt;# -*- coding: utf-8 -*- #&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;unicode_literals&lt;/span&gt;
 
@@ -233,8 +232,7 @@ git clone https://github.com/getpelican/pelican-plugins.git plugins
 
 
 &lt;p&gt;The production config is much simpler in publishconf.py. Only the site url, google analytics needed to be set. &lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="n"&gt;publishconf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
-&lt;span class="c1"&gt;#!/usr/bin/env python&lt;/span&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env python&lt;/span&gt;
 &lt;span class="c1"&gt;# -*- coding: utf-8 -*- #&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;unicode_literals&lt;/span&gt;
 
@@ -280,18 +278,18 @@ __pycache__/
 
 
 &lt;p&gt;To push all your content/config changes to GitHub:&lt;/p&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; ghpages
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cd ghpages
 $ git add .
-$ git commit -m &lt;span class="s2"&gt;&amp;quot;decriptive commit message&amp;quot;&lt;/span&gt;
+$ git commit -m &amp;quot;decriptive commit message&amp;quot;
 $ git push -u origin master
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Then to generate and push your website HTML/CSS etc to GitHub to be served&lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make publish
-$ &lt;span class="nb"&gt;cd&lt;/span&gt; output
+$ cd output
 $ git add .
-$ git commit -m &lt;span class="s2"&gt;&amp;quot;update website&amp;quot;&lt;/span&gt;
+$ git commit -m &amp;quot;update website&amp;quot;
 $ git push -u origin master
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -322,7 +320,7 @@ Old PyData videos offer a broad range of interesting topics and tutorials.
 &lt;br&gt;&lt;br&gt;&lt;/p&gt;
 &lt;h3&gt;In-person training&lt;/h3&gt;
 &lt;p&gt;I've only attended Data Science courses with Cambridge Coding Academy in London, UK - really great people who know their stuff.
-&lt;br&gt;&lt;br&gt;&lt;/p&gt;</summary><category term="Python"></category><category term="Data Science"></category><category term="Getting Started"></category></entry><entry><title>Getting Started - Python Environment</title><link href="http://blog.gchester.com/useful-tools.html" rel="alternate"></link><published>2016-10-17T00:00:00+01:00</published><updated>2016-10-17T00:00:00+01:00</updated><author><name>Graham Chester</name></author><id>tag:blog.gchester.com,2016-10-17:useful-tools.html</id><summary type="html">&lt;h3&gt;Python&lt;/h3&gt;
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;</summary><category term="Python"></category><category term="Data Science"></category><category term="Getting Started"></category></entry><entry><title>Getting Started - Python Ecosystem</title><link href="http://blog.gchester.com/useful-tools.html" rel="alternate"></link><published>2016-10-17T00:00:00+01:00</published><updated>2016-10-17T00:00:00+01:00</updated><author><name>Graham Chester</name></author><id>tag:blog.gchester.com,2016-10-17:useful-tools.html</id><summary type="html">&lt;h3&gt;Python&lt;/h3&gt;
 &lt;p&gt;There are a number of Python run-times (interpreters and compilers) available. The one most used is called &lt;strong&gt;&lt;em&gt;CPython&lt;/em&gt;&lt;/strong&gt; (because it is written in C). It is installed by default on Linux and Macs, and can be installed on Windows (see below for Windows).&lt;/p&gt;
 &lt;p&gt;Unfortunately there are two versions of Python (2 and 3). Python 3 was released as a replacement for Python 2 but due to the need to make some substantial improvements, they are not particularly compatible. Sure with a bit of effort you can write code that will run on both, but few developers seem to to that.  There is a very large code base on Python 2 which would require an enormous effort to migrate to 3, and yet 2 is planned to be desupported by 2020.... is there an elephant in the room?  The latest release of Python 2 is Python 2.7 - there will be no more Python 2 releases apparently. As of the date of this blog, the latest release of Python 3 is Python 3.5 with Python 3.6 due soon.&lt;/p&gt;
 &lt;p&gt;There are a number of other Python run-times available such as:&lt;/p&gt;
@@ -4890,4 +4888,4 @@ c4YBSZIyZxiQJClzhgFJkjJnGJAkKXP/A/LMHYyNxOIFAAAAAElFTkSuQmCC
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</summary><category term="iPython"></category><category term="Finance"></category></entry></feed>
+</summary><category term="iPython"></category><category term="Finance"></category><category term="Data Science"></category></entry></feed>

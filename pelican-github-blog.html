@@ -174,52 +174,51 @@
 <div class="codehilite"><pre><span></span>$ pelican-quickstart
 
 Welcome to pelican-quickstart v3.6.3.
-This script will <span class="nb">help</span> you create a new Pelican-based website.
+This script will help you create a new Pelican-based website.
 Please answer the following questions so this script can generate the files needed by Pelican.
 
-Where <span class="k">do</span> you want to create your new web site? <span class="o">[</span>.<span class="o">]</span>
-What will be the title of this web site? Your Blog<span class="err">&#39;</span>s name
+Where do you want to create your new web site? [.]
+What will be the title of this web site? Your Blog&#39;s name
 Who will be the author of this web site? Your Name
-What will be the default language of this web site? <span class="o">[</span>en<span class="o">]</span>
-Do you want to specify a URL prefix? e.g., http://example.com   <span class="o">(</span>Y/n<span class="o">)</span> Y
-What is your URL prefix? <span class="o">(</span>see above example<span class="p">;</span> no trailing slash<span class="o">)</span> http://yourusername.github.io
-Do you want to <span class="nb">enable</span> article pagination? <span class="o">(</span>Y/n<span class="o">)</span> Y
-How many articles per page <span class="k">do</span> you want? <span class="o">[</span>10<span class="o">]</span> 5
-What is your <span class="nb">time</span> zone? <span class="o">[</span>Europe/Paris<span class="o">]</span> Europe/London
-Do you want to generate a Fabfile/Makefile to automate generation and publishing? <span class="o">(</span>Y/n<span class="o">)</span> Y
-Do you want an auto-reload <span class="p">&amp;</span> simpleHTTP script to assist with theme and site development? <span class="o">(</span>Y/n<span class="o">)</span> Y
-Do you want to upload your website using FTP? <span class="o">(</span>y/N<span class="o">)</span> n
-Do you want to upload your website using SSH? <span class="o">(</span>y/N<span class="o">)</span> n
-Do you want to upload your website using Dropbox? <span class="o">(</span>y/N<span class="o">)</span> n
-Do you want to upload your website using S3? <span class="o">(</span>y/N<span class="o">)</span> n
-Do you want to upload your website using Rackspace Cloud Files? <span class="o">(</span>y/N<span class="o">)</span> n
-Do you want to upload your website using GitHub Pages? <span class="o">(</span>y/N<span class="o">)</span> Y
-Is this your personal page <span class="o">(</span>username.github.io<span class="o">)</span>? <span class="o">(</span>y/N<span class="o">)</span> Y
-Done. Your new project is available at xxxxxxxxxxxxx<span class="se">\g</span>hpages
+What will be the default language of this web site? [en]
+Do you want to specify a URL prefix? e.g., http://example.com   (Y/n) Y
+What is your URL prefix? (see above example; no trailing slash) http://yourusername.github.io
+Do you want to enable article pagination? (Y/n) Y
+How many articles per page do you want? [10] 5
+What is your time zone? [Europe/Paris] Europe/London
+Do you want to generate a Fabfile/Makefile to automate generation and publishing? (Y/n) Y
+Do you want an auto-reload &amp; simpleHTTP script to assist with theme and site development? (Y/n) Y
+Do you want to upload your website using FTP? (y/N) n
+Do you want to upload your website using SSH? (y/N) n
+Do you want to upload your website using Dropbox? (y/N) n
+Do you want to upload your website using S3? (y/N) n
+Do you want to upload your website using Rackspace Cloud Files? (y/N) n
+Do you want to upload your website using GitHub Pages? (y/N) Y
+Is this your personal page (username.github.io)? (y/N) Y
+Done. Your new project is available at xxxxxxxxxxxxx\ghpages
 </pre></div>
 
 
 <p>This will create content and output directories, the pelicanconf.py and publishconf.py files and some supporting files. Essentially you put your content in content, then run <em>make</em> as described below and pelican writes the html/css in the output directory.</p>
 <p>It is helpful to create three subdirectories in the content directory </p>
-<div class="codehilite"><pre><span></span>cd content
-mkdir pages static images
+<div class="codehilite"><pre><span></span>$ cd content
+$ mkdir pages static images
 </pre></div>
 
 
 <p>Your non-blog pages (eg about) go in the pages directory, images in images(doh!), and any content you just want pelican to copy across directory goes in static.</p>
 <h3>Install Themes and plugins</h3>
 <p>This is an optional step depending on your requirements. If you want more choice with css themes or additional functionality for generating sitemaps, or search bar, or reading iPython notebooks (and many others) then: </p>
-<div class="codehilite"><pre><span></span>cd ghpages
-git clone https://github.com/getpelican/pelican-themes.git themes
-git clone https://github.com/getpelican/pelican-plugins.git plugins
+<div class="codehilite"><pre><span></span>$ cd ghpages
+$ git clone https://github.com/getpelican/pelican-themes.git themes
+$ git clone https://github.com/getpelican/pelican-plugins.git plugins
 </pre></div>
 
 
 <p>The example pelicanconf.py below shows how these can be used.</p>
 <h3>Configuration</h3>
 <p>While the essential config requires little update, there are many options to control your site behaviour. The config for the dev/test server is in <em>pelicanconf.py</em> and this is overridden by the 'production' config in <em>publishconf.py</em>. Please see my pelicanconf.py file as a working example. The config is described in some detail in the pelican documentation</p>
-<div class="codehilite"><pre><span></span><span class="err">$</span> <span class="n">cat</span> <span class="n">pelicanconf</span><span class="o">.</span><span class="n">py</span>
-<span class="c1">#!/usr/bin/env python</span>
+<div class="codehilite"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*- #</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
 
@@ -326,8 +325,7 @@ git clone https://github.com/getpelican/pelican-plugins.git plugins
 
 
 <p>The production config is much simpler in publishconf.py. Only the site url, google analytics needed to be set. </p>
-<div class="codehilite"><pre><span></span><span class="err">$</span> <span class="n">cat</span> <span class="n">publishconf</span><span class="o">.</span><span class="n">py</span>
-<span class="c1">#!/usr/bin/env python</span>
+<div class="codehilite"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*- #</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
 
@@ -373,18 +371,18 @@ __pycache__/
 
 
 <p>To push all your content/config changes to GitHub:</p>
-<div class="codehilite"><pre><span></span>$ <span class="nb">cd</span> ghpages
+<div class="codehilite"><pre><span></span>$ cd ghpages
 $ git add .
-$ git commit -m <span class="s2">&quot;decriptive commit message&quot;</span>
+$ git commit -m &quot;decriptive commit message&quot;
 $ git push -u origin master
 </pre></div>
 
 
 <p>Then to generate and push your website HTML/CSS etc to GitHub to be served</p>
 <div class="codehilite"><pre><span></span>$ make publish
-$ <span class="nb">cd</span> output
+$ cd output
 $ git add .
-$ git commit -m <span class="s2">&quot;update website&quot;</span>
+$ git commit -m &quot;update website&quot;
 $ git push -u origin master
 </pre></div>
 
@@ -452,18 +450,8 @@ $ git push -u origin master
             <li class="list-group-item"><a href="./"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
                     <li class="list-group-item tag-1">
-                        <a href="./tag/ipython.html">
-                            iPython
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="./tag/pelican.html">
-                            Pelican
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="./tag/getting-started.html">
-                            Getting Started
+                        <a href="./tag/finance.html">
+                            Finance
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
@@ -472,13 +460,23 @@ $ git push -u origin master
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
-                        <a href="./tag/finance.html">
-                            Finance
+                        <a href="./tag/getting-started.html">
+                            Getting Started
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
                         <a href="./tag/data-science.html">
                             Data Science
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/pelican.html">
+                            Pelican
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/ipython.html">
+                            iPython
                         </a>
                     </li>
                 </ul>

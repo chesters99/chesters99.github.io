@@ -1,0 +1,46 @@
+/* fix for iPython notebook formatting */
+span.n, span.o, span.p {
+    color: #444 !important;
+}
+table>thead>tr>th, table>thead>tr>td {
+    border-style: solid;
+    border-width: 1px 1px 1px 1px !important;
+    border-color: black;
+    padding: 3px;
+}
+table>tbody>tr>th, table>tbody>tr>td {
+    border-style: solid;
+    border-width: 1px 1px 1px 1px !important;
+    border-color: black;
+    padding: 3px;
+}
+
+/* fix tipue search box expand to fit navbar height */
+#tipue_search_input {
+    font-size: 17px;
+    padding: 18px 12px 13px 40px;
+    background: #fff url(theme/tipuesearch/img/search.png) no-repeat 15px 23px;
+}
+
+/* fix for group items being too widely spaced and too large font*/
+.list-group-item {
+    padding: 5px 15px;
+    font: inherit;
+}
+
+/* fix for comments being too close to article */
+.comments {
+    margin-top: 30px;
+}
+
+/* Pagination colour from green to navbar colour */
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover,
+.pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
+    background-color: #4a6988
+}
+
+.pagination>li>a, .pagination>li>span, .pagination>.disabled>span, .pagination>.disabled>span:hover,
+.pagination>.disabled>span:focus, .pagination>.disabled>a, .pagination>.disabled>a:hover, 
+.pagination>.disabled>a:focus, .pagination>li>a, .pagination>li>span {
+    background-color: #2c3e50
+}

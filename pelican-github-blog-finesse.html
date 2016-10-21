@@ -151,9 +151,9 @@ save_as: 404.html
 status: hidden
 
 &lt;br&gt;&lt;br&gt;
-<span class="c1">####The page you requested cant be found on this site.</span>
+####The page you requested cant be found on this site.
 &lt;br&gt;&lt;br&gt;
-<span class="c1">####Please click ***[here](http://blog.xxxxxxxx.com)*** to return</span>
+####Please click ***[here](http://blog.xxxxxxxx.com)*** to return
 </pre></div>
 
 
@@ -178,12 +178,12 @@ blog.yourdomain.com
 
 
 <p>Add a line to <em>EXTRA_PATHS_METADATA</em> in pelicanconf.py to tell pelican to include the CNAME file without any processing - along with other static content.</p>
-<div class="codehilite"><pre><span></span>EXTRA_  PATH_METADATA = {
-    &#39;static/robots.txt&#39;: {&#39;path&#39;: &#39;robots.txt&#39;},
-    &#39;static/favicon.ico&#39;: {&#39;path&#39;: &#39;favicon.ico&#39;},
-    &#39;static/custom.css&#39;: {&#39;path&#39;: &#39;custom.css&#39;},
-    &#39;static/CNAME&#39;: {&#39;path&#39;: &#39;CNAME&#39;},
-}
+<div class="codehilite"><pre><span></span><span class="n">EXTRA_</span>  <span class="n">PATH_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;static/robots.txt&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;robots.txt&#39;</span><span class="p">},</span>
+    <span class="s1">&#39;static/favicon.ico&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;favicon.ico&#39;</span><span class="p">},</span>
+    <span class="s1">&#39;static/custom.css&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;custom.css&#39;</span><span class="p">},</span>
+    <span class="s1">&#39;static/CNAME&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;CNAME&#39;</span><span class="p">},</span>
+<span class="p">}</span>
 </pre></div>
 
 
@@ -251,18 +251,8 @@ blog.yourdomain.com
             <li class="list-group-item"><a href="./"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
                     <li class="list-group-item tag-1">
-                        <a href="./tag/ipython.html">
-                            iPython
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="./tag/pelican.html">
-                            Pelican
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="./tag/getting-started.html">
-                            Getting Started
+                        <a href="./tag/finance.html">
+                            Finance
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
@@ -271,13 +261,23 @@ blog.yourdomain.com
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
-                        <a href="./tag/finance.html">
-                            Finance
+                        <a href="./tag/getting-started.html">
+                            Getting Started
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
                         <a href="./tag/data-science.html">
                             Data Science
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/pelican.html">
+                            Pelican
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/ipython.html">
+                            iPython
                         </a>
                     </li>
                 </ul>
