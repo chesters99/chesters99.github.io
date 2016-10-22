@@ -1,18 +1,13 @@
 /* fix for iPython notebook formatting */
-span.n, span.o, span.p {
-    color: #444 !important;
-}
+span.n, span.o, span.p { color: #444 !important; }
+
 table>thead>tr>th, table>thead>tr>td {
-    border-style: solid;
-    border-width: 1px 1px 1px 1px !important;
-    border-color: black;
-    padding: 3px;
+    border-style: solid; border-width: 1px 1px 1px 1px !important;
+    border-color: black; padding: 3px;
 }
 table>tbody>tr>th, table>tbody>tr>td {
-    border-style: solid;
-    border-width: 1px 1px 1px 1px !important;
-    border-color: black;
-    padding: 3px;
+    border-style: solid; border-width: 1px 1px 1px 1px !important;
+    border-color: black; padding: 3px;
 }
 
 /* fix tipue search box expand to fit navbar height */
@@ -23,15 +18,13 @@ table>tbody>tr>th, table>tbody>tr>td {
 }
 
 /* fix for group items being too widely spaced and too large font*/
-.list-group-item {
-    padding: 5px 15px;
-    font: inherit;
-}
+.list-group-item { padding: 5px 15px; font: inherit; }
 
 /* fix for comments being too close to article */
-.comments {
-    margin-top: 30px;
-}
+.comments { margin-top: 30px; }
+
+/* fix for faint gray in plain text codehilite */
+.codehilite pre { color: #494e58 } 
 
 /* Pagination colour from green to navbar colour */
 .pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover,
