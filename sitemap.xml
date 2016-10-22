@@ -4,133 +4,133 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://blog.gchester.com/</loc>
-<lastmod>2016-10-22T12:36:48-00:00</lastmod>
+<loc>http://localhost:8000/</loc>
+<lastmod>2016-10-22T13:49:22-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.gchester.com/archives.html</loc>
-<lastmod>2016-10-22T12:36:48-00:00</lastmod>
+<loc>http://localhost:8000/archives.html</loc>
+<lastmod>2016-10-22T13:49:22-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.gchester.com/categories.html</loc>
-<lastmod>2016-10-22T12:36:48-00:00</lastmod>
+<loc>http://localhost:8000/categories.html</loc>
+<lastmod>2016-10-22T13:49:22-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.gchester.com/pages/about.html</loc>
+<loc>http://localhost:8000/pages/about.html</loc>
 <lastmod>2016-10-16T11:40:26+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.gchester.com/pelican-github-blog-finesse.html</loc>
+<loc>http://localhost:8000/pelican-github-blog-finesse.html</loc>
 <lastmod>2016-10-20T00:00:00+01:00</lastmod>
 <changefreq>always</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>http://blog.gchester.com/pelican-github-blog.html</loc>
+<loc>http://localhost:8000/pelican-github-blog.html</loc>
 <lastmod>2016-10-19T00:00:00+01:00</lastmod>
 <changefreq>always</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>http://blog.gchester.com/useful-training.html</loc>
+<loc>http://localhost:8000/useful-training.html</loc>
 <lastmod>2016-10-18T00:00:00+01:00</lastmod>
 <changefreq>always</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>http://blog.gchester.com/useful-tools.html</loc>
+<loc>http://localhost:8000/useful-tools.html</loc>
 <lastmod>2016-10-17T00:00:00+01:00</lastmod>
 <changefreq>always</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>http://blog.gchester.com/useful-books.html</loc>
+<loc>http://localhost:8000/useful-books.html</loc>
 <lastmod>2016-10-16T00:00:00+01:00</lastmod>
 <changefreq>always</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>http://blog.gchester.com/stock-prices.html</loc>
+<loc>http://localhost:8000/stock-prices.html</loc>
 <lastmod>2016-10-14T00:00:00+01:00</lastmod>
 <changefreq>always</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>http://blog.gchester.com/category/data-science.html</loc>
+<loc>http://localhost:8000/category/data-science.html</loc>
 <lastmod>2016-10-14T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.gchester.com/category/getting-started.html</loc>
+<loc>http://localhost:8000/category/getting-started.html</loc>
 <lastmod>2016-10-20T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.gchester.com/tag/finance.html</loc>
-<lastmod>2016-10-14T00:00:00-00:01</lastmod>
-<changefreq>hourly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://blog.gchester.com/tag/getting-started.html</loc>
+<loc>http://localhost:8000/tag/getting-started.html</loc>
 <lastmod>2016-10-18T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.gchester.com/tag/python.html</loc>
+<loc>http://localhost:8000/tag/pelican.html</loc>
 <lastmod>2016-10-20T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.gchester.com/tag/ipython.html</loc>
+<loc>http://localhost:8000/tag/python.html</loc>
+<lastmod>2016-10-20T00:00:00-00:01</lastmod>
+<changefreq>hourly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://localhost:8000/tag/finance.html</loc>
 <lastmod>2016-10-14T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.gchester.com/tag/data-science.html</loc>
+<loc>http://localhost:8000/tag/ipython.html</loc>
+<lastmod>2016-10-14T00:00:00-00:01</lastmod>
+<changefreq>hourly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://localhost:8000/tag/data-science.html</loc>
 <lastmod>2016-10-18T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.gchester.com/tag/pelican.html</loc>
-<lastmod>2016-10-20T00:00:00-00:01</lastmod>
-<changefreq>hourly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://blog.gchester.com/author/graham-chester.html</loc>
+<loc>http://localhost:8000/author/graham-chester.html</loc>
 <lastmod>2016-10-20T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
