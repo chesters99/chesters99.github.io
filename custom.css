@@ -23,8 +23,8 @@ table>tbody>tr>th, table>tbody>tr>td {
 /* fix for comments being too close to article */
 .comments { margin-top: 30px; }
 
-/* fix for faint gray in plain text codehilite */
-.codehilite pre { color: #494e58 } 
+/* fix for faint gray in plain text code highlghter */
+.highlight pre { color: #494e58 } 
 
 /* Pagination colour from green to navbar colour */
 .pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover,
