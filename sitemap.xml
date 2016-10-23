@@ -5,21 +5,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.gchester.com/</loc>
-<lastmod>2016-10-22T15:51:01-00:00</lastmod>
+<lastmod>2016-10-23T11:24:36-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.gchester.com/archives.html</loc>
-<lastmod>2016-10-22T15:51:01-00:00</lastmod>
+<lastmod>2016-10-23T11:24:36-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.gchester.com/categories.html</loc>
-<lastmod>2016-10-22T15:51:01-00:00</lastmod>
+<lastmod>2016-10-23T11:24:36-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -29,6 +29,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2016-10-16T11:40:26+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.gchester.com/olympic medals.html</loc>
+<lastmod>2016-10-23T00:00:00+01:00</lastmod>
+<changefreq>always</changefreq>
+<priority>1</priority>
 </url>
 
 <url>
@@ -75,7 +82,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.gchester.com/category/data-science.html</loc>
-<lastmod>2016-10-14T00:00:00-00:01</lastmod>
+<lastmod>2016-10-23T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -88,6 +95,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://blog.gchester.com/tag/data-science.html</loc>
+<lastmod>2016-10-23T00:00:00-00:01</lastmod>
+<changefreq>hourly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://blog.gchester.com/tag/getting-started.html</loc>
 <lastmod>2016-10-18T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
@@ -95,15 +109,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.gchester.com/tag/finance.html</loc>
-<lastmod>2016-10-14T00:00:00-00:01</lastmod>
-<changefreq>hourly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://blog.gchester.com/tag/pelican.html</loc>
-<lastmod>2016-10-20T00:00:00-00:01</lastmod>
+<loc>http://blog.gchester.com/tag/ipython.html</loc>
+<lastmod>2016-10-23T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -116,14 +123,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.gchester.com/tag/data-science.html</loc>
-<lastmod>2016-10-18T00:00:00-00:01</lastmod>
+<loc>http://blog.gchester.com/tag/pelican.html</loc>
+<lastmod>2016-10-20T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.gchester.com/tag/ipython.html</loc>
+<loc>http://blog.gchester.com/tag/finance.html</loc>
 <lastmod>2016-10-14T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
@@ -131,7 +138,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.gchester.com/author/graham-chester.html</loc>
-<lastmod>2016-10-20T00:00:00-00:01</lastmod>
+<lastmod>2016-10-23T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
