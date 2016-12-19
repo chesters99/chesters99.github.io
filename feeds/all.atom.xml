@@ -162,8 +162,8 @@ copy libpython35 and python35 to Anaconda/libs
 
 
 &lt;p&gt;You should get a response similar to:&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Using gpu device 0: GeForce GTX 970 (CNMeM is enabled with initial size: 75.0% of memory, cuDNN not available)&lt;/strong&gt;&lt;/p&gt;
-&lt;h4&gt;If you get this response, you're done. Nice job!&lt;/h4&gt;</summary><category term="Python"></category><category term="Data Science"></category></entry><entry><title>Kaggle Titanic survival competition</title><link href="http://blog.gchester.com/kaggle-titanic.html" rel="alternate"></link><published>2016-11-12T00:00:00+00:00</published><updated>2016-11-12T00:00:00+00:00</updated><author><name>Graham Chester</name></author><id>tag:blog.gchester.com,2016-11-12:kaggle-titanic.html</id><summary type="html">&lt;style type="text/css"&gt;/*!
+&lt;p&gt;&lt;code class="red"&gt;Using gpu device 0: GeForce GTX 970 (CNMeM is enabled with initial size: 75.0% of memory, cuDNN not available)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;And if you get this response, you're done. Nice job!&lt;/strong&gt;&lt;/p&gt;</summary><category term="Python"></category><category term="Data Science"></category></entry><entry><title>Kaggle Titanic survival competition</title><link href="http://blog.gchester.com/kaggle-titanic.html" rel="alternate"></link><published>2016-11-12T00:00:00+00:00</published><updated>2016-11-12T00:00:00+00:00</updated><author><name>Graham Chester</name></author><id>tag:blog.gchester.com,2016-11-12:kaggle-titanic.html</id><summary type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
