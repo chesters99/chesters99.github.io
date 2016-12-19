@@ -5,21 +5,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.gchester.com/</loc>
-<lastmod>2016-12-19T12:46:29-00:00</lastmod>
+<lastmod>2016-12-19T12:48:28-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.gchester.com/archives.html</loc>
-<lastmod>2016-12-19T12:46:29-00:00</lastmod>
+<lastmod>2016-12-19T12:48:28-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.gchester.com/categories.html</loc>
-<lastmod>2016-12-19T12:46:29-00:00</lastmod>
+<lastmod>2016-12-19T12:48:28-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -109,29 +109,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.gchester.com/tag/getting-started.html</loc>
-<lastmod>2016-10-18T00:00:00-00:01</lastmod>
-<changefreq>hourly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://blog.gchester.com/tag/python.html</loc>
-<lastmod>2016-12-19T00:00:00-00:01</lastmod>
-<changefreq>hourly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://blog.gchester.com/tag/ipython.html</loc>
-<lastmod>2016-11-12T00:00:00-00:01</lastmod>
-<changefreq>hourly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>http://blog.gchester.com/tag/data-science.html</loc>
 <lastmod>2016-12-19T00:00:00-00:01</lastmod>
+<changefreq>hourly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.gchester.com/tag/getting-started.html</loc>
+<lastmod>2016-10-18T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -144,8 +130,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://blog.gchester.com/tag/python.html</loc>
+<lastmod>2016-12-19T00:00:00-00:01</lastmod>
+<changefreq>hourly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://blog.gchester.com/tag/pelican.html</loc>
 <lastmod>2016-10-20T00:00:00-00:01</lastmod>
+<changefreq>hourly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.gchester.com/tag/ipython.html</loc>
+<lastmod>2016-11-12T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
