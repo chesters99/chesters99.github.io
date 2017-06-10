@@ -1343,10 +1343,10 @@ Interrupted at 35,700 [44%]: Average Loss = 912.99
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="abf68884-5f93-42d5-944f-a9406d91036f"&gt;&lt;/div&gt;
+&lt;div id="f9a04c67-2639-4520-8fe0-64498263e4ff"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#abf68884-5f93-42d5-944f-a9406d91036f');
+var element = $('#f9a04c67-2639-4520-8fe0-64498263e4ff');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 

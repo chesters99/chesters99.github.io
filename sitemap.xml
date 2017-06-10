@@ -5,21 +5,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.gchester.com/</loc>
-<lastmod>2017-05-31T11:41:49-00:00</lastmod>
+<lastmod>2017-06-10T14:33:55-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.gchester.com/archives.html</loc>
-<lastmod>2017-05-31T11:41:49-00:00</lastmod>
+<lastmod>2017-06-10T14:33:55-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.gchester.com/categories.html</loc>
-<lastmod>2017-05-31T11:41:49-00:00</lastmod>
+<lastmod>2017-06-10T14:33:55-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -130,8 +130,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.gchester.com/tag/finance.html</loc>
-<lastmod>2016-10-14T00:00:00-00:01</lastmod>
+<loc>http://blog.gchester.com/tag/getting-started.html</loc>
+<lastmod>2016-10-18T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -144,15 +144,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.gchester.com/tag/getting-started.html</loc>
-<lastmod>2016-10-18T00:00:00-00:01</lastmod>
+<loc>http://blog.gchester.com/tag/pelican.html</loc>
+<lastmod>2016-10-20T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.gchester.com/tag/pelican.html</loc>
-<lastmod>2016-10-20T00:00:00-00:01</lastmod>
+<loc>http://blog.gchester.com/tag/finance.html</loc>
+<lastmod>2016-10-14T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
