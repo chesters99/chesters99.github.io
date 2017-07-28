@@ -301,6 +301,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -321,11 +322,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -1063,8 +1059,10 @@ h6:hover .anchor-link {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -1075,9 +1073,11 @@ h6:hover .anchor-link {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
 <style type="text/css">
 /* Temporary definitions which will become obsolete with Notebook release 5.0 */
@@ -1138,7 +1138,8 @@ h6:hover .anchor-link {
 </div>
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>getting-  https://www.google.com/finance/historical?cid=1259...num=200&ei;=qVQCWMmRHMf7UKqMn7AM&start;=0
 </pre>
@@ -1159,7 +1160,8 @@ h6:hover .anchor-link {
 </div>
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt output_prompt">Out[182]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[182]:</div>
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
 <table border="1" class="dataframe">
@@ -1255,7 +1257,8 @@ h6:hover .anchor-link {
 </div>
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt output_prompt">Out[56]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[56]:</div>
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
 <table border="1" class="dataframe">
@@ -1487,14 +1490,16 @@ h6:hover .anchor-link {
 </div>
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>C:\Users\Graham\Anaconda3\lib\site-packages\statsmodels\nonparametric\kdetools.py:20: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
   y = X[:m/2+1] + np.r_[0,X[m/2+1:],0]*1j
 </pre>
 </div>
 </div>
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAsMAAAHcCAYAAAAz5KeRAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAAPYQAAD2EBqD+naQAAIABJREFUeJzs3Xt4lOWdP/73HJKZyWFyPkxCQgiHJBplDI3VktjiAord
@@ -2035,8 +2040,8 @@ rKGhQcybN08kJiaKyZMni7Vr19rbmB9pFRYWij/+8Y9i/Pjx4vbbb3f4XGFupHP5OsNC3Hgu1q9f
 LyZNmiSSk5PF4sWLhclk6lY8MiEuW+yNiIiIiMiDuPWYYSIiIiKia2ExTEREREQei8UwEREREXks
 FsNERERE5LFYDBMRERGRx2IxTEREREQei8UwEREREXksFsNERERE5LFYDBMRERGRx2IxTEREREQe
 i8UwEREREXms/x8pcSN8xVaKsgAAAABJRU5ErkJggg==
-">
-</img></div>
+" />
+</div>
 </div>
 </div>
 </div>
@@ -2053,19 +2058,22 @@ i8UwEREREXms/x8pcSN8xVaKsgAAAABJRU5ErkJggg==
 </div>
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>C:\Users\Graham\Anaconda3\lib\site-packages\statsmodels\nonparametric\kdetools.py:20: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
   y = X[:m/2+1] + np.r_[0,X[m/2+1:],0]*1j
 </pre>
 </div>
 </div>
-<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[5]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre><matplotlib.axes._subplots.axessubplot at 0x2c568173668></pre>
 </div>
 </div>
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAsMAAAHxCAYAAACI1rF5AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAAPYQAAD2EBqD+naQAAIABJREFUeJzs3Xtw2/Wd//unLrYlX+SLfImduxMSpw3ETXCBkuw2bCDA
@@ -2651,8 +2659,8 @@ lpYGAEhOTsaqVascnds+/fRTbNy4EWfOnEF4eDjuvvtuzJ8/H35+fgDsQ6utX78eJSUlkMlkuPHG
 G/HXv/4V/fv3BwAUFBRg3bp1yM7OhlwuR1paGhYsWIAhQ4aI8yQQEYmAyTARERER+SyWSRARERGR
 z2IyTEREREQ+i8kwEREREfksJsNERERE5LOYDBMRERGRz2IyTEREREQ+i8kwEREREfksJsNERERE
 5LOYDBMRERGRz2IyTEREREQ+i8kwEREREfms/x8FSy+wWa7qfAAAAABJRU5ErkJggg==
-">
-</img></div>
+" />
+</div>
 </div>
 </div>
 </div>
@@ -2669,12 +2677,14 @@ z2IyTEREREQ+i8kwEREREfksJsNERERE5LOYDBMRERGRz2IyTEREREQ+i8kwEREREfksJsNERERE
 </div>
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[6]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre><seaborn.axisgrid.facetgrid at 0x2c5687ff2b0></pre>
 </div>
 </div>
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeMAAAHmCAYAAABAuuaLAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAAPYQAAD2EBqD+naQAAIABJREFUeJzs3Xt8VfWd7//XWvuekISQO8jNKBCQa4COUi/Y2lNbZDqN
@@ -3170,8 +3180,8 @@ ePfdd7Fr1y6sW7cOQgjccsstePrpp3Hfffd5Pf6hhx7CSy+9hLKyMqSkpGDHjh2IiYkB0NYxy2w2
 Y/v27Vi1ahViY2Px4IMPYsmSJV7Pd6UaiKhrOAMXUR9WWlqKH/3oR9i+fTvGjh0b6HKI+izeMyYi
 IgowhjFRH8fLyUSBx8vUREREAcYzYyIiogBjGBMREQUYw5iIiCjAGMZEREQBxjAmIiIKMIYxERFR
 gDGMiYiIAoxhTEREFGAMYyIiogD7/1/za36H5BQAAAAAAElFTkSuQmCC
-">
-</img></div>
+" />
+</div>
 </div>
 </div>
 </div>
@@ -3199,7 +3209,8 @@ gDGMiYiIAoxhTEREFGAMYyIiogD7/1/za36H5BQAAAAAAElFTkSuQmCC
 </div>
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt output_prompt">Out[75]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[75]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>Day
 0   -0.508
@@ -3229,12 +3240,14 @@ Name: Gain, dtype: float64</pre>
 </div>
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt output_prompt">Out[109]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[109]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre><matplotlib.axes._subplots.axessubplot at 0x2c501ea3828></pre>
 </div>
 </div>
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABHYAAAF/CAYAAAAsBk7vAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAAPYQAAD2EBqD+naQAAIABJREFUeJzs3X+UZGV56PtvV3VmaAZaZyCZmYgYEnMeh5HACOFHAMXc
@@ -3506,8 +3519,8 @@ SZmZn7dhK2k8klwNvLqq1vVdiyRJ0hiYn6RTmxM7kkYhyVrgBTTXh7+953IkSZIGz/wkTQf/K5ak
 sVgPfAy4raru7LsYSZKkETA/SVPAS7EkSZIkSZJGyokdSZIkSZKkkbKxI0mSJEmSNFI2diRJkiRJ
 kkbKxo4kSZIkSdJI2diRJEmSJEkaKRs7kiRJkiRJI2VjR5IkSZIkaaRs7EiSJEmSJI3UfwD/f19e
 Dl/dgwAAAABJRU5ErkJggg==
-">
-</img></div>
+" />
+</div>
 </div>
 </div>
 </div>
@@ -3750,12 +3763,14 @@ Dl/dgwAAAABJRU5ErkJggg==
 </div>
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt output_prompt">Out[1]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[1]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>[<matplotlib.lines.line2d at 0x196fe4436d8>]</pre>
 </div>
 </div>
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgMAAAFdCAYAAACet25NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAAPYQAAD2EBqD+naQAAIABJREFUeJzsnXd4VGXaxu+TTHoghIQk1NBJKEF6UUDFAlawgm2tqy42
@@ -4560,8 +4575,8 @@ Y2AiYg+wK6W0rZiqyi8ifgDcT6VrYD7wHeBtYKTeY7RFGEgp/bo6zeq7VLoHngbWpJR2FltZqa0A
 tlAZzZ6orPMAsBG4tKiiSu4yKtf6sf22XwJsank1eZhH5T19NDAO/AU4x1HuLWVrQPMdC9wNzAV2
 AluBT6SUdtV7gLZYZ0CSJBWn8DEDkiSpWIYBSZIyZxiQJClzhgFJkjJnGJAkKXOGAUmSMmcYkCQp
 c4YBSZIyZxiQJClzhgFJkjJnGJAkKXP/A/LMHYyNxOIFAAAAAElFTkSuQmCC
-">
-</img></div>
+" />
+</div>
 </div>
 </div>
 </div>
@@ -4582,7 +4597,7 @@ c4YBSZIyZxiQJClzhgFJkjJnGJAkKXP/A/LMHYyNxOIFAAAAAElFTkSuQmCC
 <span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">widgets</span>
 
 <span class="k">def</span> <span class="nf">get_price</span><span class="p">(</span><span class="n">ticker</span><span class="p">):</span>
-    <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">r"http://finance.yahoo.com/webservice/v1/symbols/</span><span class="si">{}</span><span class="s2">/quote?format=json"</span> \
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">r</span><span class="s2">"http://finance.yahoo.com/webservice/v1/symbols/</span><span class="si">{}</span><span class="s2">/quote?format=json"</span> \
                             <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ticker</span><span class="p">),</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">'User-Agent'</span><span class="p">:</span> <span class="s1">'Mozilla/5.0'</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
     <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">resp</span><span class="p">[</span><span class="s1">'list'</span><span class="p">][</span><span class="s1">'resources'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'resource'</span><span class="p">][</span><span class="s1">'fields'</span><span class="p">][</span><span class="s1">'price'</span><span class="p">])</span>
 
@@ -4623,6 +4638,7 @@ c4YBSZIyZxiQJClzhgFJkjJnGJAkKXP/A/LMHYyNxOIFAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
+
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
@@ -4711,18 +4727,8 @@ c4YBSZIyZxiQJClzhgFJkjJnGJAkKXP/A/LMHYyNxOIFAAAAAElFTkSuQmCC
             <li class="list-group-item"><a href="./"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
                     <li class="list-group-item tag-1">
-                        <a href="./tag/finance.html">
-                            Finance
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="./tag/ipython.html">
-                            iPython
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="./tag/data-science.html">
-                            Data Science
+                        <a href="./tag/getting-started.html">
+                            Getting Started
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
@@ -4731,13 +4737,23 @@ c4YBSZIyZxiQJClzhgFJkjJnGJAkKXP/A/LMHYyNxOIFAAAAAElFTkSuQmCC
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
-                        <a href="./tag/getting-started.html">
-                            Getting Started
+                        <a href="./tag/pelican.html">
+                            Pelican
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
-                        <a href="./tag/pelican.html">
-                            Pelican
+                        <a href="./tag/ipython.html">
+                            iPython
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/finance.html">
+                            Finance
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/data-science.html">
+                            Data Science
                         </a>
                     </li>
                 </ul>

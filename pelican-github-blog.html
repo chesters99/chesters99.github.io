@@ -141,32 +141,32 @@
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>I wanted to setup a blog website in the simplest way, and leveraging existing/known tools as mush as possible. I like Python (a lot) so after reading some reviews chose Pelican as the website generator. Pelican supports markdown and iPython notebooks amonsgt many other things - which seemed ideal. The folks at GitHub have kindly provided <em>GitHub Pages</em> which serves your website from a GitHub repo - nice. <a href="https://pages.github.com/">All described here</a>. </p>
+                <p>I wanted to setup a blog website in the simplest way, and leveraging existing/known tools as mush as possible. I like Python (a lot) so after reading some reviews chose Pelican as the website generator. Pelican supports markdown and iPython notebooks amonsgt many other things - which seemed ideal. The folks at GitHub have kindly provided <em>GitHub Pages</em> which serves your website from a GitHub repo - nice. <a href="https://pages.github.com/">All described here</a>.</p>
 <p>The code/config for my website is available <a href="https://github.com/chesters99/ghpages">here</a></p>
 <h2>Basic Blog Setup</h2>
-<p>Setting up a basic blog using GitHub is a relatively simple task, as much of the setup defaults for you. In the next section I'll cover how to finesse your blog with a custom domain and get it setup on google analytics (amongst other things) </p>
+<p>Setting up a basic blog using GitHub is a relatively simple task, as much of the setup defaults for you. In the next section I'll cover how to finesse your blog with a custom domain and get it setup on google analytics (amongst other things)</p>
 <h3>Installation</h3>
 <p><strong>Login to GitHub with your userid (or create one), and create two new repositories</strong> as explained <a href="https://pages.github.com/">here</a></p>
 <ul>
 <li>
-<p>Create a repo for the website (output HTML, CSS) called <em>yourusername.github.io</em> </p>
+<p>Create a repo for the website (output HTML, CSS) called <em>yourusername.github.io</em></p>
 </li>
 <li>
 <p>Create a repo for your content called <em>ghpages</em> (or name of your choice)</p>
 </li>
 </ul>
 <p><strong>Clone the repo to your machine - to a <em>ghpages</em> directory</strong></p>
-<div class="highlight"><pre><span></span>$ git clone https://github.com/yourusername.github.io-src ghpages
+<div class="highlight"><pre><span></span>git clone https://github.com/yourusername.github.io-src ghpages
 </pre></div>
 
 
-<p><strong>Add a submodule for the pelican output ie the actual website HTML/CSS</strong></p>
-<div class="highlight"><pre><span></span>$ git submodule add https://github.com/yourusername.github.io.git output
+<p><strong> Add a submodule for the pelican output ie the actual website HTML/CSS </strong></p>
+<div class="highlight"><pre><span></span>git submodule add https://github.com/yourusername.github.io.git output
 </pre></div>
 
 
-<p><strong>Install pelican</strong></p>
-<div class="highlight"><pre><span></span>$ pip install pelican
+<p><strong> Install pelican </strong></p>
+<div class="highlight"><pre><span></span>pip install pelican
 </pre></div>
 
 
@@ -200,18 +200,18 @@ Done. Your new project is available at xxxxxxxxxxxxx\ghpages
 
 
 <p>This will create content and output directories, the pelicanconf.py and publishconf.py files and some supporting files. Essentially you put your content in content, then run <em>make</em> as described below and pelican writes the html/css in the output directory.</p>
-<p>It is helpful to create three subdirectories in the content directory </p>
-<div class="highlight"><pre><span></span>$ cd content
-$ mkdir pages static images
+<p>It is helpful to create three subdirectories in the content directory</p>
+<div class="highlight"><pre><span></span>cd content
+mkdir pages static images
 </pre></div>
 
 
 <p>Your non-blog pages (eg about) go in the pages directory, images in images(doh!), and any content you just want pelican to copy across directory goes in static.</p>
 <h3>Install Themes and plugins</h3>
-<p>This is an optional step depending on your requirements. If you want more choice with css themes or additional functionality for generating sitemaps, or search bar, or reading iPython notebooks (and many others) then: </p>
-<div class="highlight"><pre><span></span>$ cd ghpages
-$ git clone https://github.com/getpelican/pelican-themes.git themes
-$ git clone https://github.com/getpelican/pelican-plugins.git plugins
+<p>This is an optional step depending on your requirements. If you want more choice with css themes or additional functionality for generating sitemaps, or search bar, or reading iPython notebooks (and many others) then:</p>
+<div class="highlight"><pre><span></span>cd ghpages
+git clone https://github.com/getpelican/pelican-themes.git themes
+git clone https://github.com/getpelican/pelican-plugins.git plugins
 </pre></div>
 
 
@@ -225,7 +225,7 @@ $ git clone https://github.com/getpelican/pelican-plugins.git plugins
 <span class="n">AUTHOR</span> <span class="o">=</span> <span class="s1">&#39;Graham Chester&#39;</span>
 <span class="n">SITENAME</span> <span class="o">=</span> <span class="s1">&#39;GCHESTER.COM&#39;</span>
 <span class="n">SITEURL</span> <span class="o">=</span> <span class="s1">&#39;http://localhost:8000&#39;</span>
-<span class="n">THEME</span> <span class="o">=</span> <span class="s1">&#39;themes/pelican-bootstrap3&#39;</span> 
+<span class="n">THEME</span> <span class="o">=</span> <span class="s1">&#39;themes/pelican-bootstrap3&#39;</span>
 
 <span class="n">PATH</span> <span class="o">=</span> <span class="s1">&#39;content&#39;</span>
 <span class="n">TIMEZONE</span> <span class="o">=</span> <span class="s1">&#39;Europe/London&#39;</span>
@@ -299,7 +299,7 @@ $ git clone https://github.com/getpelican/pelican-plugins.git plugins
 <span class="n">SHOW_ARTICLE_CATEGORY</span> <span class="o">=</span> <span class="bp">True</span>
 
 <span class="n">DISPLAY_TAGS_ON_SIDEBAR</span> <span class="o">=</span> <span class="bp">True</span>
-<span class="n">DISPLAY_RECENT_POSTS_ON_SIDEBAR</span> <span class="o">=</span> <span class="bp">False</span> 
+<span class="n">DISPLAY_RECENT_POSTS_ON_SIDEBAR</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="n">USE_OPEN_GRAPH</span> <span class="o">=</span> <span class="bp">True</span>
 <span class="n">CUSTOM_CSS</span> <span class="o">=</span> <span class="s1">&#39;custom.css&#39;</span>
 <span class="n">PYGMENTS_STYLE</span> <span class="o">=</span><span class="s1">&#39;emacs&#39;</span>
@@ -325,7 +325,7 @@ $ git clone https://github.com/getpelican/pelican-plugins.git plugins
 </pre></div>
 
 
-<p>The production config is much simpler in publishconf.py. Only the site url, google analytics needed to be set. </p>
+<p>The production config is much simpler in publishconf.py. Only the site url, google analytics needed to be set.</p>
 <div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*- #</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
@@ -354,12 +354,11 @@ $ git clone https://github.com/getpelican/pelican-plugins.git plugins
 
 <h3>Local Testing</h3>
 <p>Simple....</p>
-<div class="highlight"><pre><span></span>$ make html 
-$ make serve
+<div class="highlight"><pre><span></span>make html $$ make serve
 </pre></div>
 
 
-<p>In your browser go to http://localhost:8000</p>
+<p>In your browser go to <a href="http://localhost:8000">http://localhost:8000</a></p>
 <h3>Deployment to GitHub Pages</h3>
 <p>As described above, your ghpages directory needs to be pushed to two GitHub repos. One for your config, articles, pages, themes, plugins etc. And another for the pelican-generated website files.</p>
 <p>Firstly make sure you have a .gitignore file in your ghpages directoryi, something like:</p>
@@ -372,24 +371,24 @@ __pycache__/
 
 
 <p>To push all your content/config changes to GitHub:</p>
-<div class="highlight"><pre><span></span>$ cd ghpages
-$ git add .
-$ git commit -m &quot;decriptive commit message&quot;
-$ git push -u origin master
+<div class="highlight"><pre><span></span>cd ghpages
+git add .
+git commit -m &quot;decriptive commit message&quot;
+git push -u origin master
 </pre></div>
 
 
 <p>Then to generate and push your website HTML/CSS etc to GitHub to be served</p>
-<div class="highlight"><pre><span></span>$ make publish
-$ cd output
-$ git add .
-$ git commit -m &quot;update website&quot;
-$ git push -u origin master
+<div class="highlight"><pre><span></span>make publish
+cd output
+git add .
+git commit -m &quot;update website&quot;
+git push -u origin master
 </pre></div>
 
 
 <h3>Checkout your new blog</h3>
-<p>In your browser goto http://yourusername.github.io and revel in the glory of your new blog!</p>
+<p>In your browser goto <a href="http://yourusername.github.io">http://yourusername.github.io</a> and revel in the glory of your new blog!</p>
 <p>In the second article I'll cover some ways to make your blog a little more professsional</p>
             </div>
             <!-- /.entry-content -->
@@ -451,18 +450,8 @@ $ git push -u origin master
             <li class="list-group-item"><a href="./"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
                     <li class="list-group-item tag-1">
-                        <a href="./tag/finance.html">
-                            Finance
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="./tag/ipython.html">
-                            iPython
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="./tag/data-science.html">
-                            Data Science
+                        <a href="./tag/getting-started.html">
+                            Getting Started
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
@@ -471,13 +460,23 @@ $ git push -u origin master
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
-                        <a href="./tag/getting-started.html">
-                            Getting Started
+                        <a href="./tag/pelican.html">
+                            Pelican
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
-                        <a href="./tag/pelican.html">
-                            Pelican
+                        <a href="./tag/ipython.html">
+                            iPython
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/finance.html">
+                            Finance
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/data-science.html">
+                            Data Science
                         </a>
                     </li>
                 </ul>

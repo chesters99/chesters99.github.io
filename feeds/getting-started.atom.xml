@@ -48,32 +48,32 @@ blog.yourdomain.com
 &lt;p&gt;Then Add, Commit, and Push to GitHub as per the Deployment section in the previous article.&lt;/p&gt;
 &lt;h3&gt;You're Done!&lt;/h3&gt;
 &lt;p&gt;Hopefully these two posts were helpful in setting up a great looking blog for not too much effort. &lt;/p&gt;
-&lt;p&gt;Comments, suggestions, improvements more than welcome&lt;/p&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Setting up a GitHub Pages blog with Pelican</title><link href="http://blog.gchester.com/pelican-github-blog.html" rel="alternate"></link><published>2016-10-19T00:00:00+01:00</published><updated>2016-10-19T00:00:00+01:00</updated><author><name>Graham Chester</name></author><id>tag:blog.gchester.com,2016-10-19:/pelican-github-blog.html</id><summary type="html">&lt;p&gt;How to setup a blog on GitHub with Pelican&lt;/p&gt;</summary><content type="html">&lt;p&gt;I wanted to setup a blog website in the simplest way, and leveraging existing/known tools as mush as possible. I like Python (a lot) so after reading some reviews chose Pelican as the website generator. Pelican supports markdown and iPython notebooks amonsgt many other things - which seemed ideal. The folks at GitHub have kindly provided &lt;em&gt;GitHub Pages&lt;/em&gt; which serves your website from a GitHub repo - nice. &lt;a href="https://pages.github.com/"&gt;All described here&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;Comments, suggestions, improvements more than welcome&lt;/p&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Setting up a GitHub Pages blog with Pelican</title><link href="http://blog.gchester.com/pelican-github-blog.html" rel="alternate"></link><published>2016-10-19T00:00:00+01:00</published><updated>2016-10-19T00:00:00+01:00</updated><author><name>Graham Chester</name></author><id>tag:blog.gchester.com,2016-10-19:/pelican-github-blog.html</id><summary type="html">&lt;p&gt;How to setup a blog on GitHub with Pelican&lt;/p&gt;</summary><content type="html">&lt;p&gt;I wanted to setup a blog website in the simplest way, and leveraging existing/known tools as mush as possible. I like Python (a lot) so after reading some reviews chose Pelican as the website generator. Pelican supports markdown and iPython notebooks amonsgt many other things - which seemed ideal. The folks at GitHub have kindly provided &lt;em&gt;GitHub Pages&lt;/em&gt; which serves your website from a GitHub repo - nice. &lt;a href="https://pages.github.com/"&gt;All described here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The code/config for my website is available &lt;a href="https://github.com/chesters99/ghpages"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Basic Blog Setup&lt;/h2&gt;
-&lt;p&gt;Setting up a basic blog using GitHub is a relatively simple task, as much of the setup defaults for you. In the next section I'll cover how to finesse your blog with a custom domain and get it setup on google analytics (amongst other things) &lt;/p&gt;
+&lt;p&gt;Setting up a basic blog using GitHub is a relatively simple task, as much of the setup defaults for you. In the next section I'll cover how to finesse your blog with a custom domain and get it setup on google analytics (amongst other things)&lt;/p&gt;
 &lt;h3&gt;Installation&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Login to GitHub with your userid (or create one), and create two new repositories&lt;/strong&gt; as explained &lt;a href="https://pages.github.com/"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Create a repo for the website (output HTML, CSS) called &lt;em&gt;yourusername.github.io&lt;/em&gt; &lt;/p&gt;
+&lt;p&gt;Create a repo for the website (output HTML, CSS) called &lt;em&gt;yourusername.github.io&lt;/em&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Create a repo for your content called &lt;em&gt;ghpages&lt;/em&gt; (or name of your choice)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Clone the repo to your machine - to a &lt;em&gt;ghpages&lt;/em&gt; directory&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone https://github.com/yourusername.github.io-src ghpages
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/yourusername.github.io-src ghpages
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;Add a submodule for the pelican output ie the actual website HTML/CSS&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git submodule add https://github.com/yourusername.github.io.git output
+&lt;p&gt;&lt;strong&gt; Add a submodule for the pelican output ie the actual website HTML/CSS &lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git submodule add https://github.com/yourusername.github.io.git output
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;Install pelican&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install pelican
+&lt;p&gt;&lt;strong&gt; Install pelican &lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install pelican
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -107,18 +107,18 @@ Done. Your new project is available at xxxxxxxxxxxxx\ghpages
 
 
 &lt;p&gt;This will create content and output directories, the pelicanconf.py and publishconf.py files and some supporting files. Essentially you put your content in content, then run &lt;em&gt;make&lt;/em&gt; as described below and pelican writes the html/css in the output directory.&lt;/p&gt;
-&lt;p&gt;It is helpful to create three subdirectories in the content directory &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cd content
-$ mkdir pages static images
+&lt;p&gt;It is helpful to create three subdirectories in the content directory&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd content
+mkdir pages static images
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Your non-blog pages (eg about) go in the pages directory, images in images(doh!), and any content you just want pelican to copy across directory goes in static.&lt;/p&gt;
 &lt;h3&gt;Install Themes and plugins&lt;/h3&gt;
-&lt;p&gt;This is an optional step depending on your requirements. If you want more choice with css themes or additional functionality for generating sitemaps, or search bar, or reading iPython notebooks (and many others) then: &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cd ghpages
-$ git clone https://github.com/getpelican/pelican-themes.git themes
-$ git clone https://github.com/getpelican/pelican-plugins.git plugins
+&lt;p&gt;This is an optional step depending on your requirements. If you want more choice with css themes or additional functionality for generating sitemaps, or search bar, or reading iPython notebooks (and many others) then:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd ghpages
+git clone https://github.com/getpelican/pelican-themes.git themes
+git clone https://github.com/getpelican/pelican-plugins.git plugins
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -132,7 +132,7 @@ $ git clone https://github.com/getpelican/pelican-plugins.git plugins
 &lt;span class="n"&gt;AUTHOR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Graham Chester&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;GCHESTER.COM&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;SITEURL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://localhost:8000&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;THEME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;themes/pelican-bootstrap3&amp;#39;&lt;/span&gt; 
+&lt;span class="n"&gt;THEME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;themes/pelican-bootstrap3&amp;#39;&lt;/span&gt;
 
 &lt;span class="n"&gt;PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;content&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;TIMEZONE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Europe/London&amp;#39;&lt;/span&gt;
@@ -206,7 +206,7 @@ $ git clone https://github.com/getpelican/pelican-plugins.git plugins
 &lt;span class="n"&gt;SHOW_ARTICLE_CATEGORY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
 
 &lt;span class="n"&gt;DISPLAY_TAGS_ON_SIDEBAR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
-&lt;span class="n"&gt;DISPLAY_RECENT_POSTS_ON_SIDEBAR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt; 
+&lt;span class="n"&gt;DISPLAY_RECENT_POSTS_ON_SIDEBAR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
 &lt;span class="n"&gt;USE_OPEN_GRAPH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
 &lt;span class="n"&gt;CUSTOM_CSS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;custom.css&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;PYGMENTS_STYLE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;emacs&amp;#39;&lt;/span&gt;
@@ -232,7 +232,7 @@ $ git clone https://github.com/getpelican/pelican-plugins.git plugins
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;The production config is much simpler in publishconf.py. Only the site url, google analytics needed to be set. &lt;/p&gt;
+&lt;p&gt;The production config is much simpler in publishconf.py. Only the site url, google analytics needed to be set.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env python&lt;/span&gt;
 &lt;span class="c1"&gt;# -*- coding: utf-8 -*- #&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;unicode_literals&lt;/span&gt;
@@ -261,12 +261,11 @@ $ git clone https://github.com/getpelican/pelican-plugins.git plugins
 
 &lt;h3&gt;Local Testing&lt;/h3&gt;
 &lt;p&gt;Simple....&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make html 
-$ make serve
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;make html $$ make serve
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;In your browser go to http://localhost:8000&lt;/p&gt;
+&lt;p&gt;In your browser go to &lt;a href="http://localhost:8000"&gt;http://localhost:8000&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;Deployment to GitHub Pages&lt;/h3&gt;
 &lt;p&gt;As described above, your ghpages directory needs to be pushed to two GitHub repos. One for your config, articles, pages, themes, plugins etc. And another for the pelican-generated website files.&lt;/p&gt;
 &lt;p&gt;Firstly make sure you have a .gitignore file in your ghpages directoryi, something like:&lt;/p&gt;
@@ -279,24 +278,24 @@ __pycache__/
 
 
 &lt;p&gt;To push all your content/config changes to GitHub:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cd ghpages
-$ git add .
-$ git commit -m &amp;quot;decriptive commit message&amp;quot;
-$ git push -u origin master
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd ghpages
+git add .
+git commit -m &amp;quot;decriptive commit message&amp;quot;
+git push -u origin master
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Then to generate and push your website HTML/CSS etc to GitHub to be served&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make publish
-$ cd output
-$ git add .
-$ git commit -m &amp;quot;update website&amp;quot;
-$ git push -u origin master
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;make publish
+cd output
+git add .
+git commit -m &amp;quot;update website&amp;quot;
+git push -u origin master
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;Checkout your new blog&lt;/h3&gt;
-&lt;p&gt;In your browser goto http://yourusername.github.io and revel in the glory of your new blog!&lt;/p&gt;
+&lt;p&gt;In your browser goto &lt;a href="http://yourusername.github.io"&gt;http://yourusername.github.io&lt;/a&gt; and revel in the glory of your new blog!&lt;/p&gt;
 &lt;p&gt;In the second article I'll cover some ways to make your blog a little more professsional&lt;/p&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Getting Started - Useful Training Courses</title><link href="http://blog.gchester.com/useful-training.html" rel="alternate"></link><published>2016-10-18T00:00:00+01:00</published><updated>2016-10-18T00:00:00+01:00</updated><author><name>Graham Chester</name></author><id>tag:blog.gchester.com,2016-10-18:/useful-training.html</id><summary type="html">&lt;p&gt;Online and in-person training&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Python Online Training&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Udemy.com - Python For Data Structures, Algorithms, and Interviews - Jose Portilla&lt;/em&gt;&lt;/strong&gt; -
 A hugely comprehensive intermediate level course focusing on Python from a getting-a-job-perspective. Just do it. Covers everything from how to prepare a resume, to programming techniques likely to be in job interviews. There are often Udemy discount periods, or discount vouchers available online to reduce the course cost. US$19 for 20+ hours of video - excellent value!&lt;/p&gt;
