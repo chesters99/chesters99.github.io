@@ -1,0 +1,5 @@
+- replace header text with interctive slideshow or drill-down story (including "about" screen as required) - make it like a guided walkthrough
+- maybe add text to each chart to explain purpose and options
+- Use github blog to see projects ghpages
+
+- Hybrid Structure is Interactive Slide slideshow

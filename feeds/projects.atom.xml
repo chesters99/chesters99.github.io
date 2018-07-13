@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>GCHESTER.COM - Projects</title><link href="http://blog.gchester.com/" rel="alternate"></link><link href="http://blog.gchester.com/feeds/projects.atom.xml" rel="self"></link><id>http://blog.gchester.com/</id><updated>2018-06-10T20:14:00+01:00</updated><entry><title>Data Visualisation Final Project</title><link href="http://blog.gchester.com/data-visualisation-final-project.html" rel="alternate"></link><published>2018-06-09T22:28:00+01:00</published><updated>2018-06-10T20:14:00+01:00</updated><author><name>Graham Chester</name></author><id>tag:blog.gchester.com,2018-06-09:/data-visualisation-final-project.html</id><summary type="html">Short version for index and feeds</summary><content type="html">
+    &lt;h1 style="text-align:center"&gt;Monthly Sales by Product&lt;/h1&gt;
+    &lt;div style="text-align:center; color: grey;"&gt;
+        &lt;p&gt;(Hover over or click on data points or legend for effects)&lt;/p&gt;
+    &lt;/div&gt;
+</content><category term="visualisation"></category><category term="UIUC"></category></entry></feed>

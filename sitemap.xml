@@ -5,21 +5,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.gchester.com/</loc>
-<lastmod>2017-12-07T09:51:29-00:00</lastmod>
+<lastmod>2018-07-13T17:16:17-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.gchester.com/archives.html</loc>
-<lastmod>2017-12-07T09:51:29-00:00</lastmod>
+<lastmod>2018-07-13T17:16:17-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.gchester.com/categories.html</loc>
-<lastmod>2017-12-07T09:51:29-00:00</lastmod>
+<lastmod>2018-07-13T17:16:17-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -29,6 +29,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2017-12-07T09:38:53+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.gchester.com/data-visualisation-final-project.html</loc>
+<lastmod>2018-06-10T20:14:00+01:00</lastmod>
+<changefreq>always</changefreq>
+<priority>1</priority>
 </url>
 
 <url>
@@ -137,6 +144,27 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://blog.gchester.com/category/projects.html</loc>
+<lastmod>2018-06-10T20:14:00-00:01</lastmod>
+<changefreq>hourly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.gchester.com/tag/visualisation.html</loc>
+<lastmod>2018-06-10T20:14:00-00:01</lastmod>
+<changefreq>hourly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.gchester.com/tag/uiuc.html</loc>
+<lastmod>2018-06-10T20:14:00-00:01</lastmod>
+<changefreq>hourly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://blog.gchester.com/tag/ipython.html</loc>
 <lastmod>2017-12-01T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
@@ -180,7 +208,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.gchester.com/author/graham-chester.html</loc>
-<lastmod>2017-12-01T00:00:00-00:01</lastmod>
+<lastmod>2018-06-10T20:14:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+    <head>
+        <script src="d3/d3.min.js"></script>
+        <script src="d3/d3-scale-chromatic.min.js"></script>
+        <script src="d3/topojson.min.js"></script>
+        <script src="ushealth.js"></script>
+    </head>
+</html>
+
+<style>
+    .feature {
+        fill: #A6ACAF;
+        cursor: pointer;
+    }
+    .feature.active {
+        fill: #B6BCBF;
+    }
+    div.tooltip {
+        color: black;
+        background: lightgrey;
+        position: absolute;
+        text-align: left;
+        padding: 5px; 
+        font: 12px sans-serif;
+        border-radius: 4px;
+        pointer-events: none;
+        max-width: 155px;
+    }
+    tr:nth-child(n + 23) {
+        display: none;
+    }
+    tr:nth-of-type(odd) { /* table zebra striping */
+		background: #DFEEF8; 
+	}
+	td, th { 
+		padding: 4px; 
+        min-width: 90px;
+	}
+	th.des:after { /* sort asc/desc symbols on table columns */ 
+      content: "\21E9";
+    }
+    th.aes:after {
+      content: "\21E7";
+    }
+</style>
+
+ <body style="width:960px; font: 12px sans-serif; background-color: #E5E7E9; margin: 0px;"> 
+
+    <!-- Page Heading -->
+    <div style="width:900px; text-align:center; background-color:#1F618D; margin: 0px 0px 0px 10px; color: white; 
+        font-size:32px; font-weight: normal; border-radius: 3px 3px 3px 3px; padding:20px;">
+        <h1 style="font-size:32px; margin: 0px 0px 0px 0px; ">United States City Health and Life Expectancy</h1>
+        <h2 style="font-size:24px; margin: 10px 0px 0px 0px;">Interactive Slideshow</h2>
+    </div>
+    
+    <!-- City Navigator Zone -->
+    <div>
+        <div id="navigator" style="float: left; width: 930px; margin: 20px 20px 0px 15px; background-color:#FBFCFC; 
+                             border: 1px #D0D3D4 solid; border-radius: 3px;" >
+            <div id="buttons" style="background-color:#D5DBDB; text-align:center;">
+                <input id="button0" type="button" class="button" value="About" 
+                    style="font-size:12px; font-weight: bold;" 
+                    title="<b>Blah di Farking Blah</b>
+                    <br><br> <b>This is an Interactive Slide Show for an analysis of United States City Health and Life Expectancy. 
+                    It guides you through various scenes using the tabs below, and allows exploration within each scene.</b>
+                    <br><br>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ornare mi eu eleifend tincidunt. Maecenas et 
+                    semper est, quis hendrerit mi. Sed a malesuada eros. Proin gravida sem ut orci maximus, ut tincidunt dolor porta. Vivamus 
+                    nec quam dolor. In sed dictum mauris. Integer euismod condimentum fringilla. Pellentesque convallis mauris vitae facilisis
+                    feugiat. Fusce quis lobortis velit. Praesent rhoncus fermentum quam non rhoncus. Suspendisse viverra eros elit, nec 
+                    consequat nunc interdum lobortis. Donec pulvinar tempus sem quis convallis. Vestibulum magna erat, luctus ut nisi in, 
+                    cursus lacinia leo. Proin et ultrices nisl.<br><br>
+                    Donec laoreet sapien vel commodo tincidunt. Morbi lacus dui, mollis eu nibh at, hendrerit ultrices erat. Nam sollicitudin
+                    quis risus in bibendum. Vivamus interdum efficitur sagittis. Nam interdum, leo vitae ornare aliquet, erat est ornare est,
+                    nec aliquam nisl magna eget mi. Aenean aliquam vitae dolor ut sagittis. Suspendisse at congue diam. Fusce sed magna eu
+                    nulla fermentum tristique. Aenean lobortis arcu nec turpis facilisis suscipit. Duis volutpat, risus nec interdum 
+                    pulvinar, est sem pretium sem, commodo egestas arcu metus ut leo. In hac habitasse platea dictumst. Quisque et erat 
+                    ut neque vestibulum pulvinar. Sed eu tortor a eros scelerisque feugiat at ac velit. Aliquam tincidunt ultrices vehicula.
+                    <br><br>
+                    Sed eleifend rhoncus pellentesque. Vivamus sollicitudin venenatis consectetur. Pellentesque lacinia lectus libero, 
+                    quis pellentesque neque imperdiet nec. Mauris fringilla, ex ut sodales fringilla, sem velit volutpat odio, sed 
+                    pellentesque lacus nisl a odio. Pellentesque ut neque tincidunt, viverra nunc in, egestas sapien. Aenean ut commodo odio,
+                    ac bibendum nulla. Donec sem nibh, dapibus iaculis urna mattis, lacinia scelerisque nulla.<br><br>
+                    Pellentesque ac tincidunt nibh. Nam pharetra ligula efficitur, sodales urna sed, pellentesque odio. Integer pretium
+                    vehicula orci eget fringilla. Maecenas at ligula iaculis, tristique quam in, dapibus ex. Quisque eu tellus ligula. 
+                    Vivamus vitae scelerisque sem, vel vestibulum lectus. Nunc vel ex in odio ultrices vehicula non sed velit. Nulla molestie
+                    diam ut urna varius, id convallis est laoreet. Vivamus tincidunt metus sit amet ultricies dapibus. Morbi nec arcu ex. 
+                    Suspendisse pharetra enim nec tincidunt gravida. Suspendisse sagittis interdum nunc quis efficitur. Vestibulum sed 
+                    egestas augue, id tincidunt turpis.<br><br>
+                    Maecenas cursus quis ligula eget commodo. Integer urna diam, congue vitae tempor vel, posuere vel ligula. Nam cursus 
+                    neque eget nisi tempor, sed pulvinar diam lacinia. Etiam dignissim, magna non ornare ornare, nisl orci consectetur massa,
+                    eu convallis nulla nulla quis libero. Praesent vitae tincidunt erat. Maecenas ullamcorper tristique varius. Nam tincidunt
+                    pellentesque tincidunt.
+                    <br><br>
+                    Sed eleifend rhoncus pellentesque. Vivamus sollicitudin venenatis consectetur. Pellentesque lacinia lectus libero, 
+                    quis pellentesque neque imperdiet nec. Mauris fringilla, ex ut sodales fringilla, sem velit volutpat odio, sed 
+                    pellentesque lacus nisl a odio. Pellentesque ut neque tincidunt, viverra nunc in, egestas sapien. Aenean ut commodo odio,
+                    ac bibendum nulla. Donec sem nibh, dapibus iaculis urna mattis, lacinia scelerisque nulla.<br><br>
+                    Pellentesque ac tincidunt nibh. Nam pharetra ligula efficitur, sodales urna sed, pellentesque odio. Integer pretium
+                    vehicula orci eget fringilla. Maecenas at ligula iaculis, tristique quam in, dapibus ex. Quisque eu tellus ligula. 
+                    Vivamus vitae scelerisque sem, vel vestibulum lectus. Nunc vel ex in odio ultrices vehicula non sed velit. Nulla molestie
+                    diam ut urna varius, id convallis est laoreet. Vivamus tincidunt metus sit amet ultricies dapibus. Morbi nec arcu ex. 
+                    Suspendisse pharetra enim nec tincidunt gravida. Suspendisse sagittis interdum nunc quis efficitur. Vestibulum sed 
+                    egestas augue, id tincidunt turpis.<br><br>
+                    Maecenas cursus quis ligula eget commodo. Integer urna diam, congue vitae tempor vel, posuere vel ligula. Nam cursus 
+                    neque eget nisi tempor, sed pulvinar diam lacinia. Etiam dignissim, magna non ornare ornare, nisl orci consectetur massa,
+                    eu convallis nulla nulla quis libero. Praesent vitae tincidunt erat. Maecenas ullamcorper tristique varius. Nam tincidunt
+                    pellentesque tincidunt.
+                    <br><br>
+                    Sed eleifend rhoncus pellentesque. Vivamus sollicitudin venenatis consectetur. Pellentesque lacinia lectus libero, 
+                    quis pellentesque neque imperdiet nec. Mauris fringilla, ex ut sodales fringilla, sem velit volutpat odio, sed 
+                    pellentesque lacus nisl a odio. Pellentesque ut neque tincidunt, viverra nunc in, egestas sapien. Aenean ut commodo odio,
+                    ac bibendum nulla. Donec sem nibh, dapibus iaculis urna mattis, lacinia scelerisque nulla.<br><br>
+                    Pellentesque ac tincidunt nibh. Nam pharetra ligula efficitur, sodales urna sed, pellentesque odio. Integer pretium
+                    vehicula orci eget fringilla. Maecenas at ligula iaculis, tristique quam in, dapibus ex. Quisque eu tellus.<br><br>
+                    "/>
+                <span>&nbsp&#9658&nbsp</span>
+                <input id="button1" type="button" class="button" value="Overall Health" 
+                    style="font-size:12px; font-weight: bold;" 
+                    title="<b>How does hometown's overall health compare to other cities? What are it's problems and also it's strengths?</b>
+                    <br><br> This scene provides an geographic overview of US city health across 500 cities. The Health Score is an aggregate
+                    of 22 indicators of Preventative Measures, Unhealthy Behaviours, and Health Problems where highest is best - as shown in the 
+                    bar chart below. Hover over the states to see the state name annotation, and over a city to see an annotation (tooltip) of
+                    key information about that city, including a ranking within the 500 cities. Clicking on a state zooms in to that state for
+                    a clearer view of the cities and clicking again zooms out. Clicking on a city sets the city parameter (and trigger) which 
+                    updates the detailed health measurement bar chart below. The bar chart initially shows the US average and this information
+                    is maintained when a city is clicking by showing black lines for the US average. Hovering over a bar shows more 
+                    information about the particular measurement."/>
+                <span>&nbsp&#9658&nbsp</span>
+                <input id="button2" type="button" class="button" value="Life Expectancy" 
+                    style="font-size:12px; font-weight: bold;" 
+                    title="<b>How does hometown's life expectancy compare to other cities? Is it higher or lower than comparable cities?</b>
+                    <br><br> This scene provides an geographic overview of US city life expectancy across 500 cities, and operates very much
+                    the same way as the Health Score scene but using life expectancy instead. Hover over the states to see the state name 
+                    annotation, and over a city to see an annotation (tooltip) of key information about that city, including a ranking within
+                    the 500 cities. Clicking on a state zooms in to that state for a clearer view of the cities and clicking again zooms out.
+                    Clicking on a city sets the city parameter (and trigger) which updates the detailed health measurement bar chart below.
+                    The bar chart initially shows the US average and this information is maintained when a city is clicking by showing black
+                    lines for the US average. Hovering over a bar shows more information about the particular measurement."/>
+                <span>&nbsp&#9658&nbsp</span>
+                <input id="button3" type="button" class="button" value="Wealth Gap in Life Expectancy" 
+                    style="font-size:12px; font-weight: bold;" 
+                    title="<b>Where can you live with little wealth but still live almost as long as the wealthy? Why does Champaign, IL have
+                    such a large gap?</b>
+                    <br><br> This scene provides an geographic overview of the life expectancy gap between the wealthy (top income quartile)
+                    and the poor (bottom income quartile) across 500 cities, and operates very much the same way as the Health Score scene but
+                    using the life expectancy gap instead. Hover over the states to see the state name annotation, and over a city to see an 
+                    annotation (tooltip) of key information about that city, including a ranking within the 500 cities. Clicking on a state 
+                    zooms in to that state for a clearer view of the cities and clicking again zooms out. Clicking on a city sets the city 
+                    parameter (and trigger) which updates the detailed health measurement bar chart below. The bar chart initially shows the
+                    US average and this information is maintained when a city is clicking by showing black lines for the US average. Hovering
+                    over a bar shows more information about the particular measurement."/>
+                <span>&nbsp&#9658&nbsp</span>
+                <input id="button4" type="button" class="button" value="Life Expectancy vs Overall Health" 
+                    style="font-size:12px;  font-weight: bold;" 
+                    title="<b>Which cities have both good overall health and high life expectancy? Which ones are the opposite?</b>
+                    <br><br> This scene provides a scatterplot of overall health versus life expectancy. It has 4 data points for each city,
+                    one for each income quartile. Hovering over a data point highlights the for data points for that city. This allows the
+                    best and worst cities to be easily identified and explored. Clicking on a city sets the city 
+                    parameter (and trigger) which updates the detailed health measurement bar chart below. The bar chart initially shows the
+                    US average and this information is maintained when a city is clicking by showing black lines for the US average. Hovering
+                    over a bar shows more information about the particular measurement."/>
+                <span>&nbsp&#9658&nbsp</span>
+                <input id="button5" type="button" class="button" value="Top Cities Table" 
+                    style="font-size:12px; font-weight: bold;" 
+                    title="<b>Which cities have the best/worst overall health, life expectancy, life expectancy wealth gap? Are 
+                    larger cities better or worse than smaller cities?</b>
+                    <br><br> This scene provides a table of cities that can be sorted by each column to identify the highest and lowest for
+                    each measure. Clicking on the column heading sorts the table by that column in ascending order, and clicking again sorts
+                    it in descending order. Clicking on a city name in the city column sets the city 
+                    parameter (and trigger) which updates the detailed health measurement bar chart below. The bar chart initially shows the
+                    US average and this information is maintained when a city is clicking by showing black lines for the US average. Hovering
+                    over a bar shows more information about the particular measurement."/>
+            </div>
+            <div id="heading" width="960" style="background-color:#FBFCFC;; margin: 0px -1px 0px 0px; border-right: 1px #D0D3D4 solid; 
+                border-radius: 3px; color: black; font-weight: normal; padding:6px; font-size:17px;">
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bar chart Zone -->
+    <div>
+        <svg width="960" height="25">
+            <rect x="350"  y="0" width="300" height="5" style="fill:#D0D0D0; margin:0px;"/>
+            <polygon points="330,5 670,5 500,24" style="fill:#D0D0D0;" class="triangle" />
+        </svg>
+        <div style="clear: both; margin: -4px 13px 0px 15px; border: 1px #D0D3D4 solid; border-radius: 3px; 
+                    background-color:#FBFCFC; fill: #FBFCFC;">
+            <svg id="barchart" width="930" height="500"></svg>
+        </div>
+    </div>
+
+    <!-- References Section -->
+    <div style="clear: both; margin: 0px 0px 5px 20px;" id="references">
+        <p style="font-size:16px;"><b>References</b></p>
+
+        <b>Data Sources</b><br> 
+        [1] Health Data sourced from Centre for Disease Control 500 Cities data portal
+        <a href="https://chronicdata.cdc.gov/500-Cities/500-Cities-Local-Data-for-Better-Health-2017-relea/6vp6-wxuq" 
+            target="_blank">here</a><br>
+        [2] Life Expectancy Data sourced from Health Inequality Project (Table 7 Life Expectancy Estimates)
+        <a href="https://healthinequality.org/data/" 
+            target="_blank">here</a><br>
+        [3] City data sourced from SimpleMaps United States Cities Database
+        <a href="https://simplemaps.com/data/us-cities" 
+            target="_blank">here</a><br>
+        [4] Martin Luther King image and quote sourced from Columbia University Medical Centre
+        <a href="http://columbiasurgery.org/news/2015/01/19/towards-vision-humanity-cancer-treatment-all"
+            target="_blank">here</a><br>
+        [5] Rich/Poor Gravestone image sourced from University of Cambridge website
+        <a href="http://www.phpc.cam.ac.uk/pcu/richer-poorer-political-pledges-tackle-health-inequalities-realised/" 
+            target="_blank">here</a><br><br>
+        
+        <b>Author:</b> Graham Chester, July-2018, University of Illinois, CS498 Data Visualisation
+    </div>
+
+</body>
+<script>
