@@ -49,20 +49,20 @@ function ready(error, us, health) {
 
 function setHeading(heading, node) {
     button = d3.select(node);
+    title = button.attr("value")=="About" ? "About this Visualization" : button.attr("value");
+    console.log(button.attr("value"));
     heading.selectAll(".heading").remove();
     heading.append("div")
         .attr("class","heading")
         .style("text-align","center")
         .style("font-size","20px")
         .style("font-weight","bold")
-        .text(button.attr("value"));
+        .text(title);
     heading.append("div")
         .attr("class","heading")
         .style("padding","10px 7px 10px 7px")
         .style("font-size","13px")
         .html(button.attr("title"));
-
-    console.log(button.attr("title"));
 
     // remove previous map/chart
     d3.select("#svg").remove();
@@ -224,7 +224,7 @@ function drawMap(chart, us, health) {
                 tooltip.transition().duration(300).style("opacity", 1);
                 tooltip.html(stateMap[d.id])
                     .style("left",(projLatLong[0]+0)+"px")
-                    .style("top", (projLatLong[1]+360)+"px")
+                    .style("top", (projLatLong[1]+290)+"px")
                     .style("color", "#505050")
                     .style("background","None");
                 };
@@ -305,7 +305,7 @@ function drawMap(chart, us, health) {
             var output = "City: " + d.CityName + 
                          "<br>State: " + d.state_name + 
                          "<br>Health Rank: " + d.health_rank + " of 501" +
-                         "<br>Life Expectancy: " + d["4L:LIFE EXPECTANCY AVERAGE: Average Life Expectancy in Years"] + 
+                         "<br>Life Expectancy: " + d["4L:Life Expectancy Average: Average Life Expectancy in Years"] + 
                          " yrs<br>Population: " + Number(d.PopulationCount).toLocaleString() +
                          "<br>Rich/Poor Life Gap: " + d.disparity_avg + " yrs";
             tooltip.html(output)
@@ -361,7 +361,7 @@ function drawMap(chart, us, health) {
             avgLong = 28
         } else {
             avgLat  = d3.max(arr.map(function(v) { return v[0]; }))/2 + d3.min(arr.map(function(v) { return v[0]; }))/2;
-            avgLong = d3.max(arr.map(function(v) { return v[1]; }))/2 + d3.min(arr.map(function(v) { return v[1]; }))/2 - 0.8;
+            avgLong = d3.max(arr.map(function(v) { return v[1]; }))/2 + d3.min(arr.map(function(v) { return v[1]; }))/2;
         }
         return projection([avgLat, avgLong])
         };
@@ -718,7 +718,7 @@ function drawBarChart(cityData, health) {
     // setup Graph SVG canvas and group
     var svg = d3.select("#barchart");
         width  = +svg.attr("width")-95,
-        height = +svg.attr("height")-150;
+        height = +svg.attr("height")-195;
 
     // remove previous barchart so can refresh with new
     d3.select(".bar").selectAll("*").remove();
@@ -810,6 +810,7 @@ function drawBarChart(cityData, health) {
         .call(d3.axisBottom(x).ticks(10))
         .selectAll("text")	
             .style("text-anchor", "end")
+            .style("font-size","9px")
             .attr("dx", "-8px")
             .attr("dy", "-3px")
             .attr("transform", "rotate(-65)");
@@ -826,16 +827,16 @@ function drawBarChart(cityData, health) {
         .attr("transform", "rotate(-90)")
         .text("Percent of Population (higher is worse)")
         .style("fill","black")
-        .attr("x", -height+30).attr("y", -30);
+        .attr("x", -height+0).attr("y", -30);
     g.append("text")
         .attr("transform", "rotate(-90)")
         .text("Life Expectancy in Years")
         .style("fill","black")
-        .attr("x", -height+80).attr("y", width+35);
+        .attr("x", -height+40).attr("y", width+35);
 
     // add legend
-    var yoffset = 10;
-    var xoffset = 580
+    var yoffset = 0;
+    var xoffset = 570
     g.append("rect")
         .attr("x", xoffset)
         .attr("y", yoffset)
