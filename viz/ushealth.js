@@ -61,7 +61,7 @@ function setHeading(heading, node) {
     heading.append("div")
         .attr("class","heading")
         .style("padding","10px 7px 10px 7px")
-        .style("font-size","13px")
+        .style("font-size","12px")
         .html(button.attr("title"));
 
     // remove previous map/chart
@@ -99,20 +99,20 @@ function drawMap(chart, us, health) {
         68: "Marshall Islands",69: "Northern Mariana Islands",70: "Palau",72: "Puerto Rico",74: "U.S. Minor Outlying Islands"};
 
     // setup Map SVG canvas, and group
-    var height = 600, width = 910;
+    var height = 430, width = 910;
     var svg = d3.select("#heading")
         .append("svg")
         .attr("id", "svg")
         .attr("height", height)
         .attr("width", width)
         .attr("fill","#FBFCFC")
-        .style("padding","20px 0px 0px 0px");
+        .style("padding","5px 0px 0px 0px");
     var g = svg.append("g");
 
     // Setup map projections, colours and x,y ranges for map
     var projection = d3.geoAlbersUsa()
-        .scale(1200)
-        .translate([width / 2, height / 2]);
+        .scale(950)
+        .translate([width / 2.1, height / 2]);
 
     // setup reference to map projection
     var path = d3.geoPath().projection(projection);
@@ -156,7 +156,7 @@ function drawMap(chart, us, health) {
     // Add population legend circles, and text
     var popLegend = g.append("g")
         .attr("class", "legend")
-        .attr("transform", "translate(" + (width - 200) + "," + (height - 465) + ")")
+        .attr("transform", "translate(" + (width - 90) + "," + (height - 70) + ")")
         .selectAll("g")
             .data([1e6, 5e6, 1e7])
             .enter().append("g");
@@ -198,7 +198,7 @@ function drawMap(chart, us, health) {
         .tickSize(13)
         .tickFormat(function(x, i) { 
             switch (chart) {
-                case "Overall Health":    return x*10;
+                case "Overall Health":  return x*10;
                 case "Life Expectancy": return ((86-81)*x/10+81).toFixed(1).toString().replace(".0","");
                 case "Wealth Gap in Life Expectancy": return 10-x;
                 };
@@ -224,7 +224,7 @@ function drawMap(chart, us, health) {
                 tooltip.transition().duration(300).style("opacity", 1);
                 tooltip.html(stateMap[d.id])
                     .style("left",(projLatLong[0]+0)+"px")
-                    .style("top", (projLatLong[1]+290)+"px")
+                    .style("top", (projLatLong[1]+260)+"px")
                     .style("color", "#505050")
                     .style("background","None");
                 };
@@ -330,8 +330,8 @@ function drawMap(chart, us, health) {
         .attr("fill","black")
         .attr("font-size","14px")
         .attr("font-weight", "normal")
-        .attr("x", 440)
-        .attr("y", 46); 
+        .attr("x", 842)
+        .attr("y", 238); 
 
     // calculate circle size from population
     function circleSize (population) {
@@ -390,10 +390,9 @@ function drawTable(us, health) {
     var table = d3.select("#heading")
         .append("table")
         .attr("id","table")
-        .attr("height","655")
         .style("background-color", "#FBFCFC")
         .style("padding","20px 20px 10px 18px")
-        .style("font-size","11.5px");
+        .style("font-size","11px");
 
     // add table header and body elements
     var thead = table.append("thead");
@@ -482,7 +481,7 @@ function drawTable(us, health) {
 function drawScatter(us, health) {
     
     // setup Graph SVG canvas and rect
-    var height = 590, width = 800;
+    var height = 375, width = 800;
     var svg = d3.select("#heading")
         .append("svg")
         .attr("id","svg")

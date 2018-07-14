@@ -28,7 +28,7 @@
         pointer-events: none;
         max-width: 155px;
     }
-    tr:nth-child(n + 23) {
+    tr:nth-child(n + 17) {
         display: none;
     }
     tr:nth-of-type(odd) { /* table zebra striping */
@@ -67,21 +67,23 @@
                     exploration at each scene.</b>
                     <br><br>
                     <b>Scenes</b><br>
-                    The five scenes are as follows:<br><br>
                     1) The Overall Health Map provides an overview of the relative overall health of each of 500 cities across the USA. Circle 
                     size is used to indicate population and color to indicate overall health. Since there are many cities in some states, a 
                     zoom function enables a clearer view of cities within the more crowded states. The bar chart below shows various health
                     and life expectancy measures for the city selected. Initially the bar chart shows the USA average, and this is also shown
                     on the selected city's bar chart as a black line for easy comparison to the national average.<br><br>
 
-                    2) The Life Expectancy Map operates in essentially the same manner at the Overall Health Map, however in this case showing
-                    the average life expectancy.<br><br>
+                    2) The Life Expectancy Map shows the variation in average life expectancy in cities across the United States, and operates
+                    in essentially the same manner at the Overall Health Map described above.<br><br>
 
-                    3) Wealth Gap in Life expectancy<br><br>
+                    3) The Wealth Gap in Life Expectancy Map shows the gap in life expectancy between the wealthy (top income quartile), and
+                    and the poor (bottom income quartile), and operates in essentially the same manner at the Overall Health Map described 
+                    above. <br><br>
 
-                    4) Life Expectancy vs Overall Health<br><br>
+                    4) Life Expectancy vs Overall Health shows a scatterplot with 4 data points per city, one for each income quartile. It
+                    allows exploration of gaps in life expectancy between income groups, and promotes exploraton of extreme cities.<br><br>
 
-                    5) Top Cities Table<br><br>
+                    5) Top Cities Table allows exploration by best and worst of various measurements by providing table sorting.<br><br>
 
                     <b>Visualisation Structure and Model</b><br>
                     This visualization follows the Interactive Slideshow hybrid structure, consisting of six scenes as shown in the tabs. each
@@ -101,74 +103,72 @@
                     table to be sorted by that column (clicking again reverses the sort sequence on the column)<br>
 
                     <br> <b>Data Sources</b><br> 
-                    [1] Health Data sourced from Centre for Disease Control 500 Cities data portal:<br>&nbsp;&nbsp;&nbsp;&nbsp;
+                    [1] Health Data sourced from Centre for Disease Control:
                         https://chronicdata.cdc.gov/500-Cities/500-Cities-Local-Data-for-Better-Health-2017-relea/6vp6-wxuq<br>
 
                     [2] Life Expectancy Data sourced from Health Inequality Project (Table 7 Life Expectancy Estimates):
-                        <br>&nbsp;&nbsp;&nbsp;&nbsp; https://healthinequality.org/data/<br>
+                        &nbsp; https://healthinequality.org/data/<br>
 
                     [3] City data sourced from SimpleMaps United States Cities Database:
-                        <br>&nbsp;&nbsp;&nbsp;&nbsp; https://simplemaps.com/data/us-cities <br><br>
+                        &nbsp; https://simplemaps.com/data/us-cities <br><br>
                     
                     <b>Author: </b>Graham Chester, July-2018, University of Illinois, CS498 Data Visualisation
                     "/>
                 <span>&nbsp&#9658&nbsp</span>
                 <input id="button1" type="button" class="button" value="Overall Health" 
                     style="font-size:12px; font-weight: bold;" 
-                    title="<b>How does hometown's overall health compare to other cities? What are it's problems and also it's strengths?</b>
-                    <br><br> This scene provides an geographic overview of US city health across 500 cities. The Health Score is an aggregate
+                    title="<b>How does your hometown's overall health compare to other cities? What are it's problems and also it's strengths?</b>
+                    <br><br> This scene provides an geographic overview of overall health across 500 cities. The Health Score is an aggregate
                     of 22 indicators of Preventative Measures, Unhealthy Behaviours, and Health Problems where highest is best - as shown in the 
-                    bar chart below. Hover over the states to see the state name annotation, and over a city to see an annotation (tooltip) of
-                    key information about that city, including a ranking within the 500 cities. Clicking on a state zooms in to that state for
-                    a clearer view of the cities and clicking again zooms out. Clicking on a city sets the city parameter (and trigger) which 
-                    updates the detailed health measurement bar chart below. The bar chart initially shows the US average and this information
-                    is maintained when a city is clicking by showing black lines for the US average. Hovering over a bar shows more 
-                    information about the particular measurement."/>
+                    bar chart below. Hover over a state for the name, and over a city to see an annotation (tooltip) of key information, 
+                    including the health ranking. Clicking on a state zooms in for a clearer view of cities, and clicking again zooms out. 
+                    Clicking on a city sets the city parameter and triggers the update of the detailed health measurement bar chart. The bar
+                    chart initially shows the US average and this average is shown as a black line on a city bar chart for easy comparison.
+                    Hovering over a bar shows more detail about the measurement."/>
                 <span>&nbsp&#9658&nbsp</span>
                 <input id="button2" type="button" class="button" value="Life Expectancy" 
                     style="font-size:12px; font-weight: bold;" 
                     title="<b>How does hometown's life expectancy compare to other cities? Is it higher or lower than comparable cities?</b>
-                    <br><br> This scene provides an geographic overview of US city life expectancy across 500 cities, and operates very much
-                    the same way as the Health Score scene but using life expectancy instead. Hover over the states to see the state name 
-                    annotation, and over a city to see an annotation (tooltip) of key information about that city, including a ranking within
-                    the 500 cities. Clicking on a state zooms in to that state for a clearer view of the cities and clicking again zooms out.
-                    Clicking on a city sets the city parameter (and trigger) which updates the detailed health measurement bar chart below.
-                    The bar chart initially shows the US average and this information is maintained when a city is clicking by showing black
-                    lines for the US average. Hovering over a bar shows more information about the particular measurement."/>
+                    <br><br> This scene provides an geographic overview of life expectancy across 500 cities, and operates very much
+                    the same way as the Overall Health scene but uses life expectancy instead. Hover over a state for the name, and over
+                    a city to see an annotation (tooltip) of key information, including the life expectancy ranking. Clicking on a state zooms
+                    in for a clearer view of the cities and clicking again zooms out. Clicking on a city sets the city parameter and triggers
+                    the update of the detailed health measurement bar chart.The bar chart initially shows the US average and this average is
+                    shown as a black line on a city bar chart for easy comparison. Hovering over a bar shows more detail about the
+                    measurement."/>
                 <span>&nbsp&#9658&nbsp</span>
                 <input id="button3" type="button" class="button" value="Wealth Gap in Life Expectancy" 
                     style="font-size:12px; font-weight: bold;" 
                     title="<b>Where can you live with little wealth but still live almost as long as the wealthy? Why does Champaign, IL have
                     such a large gap?</b>
-                    <br><br> This scene provides an geographic overview of the life expectancy gap between the wealthy (top income quartile)
-                    and the poor (bottom income quartile) across 500 cities, and operates very much the same way as the Health Score scene but
-                    using the life expectancy gap instead. Hover over the states to see the state name annotation, and over a city to see an 
-                    annotation (tooltip) of key information about that city, including a ranking within the 500 cities. Clicking on a state 
-                    zooms in to that state for a clearer view of the cities and clicking again zooms out. Clicking on a city sets the city 
-                    parameter (and trigger) which updates the detailed health measurement bar chart below. The bar chart initially shows the
-                    US average and this information is maintained when a city is clicking by showing black lines for the US average. Hovering
-                    over a bar shows more information about the particular measurement."/>
+                    <br><br>This scene provides an geographic overview of the life expectancy gap between the wealthy (top income quartile)
+                    and the poor (bottom income quartile), and operates very much the same way as the Overall Health Score scene but using 
+                    life expectancy gap instead. Hover over a state for the  name, and over a city to see an annotation (tooltip) of key 
+                    information, including a ranking. Clicking on a state zooms in for a clearer view of the cities and clicking again zooms
+                    out. Clicking on a city sets the city parameter and triggers the update of the detailed health measurement bar chart. The
+                    bar chart initially shows the US average and this average is shown as a black line on a city bar chart for easy comparison.
+                    Hovering over a bar shows more detail about the measurement."/>
                 <span>&nbsp&#9658&nbsp</span>
                 <input id="button4" type="button" class="button" value="Life Expectancy vs Overall Health" 
                     style="font-size:12px;  font-weight: bold;" 
                     title="<b>Which cities have both good overall health and high life expectancy? Which ones are the opposite?</b>
-                    <br><br> This scene provides a scatterplot of overall health versus life expectancy. It has 4 data points for each city,
-                    one for each income quartile. Hovering over a data point highlights the for data points for that city. This allows the
-                    best and worst cities to be easily identified and explored. Clicking on a city sets the city 
-                    parameter (and trigger) which updates the detailed health measurement bar chart below. The bar chart initially shows the
-                    US average and this information is maintained when a city is clicking by showing black lines for the US average. Hovering
-                    over a bar shows more information about the particular measurement."/>
+                    <br><br>This scene provides a scatterplot of Overall Health versus Life Expectancy. It has 4 data points for each city,
+                    one for each income quartile. Hovering over a data point highlights the four data points for that city. This allows the
+                    best and worst cities to be easily identified and explored. Hovering over a city sets the city parameter and triggers the
+                    update of the detailed health measurement bar chart. <br>
+                    The bar chart initially shows the US average and this average is shown as a black line on a city bar chart for easy 
+                    comparison. Hovering over a bar shows more detail about the measurement."/>
                 <span>&nbsp&#9658&nbsp</span>
                 <input id="button5" type="button" class="button" value="Top Cities" 
                     style="font-size:12px; font-weight: bold;" 
                     title="<b>Which cities have the best/worst overall health, life expectancy, life expectancy wealth gap? Are 
                     larger cities better or worse than smaller cities?</b>
-                    <br><br> This scene provides a table of cities that can be sorted by each column to identify the highest and lowest for
+                    <br><br>This scene provides a table of cities that can be sorted by each column to identify the best and worst cities for
                     each measure. Clicking on the column heading sorts the table by that column in ascending order, and clicking again sorts
-                    it in descending order. Clicking on a city name in the city column sets the city 
-                    parameter (and trigger) which updates the detailed health measurement bar chart below. The bar chart initially shows the
-                    US average and this information is maintained when a city is clicking by showing black lines for the US average. Hovering
-                    over a bar shows more information about the particular measurement."/>
+                    it in descending order. Clicking on a city name in the city column sets the city parameter and triggers the update of the
+                    detailed health measurement bar chart. <br>
+                    The bar chart initially shows the US average and this average is shown as a black line on a city bar chart for easy 
+                    comparison. Hovering over a bar shows more detail about the measurement.<br>"/>
             </div>
             <div id="heading" width="960" style="background-color:#FBFCFC;; margin: 0px -1px 0px 0px; border-right: 1px #D0D3D4 solid; 
                 border-radius: 3px; color: black; font-weight: normal; padding:6px; font-size:17px;">
