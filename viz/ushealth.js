@@ -61,7 +61,7 @@ function setHeading(heading, node) {
     heading.append("div")
         .attr("class","heading")
         .style("padding","10px 7px 10px 7px")
-        .style("font-size","12px")
+        .style("font-size","11px")
         .html(button.attr("title"));
 
     // remove previous map/chart
@@ -200,7 +200,7 @@ function drawMap(chart, us, health) {
             switch (chart) {
                 case "Overall Health":  return x*10;
                 case "Life Expectancy": return ((86-81)*x/10+81).toFixed(1).toString().replace(".0","");
-                case "Wealth Gap in Life Expectancy": return 10-x;
+                case "Life Expectancy Wealth Gap": return 10-x;
                 };
             })
         .tickValues(color.domain()))
@@ -224,7 +224,7 @@ function drawMap(chart, us, health) {
                 tooltip.transition().duration(300).style("opacity", 1);
                 tooltip.html(stateMap[d.id])
                     .style("left",(projLatLong[0]+0)+"px")
-                    .style("top", (projLatLong[1]+260)+"px")
+                    .style("top", (projLatLong[1]+230)+"px")
                     .style("color", "#505050")
                     .style("background","None");
                 };
@@ -290,7 +290,7 @@ function drawMap(chart, us, health) {
                 case "Overall Health": return color(d.health_score/10);
                 case "Life Expectancy":    
                     return color((d["4L:Life Expectancy Average: Average Life Expectancy in Years"]-81)*10/(86-81));
-                case "Wealth Gap in Life Expectancy": return color(10-d.disparity_avg);
+                case "Life Expectancy Wealth Gap": return color(10-d.disparity_avg);
                 }
             })
         .style("opacity", .8)
@@ -390,6 +390,7 @@ function drawTable(us, health) {
     var table = d3.select("#heading")
         .append("table")
         .attr("id","table")
+        .attr("height","439px")
         .style("background-color", "#FBFCFC")
         .style("padding","20px 20px 10px 18px")
         .style("font-size","11px");
