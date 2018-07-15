@@ -67,7 +67,7 @@
                     exploration at each scene. The scenes are designed to allow both different aspects of the data to be explored,
                     and to provide a variety of ways to view and explore the data.</b><br><br>
 
-                    <b>Scenes</b><br>
+                    <b>Scene Summary</b><br>
                     1) The Overall Health Map provides an overview of the relative overall health of each of 500 cities across the USA. Circle 
                     size is used to indicate population and color to indicate overall health. Since there are many cities in some states, a 
                     zoom function enables a clearer view of cities within the more crowded states. The bar chart below shows various health
@@ -86,28 +86,45 @@
 
                     5) Top Cities Table allows exploration by best and worst of various measurements by providing table column sorting.<br><br>
 
-                    <b>Visualisation Structure and Model</b><br>
-                    This visualization follows the Interactive Slideshow hybrid structure, consisting of six scenes that are more Reader Driven
-                    than Author Driven, encouraging interactive data exploration while guiding the user through the scenes available. A
-                    common template structure is used for each scene with a overview/selection area (containing maps, scatterplot, table) above a 
-                    detailed bar chart showing specific city information. Transitions between scenes keep the user oriented by firstly tab
-                    buttons remaining fixed in place with the current scene highlighted, and the alignment of the two main screen areas is 
-                    kept constant. Transitions are also used for map drill-down to a specific state, where both D3 timed transitions and 
-                    showing parts of bordering states are used to keep the user oriented. Messaging is used on each scene to prompt the type 
-                    of questions that the scene can be used to answer, and to provide additional information via tooltips.
-                    <br><br>
+                    <b>Hybrid Structure: </b> This visualization follows the Interactive Slideshow hybrid structure, consisting of six scenes
+                    that are more Reader Driven than Author Driven, encouraging interactive data exploration while guiding the user through
+                    the scenes available. <br><br>
+                    
+                    <b>Scenes: </b>A
+                    common template structure is used across every scene with a overview/selection area (containing map, scatterplot or table) 
+                    above a detailed bar chart showing specific city information. The three map-based scene are essentially identical in look
+                    and feel and only differ in the data they display (overall health, life expectancy, and life expectancy wealth gap). These
+                    scene are designed to provide both an overview and a way of selecting cities to see more detail either with mouse hover for
+                    a tooltip, or a mouse click to update the bar chart of health measures. The scatterplot scene offers a different view on the
+                    data where both trends, gaps in life expectancy and extreme values are easily observed. The Top Cities table offers a 
+                    highest/lowest approach to navigating cities.
+                    Transitions between scenes keep the user oriented by firstly tab buttons remaining fixed in place with the current scene
+                    highlighted, and secondly the alignment of the two main screen areas is kept constant. Transitions are also used for map
+                    drill-down to a specific state, where both D3 timed transitions and showing parts of bordering states are used to keep 
+                    the user oriented. Messaging is used on each scene to prompt the type of questions that the scene can be used to answer, 
+                    and to provide additional information via tooltips.<br><br>
 
-                    The annotations on the three map scenes follow a common template with the tooltip being the same format across all
-                    maps. The tooltips appear on mouse hover and clear when the mouse is moved away. The annotation on the scatterplot
-                    simply highlights the 4 data points for the hovered city, which again clears when the mouse is moved away. The annotation
-                    the Top Cities table highlights the column heading which prompts that a mouse click will trigger an action.<br><br>
+                    <b>Annotations: </b>The annotations on the three map scenes follow a common template with the tooltip being the same format across all
+                    maps. The tooltips appear on mouse hover and clear when the mouse is moved away. The annotation on the scatterplot is 
+                    different in functionality as it drives the update of the bar chart to allow fast exploration of cities simply by 
+                    mouse hover which highlights the 4 data points for the hovered city (and clears when the mouse is moved away). The 
+                    annotation for the Top Cities table highlights the column heading which prompts that a mouse click will trigger an the
+                    table to be sorted by that column.<br><br>
 
-                    The key parameters are which chart to show for each tab, and what is the current state (i.e. tab). Additionally a city 
-                    parameter can be set on each scene which drives a detailed bar chart, and a state parameter can be set on the map scenes for
-                    drilldown. The triggers for the three map states are firstly to zoom in to a state, and secondly to select a city which 
-                    causes the bar chart to be updated with the city details. The trigger for the scatterplot is a mouse hover which causes 
-                    the city parameter to be set and the bar chart to be updated for that city's details. The triggers for
-                    the Top Cities Table are the column headings which cause the table to be sorted by the respective column.<br><br>
+                    <b>Parameters: </b>The key parameters are firstly which chart to show for each tab, and therefore is tracking the current state (i.e. tab),
+                    secondly a city parameter can be set by mouse click on each scene which drives the health measures bar chart, thirdly
+                    a state parameter can be set on the three map scenes for drilldown, and fourthly a table column sort parameter is set
+                    by mouse click on the Top Cities table column.<br><br>
+                    
+                    <b>Triggers: </b>The key trigger is a mouse click to select the scene, and this is highlighted in a set of tabs with arrows to prompt the
+                    functionality available and the recommended sequence of the scenes. There are four triggers on the map screens, one by mouse
+                    click selects a state to zoom in, one by mouse click selects a city to display the health measures bar chart, one by
+                    mouse hover on a city shows summary details about that city, and one by mouse hover over a bar chart bar which shows more
+                    details about that bar. There are two triggers for the scatterplot screen, one by mouse over to select the city for the
+                    bar char health measures display, and one by mouse hover over a bar chart bar which shows more details about that bar. There
+                    are two triggers on the Top Cities scene, one by mouse hover to highlight which table cells have a function, one by mouse
+                    click to select a table column for sorting, and one by mouse hover over a bar chart bar which shows more details about 
+                    that bar.<br><br>
 
                     Note: The screen layout was optimised for Chrome on a Retina MacBook Pro. You may need to zoom in or out in your browser depending
                     on your device and screen size.<br><br>
