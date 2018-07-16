@@ -24,33 +24,39 @@ function ready(error, us, health) {
     // set functionality on each button
     d3.select("#button0").on("click", function() {
         setHeading(heading, this);
+        drawBarChart("United States", health);
         });
     d3.select("#button1").on("click", function() {
         setHeading(heading, this);
         drawMap(this.value, us, health);
+        drawBarChart("United States", health);
         });
     d3.select("#button2").on("click", function() {
         setHeading(heading, this);
         drawMap(this.value, us, health);
+        drawBarChart("United States", health);
         });
     d3.select("#button3").on("click", function() {
         setHeading(heading, this);
         drawMap(this.value, us, health);
+        drawBarChart("United States", health);
         });
     d3.select("#button4").on("click", function() {
         setHeading(heading, this);
         drawScatter(us, health);
+        drawBarChart("United States", health);
         });
     d3.select("#button5").on("click", function() {
         setHeading(heading, this);
         drawTable(us, health);
+        drawBarChart("United States", health);
         });
 };
 
 function setHeading(heading, node) {
-    button = d3.select(node);
-    title = button.attr("value")=="About" ? "About this Visualization" : button.attr("value");
-    console.log(button.attr("value"));
+    var button = d3.select(node);
+    var title = button.attr("value")=="About" ? "About this Visualization" : button.attr("value");
+    
     heading.selectAll(".heading").remove();
     heading.append("div")
         .attr("class","heading")
@@ -62,7 +68,7 @@ function setHeading(heading, node) {
         .attr("class","heading")
         .style("padding","10px 7px 10px 7px")
         .style("font-size","11px")
-        .html(button.attr("title"));
+        .html(button.attr("text"));
 
     // remove previous map/chart
     d3.select("#svg").remove();
@@ -224,7 +230,7 @@ function drawMap(chart, us, health) {
                 tooltip.transition().duration(300).style("opacity", 1);
                 tooltip.html(stateMap[d.id])
                     .style("left",(projLatLong[0]+0)+"px")
-                    .style("top", (projLatLong[1]+230)+"px")
+                    .style("top", (projLatLong[1]+220)+"px")
                     .style("color", "#505050")
                     .style("background","None");
                 };
@@ -355,13 +361,13 @@ function drawMap(chart, us, health) {
 
     // get average lat and long so can centre state name on zoomed state map
     function stateLatLong(d) {
-        arr = d.geometry.coordinates[0][0]
+        var arr = d.geometry.coordinates[0][0]
         if (d.id===2) {  /* override lat long for alaska so dont loose state name of screen */
-            avgLat  = -116
-            avgLong = 28
+            var avgLat  = -116
+            var avgLong = 28
         } else {
-            avgLat  = d3.max(arr.map(function(v) { return v[0]; }))/2 + d3.min(arr.map(function(v) { return v[0]; }))/2;
-            avgLong = d3.max(arr.map(function(v) { return v[1]; }))/2 + d3.min(arr.map(function(v) { return v[1]; }))/2;
+            var avgLat  = d3.max(arr.map(function(v) { return v[0]; }))/2 + d3.min(arr.map(function(v) { return v[0]; }))/2;
+            var avgLong = d3.max(arr.map(function(v) { return v[1]; }))/2 + d3.min(arr.map(function(v) { return v[1]; }))/2;
         }
         return projection([avgLat, avgLong])
         };
@@ -378,7 +384,7 @@ function drawTable(us, health) {
         healthTab.push({"City": d.CityName, "State": d.StateDesc, "Health Score": d.health_score, 
                         "Life Expectancy Average": d["4L:Life Expectancy Average: Average Life Expectancy in Years"], 
                         "Life Expectancy Richest 25%": d["4L:Life Expectancy Top 25%:Life expectancy in years, Top Quartile Income"], 
-                        "Life Expectancy Poorest 25%": d["4L:Life Expectancy Bot 25%:Life expectancy in years, Bottom Quartile Income"],
+                        "Life Expectancy Poorest 25%": d["4L:Life Expectancy Bottom 25%:Life expectancy in years, Bottom Quartile Income"],
                         "Rich vs Poor Life Gap (Years)": d["disparity_avg"],
                         "Population": parseInt(d["PopulationCount"]).toLocaleString()
                         });
@@ -526,7 +532,7 @@ function drawScatter(us, health) {
     lines.selectAll("line").style("stroke", "#E5E7E9")
 
     // adjustable values for point appearance
-    var radius = 6;
+    var radius = 4.5;
     var radiusInc = 2;
     var opacity= 0.8;
     var colour = ["#1E8449","#17A589","#D4AC0D","#C0392B"];
@@ -546,13 +552,16 @@ function drawScatter(us, health) {
         .on("mouseover", function (d) {
             d3.select(this).style("cursor", "pointer");
             d3.selectAll("#c"+d.id.toString()).attr("stroke","black").attr("r",radius+radiusInc).attr("stroke-width","1").style("opacity", 1);
-            drawBarChart(d, health);
             })
 
         // remove hover highlight
         .on("mouseout", function (d) {
             d3.select(this).style("cursor", "default");
             d3.selectAll("#c"+d.id.toString()).attr("r",radius).attr("stroke","None");
+            })
+        // update bar chart on mouse click
+        .on("click", function (d) {
+            drawBarChart(d, health);
             });
 
     // Add cities to graph for 3rd Quartile
@@ -563,16 +572,19 @@ function drawScatter(us, health) {
         .attr("cx", function(d) {return x(d["health_score"]); })
         .attr("cy", function(d) {return y((+d.life_q3_f + +d.life_q3_m)/2); })
         .attr("id", function(d) {return "c"+d.id.toString();})
-        .attr("r", 6)
+        .attr("r", radius)
         .style("fill", colour[1]).style("opacity", opacity)
         .on("mouseover", function (d) {
             d3.select(this).style("cursor", "pointer");
             d3.selectAll("#c"+d.id.toString()).attr("stroke","black").attr("r",radius+radiusInc).attr("stroke-width","1")
-            drawBarChart(d, health);
             })
         .on("mouseout", function (d) {
             d3.select(this).style("cursor", "default")
             d3.selectAll("#c"+d.id.toString()).attr("r",radius).attr("stroke","None")
+            })
+        // update bar chart on mouse click
+        .on("click", function (d) {
+            drawBarChart(d, health);
             });
 
     // Add cities to graph for 2nd quartile
@@ -583,16 +595,19 @@ function drawScatter(us, health) {
         .attr("cx", function(d) {return x(d["health_score"]); })
         .attr("cy", function(d) {return y((+d.life_q2_f + +d.life_q2_m)/2); })
         .attr("id", function(d) {return "c"+d.id.toString();})
-        .attr("r", 5)
+        .attr("r", radius)
         .style("fill", colour[2]).style("opacity", opacity)
         .on("mouseover", function (d) {
             d3.select(this).style("cursor", "pointer");
             d3.selectAll("#c"+d.id.toString()).attr("stroke","black").attr("r",radius+radiusInc).attr("stroke-width","1")
-            drawBarChart(d, health);
             })
         .on("mouseout", function (d) {
             d3.select(this).style("cursor", "default")
             d3.selectAll("#c"+d.id.toString()).attr("r",radius).attr("stroke","None")
+            })
+        // update bar chart on mouse click
+        .on("click", function (d) {
+            drawBarChart(d, health);
             });
 
     // Add cities to graph for 1st quartile
@@ -601,18 +616,21 @@ function drawScatter(us, health) {
         .enter().append("circle")
         .attr("class", "circles1")
         .attr("cx", function(d) {return x(d["health_score"]); })
-        .attr("cy", function(d) {return y(d["4L:Life Expectancy Bot 25%:Life expectancy in years, Bottom Quartile Income"]); })
+        .attr("cy", function(d) {return y(d["4L:Life Expectancy Bottom 25%:Life expectancy in years, Bottom Quartile Income"]); })
         .attr("id", function(d) {return "c"+d.id.toString();})
-        .attr("r", 5)
+        .attr("r", radius)
         .style("fill", colour[3]).style("opacity", opacity)
         .on("mouseover", function (d) {
             d3.select(this).style("cursor", "pointer");
             d3.selectAll("#c"+d.id.toString()).attr("stroke","black").attr("r",radius+radiusInc).attr("stroke-width","1")
-            drawBarChart(d, health);
             })
         .on("mouseout", function (d) {
             d3.select(this).style("cursor", "default")
             d3.selectAll("#c"+d.id.toString()).attr("r",radius).attr("stroke","None")
+            })
+        // update bar chart on mouse click
+        .on("click", function (d) {
+            drawBarChart(d, health);
             });
 
     // Add scatter x axes
@@ -717,8 +735,8 @@ function drawBarChart(cityData, health) {
 
     // setup Graph SVG canvas and group
     var svg = d3.select("#barchart");
-        width  = +svg.attr("width")-95,
-        height = +svg.attr("height")-195;
+    var width  = +svg.attr("width")-95;
+    var height = +svg.attr("height")-195;
 
     // remove previous barchart so can refresh with new
     d3.select(".bar").selectAll("*").remove();
@@ -909,7 +927,7 @@ function drawBarChart(cityData, health) {
         var data = [];
         // data.push({key:"key", value:"0", colour:"P",detail:"qwe"})
         Object.keys(cityData).sort().forEach(function(key) {
-            splits = key.split(":");
+            var splits = key.split(":");
             if (splits.length > 1) {
                 data.push({key: splits[1], value: cityData[key], colour: colours[splits[0].substr(1,1)], detail:splits[2]});
             };
