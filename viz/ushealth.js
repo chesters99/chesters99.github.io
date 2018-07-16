@@ -548,16 +548,28 @@ function drawScatter(us, health) {
         .attr("r", radius)
         .style("fill", colour[0]).style("opacity", opacity)
 
-        // highlight all other data points for hovered city
+        // highlight all other data points and provide tooltip for hovered city
         .on("mouseover", function (d) {
             d3.select(this).style("cursor", "pointer");
             d3.selectAll("#c"+d.id.toString()).attr("stroke","black").attr("r",radius+radiusInc).attr("stroke-width","1").style("opacity", 1);
+            tooltip.transition().duration(300).style("opacity", .9);
+            var output = "City: " + d.CityName + 
+                         "<br>State: " + d.state_name + 
+                         "<br>Health Rank: " + d.health_rank + " of 501" +
+                         "<br>Life Expectancy: " + d["4L:Life Expectancy Average: Average Life Expectancy in Years"] + 
+                         " yrs<br>Population: " + Number(d.PopulationCount).toLocaleString() +
+                         "<br>Rich/Poor Life Gap: " + d.disparity_avg + " yrs";
+            tooltip.html(output)
+                   .style("left",(d3.event.pageX+15)+"px")
+                   .style("top",(d3.event.pageY-35)+"px")
+                   .style("background","lightgrey");
             })
-
         // remove hover highlight
         .on("mouseout", function (d) {
             d3.select(this).style("cursor", "default");
             d3.selectAll("#c"+d.id.toString()).attr("r",radius).attr("stroke","None");
+            // d3.select(this).style("cursor", "default").style("stroke", "#FFFFFF");
+            tooltip.transition().duration(300).style("opacity", 0);
             })
         // update bar chart on mouse click
         .on("click", function (d) {
@@ -576,11 +588,23 @@ function drawScatter(us, health) {
         .style("fill", colour[1]).style("opacity", opacity)
         .on("mouseover", function (d) {
             d3.select(this).style("cursor", "pointer");
-            d3.selectAll("#c"+d.id.toString()).attr("stroke","black").attr("r",radius+radiusInc).attr("stroke-width","1")
+            d3.selectAll("#c"+d.id.toString()).attr("stroke","black").attr("r",radius+radiusInc).attr("stroke-width","1").style("opacity", 1);
+            tooltip.transition().duration(300).style("opacity", .9);
+            var output = "City: " + d.CityName + 
+                         "<br>State: " + d.state_name + 
+                         "<br>Health Rank: " + d.health_rank + " of 501" +
+                         "<br>Life Expectancy: " + d["4L:Life Expectancy Average: Average Life Expectancy in Years"] + 
+                         " yrs<br>Population: " + Number(d.PopulationCount).toLocaleString() +
+                         "<br>Rich/Poor Life Gap: " + d.disparity_avg + " yrs";
+            tooltip.html(output)
+                   .style("left",(d3.event.pageX+15)+"px")
+                   .style("top",(d3.event.pageY-35)+"px")
+                   .style("background","lightgrey");
             })
         .on("mouseout", function (d) {
-            d3.select(this).style("cursor", "default")
-            d3.selectAll("#c"+d.id.toString()).attr("r",radius).attr("stroke","None")
+            d3.select(this).style("cursor", "default");
+            d3.selectAll("#c"+d.id.toString()).attr("r",radius).attr("stroke","None");
+            tooltip.transition().duration(300).style("opacity", 0);
             })
         // update bar chart on mouse click
         .on("click", function (d) {
@@ -599,11 +623,23 @@ function drawScatter(us, health) {
         .style("fill", colour[2]).style("opacity", opacity)
         .on("mouseover", function (d) {
             d3.select(this).style("cursor", "pointer");
-            d3.selectAll("#c"+d.id.toString()).attr("stroke","black").attr("r",radius+radiusInc).attr("stroke-width","1")
+            d3.selectAll("#c"+d.id.toString()).attr("stroke","black").attr("r",radius+radiusInc).attr("stroke-width","1").style("opacity", 1);
+            tooltip.transition().duration(300).style("opacity", .9);
+            var output = "City: " + d.CityName + 
+                         "<br>State: " + d.state_name + 
+                         "<br>Health Rank: " + d.health_rank + " of 501" +
+                         "<br>Life Expectancy: " + d["4L:Life Expectancy Average: Average Life Expectancy in Years"] + 
+                         " yrs<br>Population: " + Number(d.PopulationCount).toLocaleString() +
+                         "<br>Rich/Poor Life Gap: " + d.disparity_avg + " yrs";
+            tooltip.html(output)
+                   .style("left",(d3.event.pageX+15)+"px")
+                   .style("top",(d3.event.pageY-35)+"px")
+                   .style("background","lightgrey");
             })
         .on("mouseout", function (d) {
-            d3.select(this).style("cursor", "default")
-            d3.selectAll("#c"+d.id.toString()).attr("r",radius).attr("stroke","None")
+            d3.select(this).style("cursor", "default");
+            d3.selectAll("#c"+d.id.toString()).attr("r",radius).attr("stroke","None");
+            tooltip.transition().duration(300).style("opacity", 0);
             })
         // update bar chart on mouse click
         .on("click", function (d) {
@@ -622,11 +658,23 @@ function drawScatter(us, health) {
         .style("fill", colour[3]).style("opacity", opacity)
         .on("mouseover", function (d) {
             d3.select(this).style("cursor", "pointer");
-            d3.selectAll("#c"+d.id.toString()).attr("stroke","black").attr("r",radius+radiusInc).attr("stroke-width","1")
+            d3.selectAll("#c"+d.id.toString()).attr("stroke","black").attr("r",radius+radiusInc).attr("stroke-width","1").style("opacity", 1);
+            tooltip.transition().duration(300).style("opacity", .9);
+            var output = "City: " + d.CityName + 
+                         "<br>State: " + d.state_name + 
+                         "<br>Health Rank: " + d.health_rank + " of 501" +
+                         "<br>Life Expectancy: " + d["4L:Life Expectancy Average: Average Life Expectancy in Years"] + 
+                         " yrs<br>Population: " + Number(d.PopulationCount).toLocaleString() +
+                         "<br>Rich/Poor Life Gap: " + d.disparity_avg + " yrs";
+            tooltip.html(output)
+                   .style("left",(d3.event.pageX+15)+"px")
+                   .style("top",(d3.event.pageY-35)+"px")
+                   .style("background","lightgrey");
             })
         .on("mouseout", function (d) {
-            d3.select(this).style("cursor", "default")
-            d3.selectAll("#c"+d.id.toString()).attr("r",radius).attr("stroke","None")
+            d3.select(this).style("cursor", "default");
+            d3.selectAll("#c"+d.id.toString()).attr("r",radius).attr("stroke","None");
+            tooltip.transition().duration(300).style("opacity", 0);
             })
         // update bar chart on mouse click
         .on("click", function (d) {
