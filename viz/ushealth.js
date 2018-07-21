@@ -102,7 +102,7 @@ function drawMap(chart, us, health) {
         36: "New York",37: "North Carolina",38: "North Dakota",39: "Ohio",40: "Oklahoma",41: "Oregon",42: "Pennsylvania",44: "Rhode Island",
         45: "South Carolina",46: "South Dakota",47: "Tennessee",48: "Texas",49: "Utah",50: "Vermont",51: "Virginia",53: "Washington",
         54: "West Virginia",55: "Wisconsin",56: "Wyoming",60: "America Samoa",64: "Federated States of Micronesia",66: "Guam",
-        68: "Marshall Islands",69: "Northern Mariana Islands",70: "Palau",72: "Puerto Rico",74: "U.S. Minor Outlying Islands"};
+        68: "Marshall Islands",69: "Northern Mariana Islands",70: "Palau",72: "Puerto Rico",74: "U.S. Minor Outlying Islands", 78:"US"};
 
     // setup Map SVG canvas, and group
     var height = 430, width = 910;
@@ -169,20 +169,20 @@ function drawMap(chart, us, health) {
     popLegend.append("circle")
         .attr("class","legend")
         .style("stroke", "#A0A0A0")
-        .attr("cy", function(d) { return  -radius(d); })
+        .attr("cy", function(d) { return  -radius(d)*0.8; })
         .attr("r", radius);
     popLegend.attr("font-size","9px")
         .append("text")
         .attr("fill","#404040")
-        .attr("y", function(d) { return -2 * radius(d); })
-        .attr("dy", "1.3em")
+        .attr("y", function(d) { return -2 * radius(d)*0.8; })
+        .attr("dy", "0.7em")
         .text(d3.format(".1s"));
 
     popLegend.append("text")
         .text("Population")
         .attr("fill","#707070")
         .attr("font-size","11px")
-        .attr("dy","1.1em");
+        .attr("dy","1.8em");
  
     // add color bar to map
     g.selectAll("rect")
@@ -219,6 +219,7 @@ function drawMap(chart, us, health) {
         .data(topojson.feature(us, us.objects.states).features)
         .enter().append("path")
         .attr("d", path)
+        .attr("id", function (d) {return (stateMap[d.id]).replace(/ /g,'');})
         .attr("class", "feature")
         .style("stroke", "#D5DBDB")
 
@@ -281,13 +282,16 @@ function drawMap(chart, us, health) {
             // rescale statename to prevent small states having huge labels and vice-versa
             g.selectAll(".state")
                 .attr("font-size", 40/scale);
+            blink();
             });
 
     // add cities to map with hover and click functions for more info
     g.selectAll("circle")
         .data(health)
         .enter().append("circle")
-        .attr("class", "circle")
+        .attr("class", function (d) {return ("circle");})
+        .attr("id", function(d) {return (d.CityName + d.StateDesc).replace(/\s+/g, '');})
+        .attr("coord", function (d) {return (d.lng + "," + d.lat)})
         .attr("transform", function(d) {return "translate("+ projection([d.lng, d.lat])+")"; })
         .attr("fill",      function(d) {
 
@@ -302,7 +306,7 @@ function drawMap(chart, us, health) {
         .style("opacity", .8)
         .style("stroke", "#FFFFFF")
         .style("stroke-width", "0.7px")
-        .attr("r", function (d) { return circleSize(d.PopulationCount) })
+        .attr("r", function (d) { return 0.8 * circleSize(d.PopulationCount) })
 
         // provide extra info as tooltip when hovering over
         .on("mouseover", function (d) {
@@ -329,6 +333,71 @@ function drawMap(chart, us, health) {
         .on("click", function(d) {
             drawBarChart(d, health)
             });
+
+    // g.append("polygon").attr("stroke","darkgreen")
+    //     .attr("points","10,1 4,20 19,8 1,8 16,20")
+    //     .attr("transform","translate("+projection(d3.select("#ChampaignIllinois").attr("coord").split(","))+")");
+    function blink() {
+        console.log('blink');
+        d3.select("#ChampaignIllinois")
+            .style("stroke","black")
+            .transition().duration(700).attr("r", "5")
+            .transition().duration(700).attr("r", "13")
+            .on("end", blink)
+        }
+    blink();
+
+    // add best and worst city annotations
+    switch (chart) {
+        case "Overall Health":
+            g.append("text")
+                .attr("transform","translate("+projection(d3.select("#SanRamonCalifornia").attr("coord").split(","))+")")
+                .style("fill","darkred")
+                .style("font-size","10px")
+                .style("rotate","315")
+                .append("tspan").text("Best:").attr("dx", -30).attr('dy', 0)
+                .append("tspan").text("San Ramon").attr("dx", -40).attr('dy', +9);
+            g.append("text")
+                .attr("transform","translate("+projection(d3.select("#GaryIndiana").attr("coord").split(","))+")")
+                .style("fill","darkred")
+                .style("font-size","10px")
+                .style("rotate","315")
+                .append("tspan").text("Worst:").attr("dx", 15).attr('dy', 0)
+                .append("tspan").text("Gary").attr("dx", -27).attr('dy', +9);
+            break;
+        case "Life Expectancy":
+            g.append("text")
+                .attr("transform","translate("+projection(d3.select("#SantaFeNewMexico").attr("coord").split(","))+")")
+                .style("fill","darkred")
+                .style("font-size","10px")
+                .style("rotate","315")
+                .append("tspan").text("Longest:").attr("dx", 27).attr('dy', 0)
+                .append("tspan").text("Santa Fe").attr("dx", -38).attr('dy', +9);
+            g.append("text")
+                .attr("transform","translate("+projection(d3.select("#ColumbusGeorgia").attr("coord").split(","))+")")
+                .style("fill","darkred")
+                .style("font-size","10px")
+                .style("rotate","315")
+                .append("tspan").text("Shortest:").attr("dx", 30).attr('dy', 0)
+                .append("tspan").text("Columbus").attr("dx", -40).attr('dy', +9);
+            break;
+        case "Life Expectancy Wealth Gap":
+            g.append("text")
+                .attr("transform","translate("+projection(d3.select("#LaredoTexas").attr("coord").split(","))+")")
+                .style("fill","darkred")
+                .style("font-size","10px")
+                .style("rotate","315")
+                .append("tspan").text("Smallest:").attr("dx", -28).attr('dy', 0)
+                .append("tspan").text("Laredo").attr("dx", -32).attr('dy', +9);
+            g.append("text")
+                .attr("transform","translate("+projection(d3.select("#WichitaFallsTexas").attr("coord").split(","))+")")
+                .style("fill","darkred")
+                .style("font-size","10px")
+                .style("rotate","315")
+                .append("tspan").text("Largest:").attr("dx", 37).attr('dy', 0)
+                .append("tspan").text("Wichita Falls").attr("dx", -35).attr('dy', +9);
+            break;
+        }
 
     // add legend for national average dot
     g.append("text")
@@ -357,6 +426,7 @@ function drawMap(chart, us, health) {
             .selectAll(".circle")
             .style("stroke-width", "0.8px")
             .attr("r", function (d) { return circleSize(d.PopulationCount) });
+        blink();
     };
 
     // get average lat and long so can centre state name on zoomed state map
@@ -380,14 +450,19 @@ function drawTable(us, health) {
 
     // Create table data from health array
     var healthTab = [];
+    var i = 0;
     health.forEach(function(d) {
-        healthTab.push({"City": d.CityName, "State": d.StateDesc, "Health Score": d.health_score, 
-                        "Life Expectancy Average": d["4L:Life Expectancy Average: Average Life Expectancy in Years"], 
-                        "Life Expectancy Richest 25%": d["4L:Life Expectancy Top 25%:Life expectancy in years, Top Quartile Income"], 
-                        "Life Expectancy Poorest 25%": d["4L:Life Expectancy Bottom 25%:Life expectancy in years, Bottom Quartile Income"],
-                        "Rich vs Poor Life Gap (Years)": d["disparity_avg"],
-                        "Population": parseInt(d["PopulationCount"]).toLocaleString()
-                        });
+        console.log(d);
+        if (i > 2) {
+            healthTab.push({"City": d.CityName, "State": d.StateDesc, "Health Score": d.health_score, 
+                "Life Expectancy Average": d["4L:Life Expectancy Average: Average Life Expectancy in Years"], 
+                "Life Expectancy Richest 25%": d["4L:Life Expectancy Top 25%:Life expectancy in years, Top Quartile Income"], 
+                "Life Expectancy Poorest 25%": d["4L:Life Expectancy Bottom 25%:Life expectancy in years, Bottom Quartile Income"],
+                "Rich vs Poor Life Gap (Years)": d["disparity_avg"],
+                "Population": parseInt(d["PopulationCount"]).toLocaleString()
+                });
+            }
+        i++;
     });
 
     // Add Top cities table
@@ -532,7 +607,7 @@ function drawScatter(us, health) {
     lines.selectAll("line").style("stroke", "#E5E7E9")
 
     // adjustable values for point appearance
-    var radius = 4.5;
+    var radius = 3.7;
     var radiusInc = 2;
     var opacity= 0.8;
     var colour = ["#1E8449","#17A589","#D4AC0D","#C0392B"];
@@ -545,6 +620,7 @@ function drawScatter(us, health) {
         .attr("cx", function(d) {return x(d["health_score"]); })
         .attr("cy", function(d) {return y(d["4L:Life Expectancy Top 25%:Life expectancy in years, Top Quartile Income"]); })
         .attr("id", function(d) {return "c"+d.id.toString();})
+        .attr("city", function(d) {return (d.CityName + d.StateDesc).replace(/\s+/g, '');})
         .attr("r", radius)
         .style("fill", colour[0]).style("opacity", opacity)
 
@@ -568,7 +644,6 @@ function drawScatter(us, health) {
         .on("mouseout", function (d) {
             d3.select(this).style("cursor", "default");
             d3.selectAll("#c"+d.id.toString()).attr("r",radius).attr("stroke","None");
-            // d3.select(this).style("cursor", "default").style("stroke", "#FFFFFF");
             tooltip.transition().duration(300).style("opacity", 0);
             })
         // update bar chart on mouse click
@@ -586,6 +661,7 @@ function drawScatter(us, health) {
         .attr("id", function(d) {return "c"+d.id.toString();})
         .attr("r", radius)
         .style("fill", colour[1]).style("opacity", opacity)
+
         .on("mouseover", function (d) {
             d3.select(this).style("cursor", "pointer");
             d3.selectAll("#c"+d.id.toString()).attr("stroke","black").attr("r",radius+radiusInc).attr("stroke-width","1").style("opacity", 1);
@@ -621,6 +697,7 @@ function drawScatter(us, health) {
         .attr("id", function(d) {return "c"+d.id.toString();})
         .attr("r", radius)
         .style("fill", colour[2]).style("opacity", opacity)
+
         .on("mouseover", function (d) {
             d3.select(this).style("cursor", "pointer");
             d3.selectAll("#c"+d.id.toString()).attr("stroke","black").attr("r",radius+radiusInc).attr("stroke-width","1").style("opacity", 1);
@@ -656,6 +733,7 @@ function drawScatter(us, health) {
         .attr("id", function(d) {return "c"+d.id.toString();})
         .attr("r", radius)
         .style("fill", colour[3]).style("opacity", opacity)
+
         .on("mouseover", function (d) {
             d3.select(this).style("cursor", "pointer");
             d3.selectAll("#c"+d.id.toString()).attr("stroke","black").attr("r",radius+radiusInc).attr("stroke-width","1").style("opacity", 1);
@@ -676,10 +754,35 @@ function drawScatter(us, health) {
             d3.selectAll("#c"+d.id.toString()).attr("r",radius).attr("stroke","None");
             tooltip.transition().duration(300).style("opacity", 0);
             })
+
         // update bar chart on mouse click
         .on("click", function (d) {
             drawBarChart(d, health);
             });
+
+    function blink() {
+        console.log('blink');
+        d3.selectAll("#c378")
+            // .style("stroke","black")
+            .transition().duration(700).attr("r", radius)
+            .transition().duration(700).attr("r", "13")
+            .on("end", blink)
+        }
+    blink();
+
+    // best = d3.selectAll("#c448").filter(".circles1")
+    // g.append("text")
+    //     .attr("transform", "translate("+(+best.attr("cx")-7)+","+(+best.attr("cy")-10)+") rotate(-90)")
+    //     .style("fill","darkred")
+    //     .style("font-size","10px")
+    //     .text("San Ramon, California");
+
+    // worst = d3.selectAll("#c388").filter(".circles1");
+    // g.append("text")
+    //     .attr("transform", "translate("+(+worst.attr("cx")+11)+","+(+worst.attr("cy")-86)+") rotate(-90)")
+    //     .style("fill","darkred")
+    //     .style("font-size","10px")
+    //     .text("Gary, Indiana");
 
     // Add scatter x axes
     g.append("g")
