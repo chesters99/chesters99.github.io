@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+	<meta charset="utf-8">
+		<title>Movie Review Word Importance Bubble Map</title>
+        <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+        <script type="text/javascript" src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+		<style type="text/css"></style>
+</head>
+<body style="font: 16px sans-serif; background-color: black;">
+    <div style="width:1050px; text-align:center; background-color:#1F618D; margin: 0px 0px 30px 10px; color: white; 
+               border-radius: 3px 3px 3px 3px; padding:20px;">
+        <h1 style="margin: 0px 0px 10px 0px; ">Movie Review Word Importance</h1>
+        <h3 style="margin: 0px 0px  0px 0px; ">CS598 Practical Statistical Learning - Project 4, Graham Chester</h3>
+        <br>(Zoom in/out or drag on a bubble to navigate, hover on words for full details)
+    </div>
+
+    <div><button>Reset Zoom/Drag</button></div>
+	<script type="text/javascript">
+        d3.queue()
+            .defer(d3.csv, "vocab.csv")
+            .await(ready);
+
+        function ready(error, vocab) {
+            if (error) throw error;
+            var dataset = {"children": vocab};
+
+            var diameter = 1100;
+            var color = d3.scaleThreshold().domain([-21, -8.5, -5, -2, 0, 2, 5, 8.0, 15.6]).range(d3.schemeRdBu[10]);
+
+            var zoom = d3.zoom()
+                .scaleExtent([1, 20])
+                .on("zoom", zoomed);
+
+            var drag = d3.drag()
+                .subject(function (d) { return d; })
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended);
+
+            var bubble = d3.pack(dataset)
+                .size([diameter, diameter])
+                .padding(1.5);
+
+            var svg = d3.select("body")
+                .append("svg")
+                .attr("width", diameter)
+                .attr("height", diameter)
+                .append("g")    
+                .attr("transform", "translate(" + 0 + "," + 0 + ")")
+                .call(zoom);
+
+            var nodes = d3.hierarchy(dataset)
+                .sum(function(d) { return Math.abs(d.weight); });
+
+            var container = svg.append("g");
+            console.log('bing', container)
+
+            var node = container.selectAll(".node")
+                .data(bubble(nodes).descendants())
+                .enter()
+                .filter(function(d){
+                    return  !d.children
+                })
+                .append("g")
+                .attr("class", "node")
+                .attr("transform", function(d) {
+                    return "translate(" + d.x + "," + d.y + ")";
+                });
+
+            node.append("title")
+                .text(function(d) {
+                    return d.data.word + ": " + Math.round(d.data.weight);
+                });
+
+            node.append("circle")
+                .attr("r", function(d) {
+                    return d.r;
+                })
+                .style("fill", function(d,i) {
+                    if (Math.abs( d.data.weight ) < 0.75) return "grey"
+                    return color(d.data.weight);
+                })
+                ;
+
+            node.append("text")
+                .attr("dy", ".2em")
+                .style("text-anchor", "middle")
+                .text(function(d) {
+                    return d.data.word.substring(0, 13);
+                })
+                .attr("font-family", "sans-serif")
+                .attr("font-size", function(d){
+                    return d.r/3.5;
+                })
+                .attr("fill", "white");
+
+            node.append("text")
+                .attr("dy", "1.3em")
+                .style("text-anchor", "middle")
+                .text(function(d) {
+                    return Math.round(d.data.weight);
+                })
+                .attr("font-family",  "Gill Sans", "Gill Sans MT")
+                .attr("font-size", function(d){
+                    return d.r/4;
+                })
+                .attr("fill", "white");
+
+            function zoomed() {
+                const currentTransform = d3.event.transform;
+                container.attr("transform", currentTransform);
+            }
+
+            function dragstarted(d) {
+                d3.event.sourceEvent.stopPropagation();
+                d3.select(this).classed("dragging", true);
+            }
+            function dragged(d) {
+                d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
+            }
+            function dragended(d) {
+                d3.select(this).classed("dragging", false);
+            }
+
+            d3.select("button").on("click", resetted);
+            function resetted() {
+                svg.transition()
+                .duration(350)
+                .call(zoom.transform, d3.zoomIdentity);
+            }
+
+
+        }
+
+	</script>
+</body>
+</html>
+
