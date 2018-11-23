@@ -5,21 +5,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.gchester.com/</loc>
-<lastmod>2018-11-23T11:53:13-00:00</lastmod>
+<lastmod>2018-11-23T12:08:42-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.gchester.com/archives.html</loc>
-<lastmod>2018-11-23T11:53:13-00:00</lastmod>
+<lastmod>2018-11-23T12:08:42-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.gchester.com/categories.html</loc>
-<lastmod>2018-11-23T11:53:13-00:00</lastmod>
+<lastmod>2018-11-23T12:08:42-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -29,6 +29,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2018-11-03T12:27:41+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.gchester.com/nltk-tutorial.html</loc>
+<lastmod>2018-11-23T00:00:00+00:00</lastmod>
+<changefreq>always</changefreq>
+<priority>1</priority>
 </url>
 
 <url>
@@ -131,7 +138,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.gchester.com/category/data-science.html</loc>
-<lastmod>2018-06-30T00:00:00-00:01</lastmod>
+<lastmod>2018-11-23T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -144,22 +151,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://blog.gchester.com/tag/python.html</loc>
-<lastmod>2018-06-30T00:00:00-00:01</lastmod>
+<loc>http://blog.gchester.com/tag/ipython.html</loc>
+<lastmod>2018-11-23T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.gchester.com/tag/data-science.html</loc>
-<lastmod>2018-06-30T00:00:00-00:01</lastmod>
+<lastmod>2018-11-23T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://blog.gchester.com/tag/ipython.html</loc>
-<lastmod>2017-12-01T00:00:00-00:01</lastmod>
+<loc>http://blog.gchester.com/tag/python.html</loc>
+<lastmod>2018-06-30T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -188,6 +195,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://blog.gchester.com/author/graham-chester.html</loc>
 <lastmod>2018-06-30T00:00:00-00:01</lastmod>
+<changefreq>hourly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://blog.gchester.com/author/john-moran-graham-chester.html</loc>
+<lastmod>2018-11-23T00:00:00-00:01</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
