@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Tensorflow Neural Networks on MNIST and CIFAR10 - GCHESTER.COM</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="./tensorflow-mnist-cifar10.html">
+
+        <meta name="author" content="Graham Chester" />
+        <meta name="keywords" content="Python,Data Science,Tensorflow,UIUC" />
+        <meta name="description" content="Various Tensorflow Models based on the tensorflow-provided tutorials but with improved performance" />
+
+        <meta property="og:site_name" content="GCHESTER.COM" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Tensorflow Neural Networks on MNIST and CIFAR10"/>
+        <meta property="og:url" content="./tensorflow-mnist-cifar10.html"/>
+        <meta property="og:description" content="Various Tensorflow Models based on the tensorflow-provided tutorials but with improved performance"/>
+        <meta property="article:published_time" content="2018-05-03" />
+            <meta property="article:section" content="Data Science" />
+            <meta property="article:tag" content="Python" />
+            <meta property="article:tag" content="Data Science" />
+            <meta property="article:tag" content="Tensorflow" />
+            <meta property="article:tag" content="UIUC" />
+            <meta property="article:author" content="Graham Chester" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="./theme/css/bootstrap.flatly.min.css" type="text/css"/>
+    <link href="./theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="./theme/css/pygments/emacs.css" rel="stylesheet">
+    <link href="./theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+    <link rel="stylesheet" href="./theme/css/style.css" type="text/css"/>
+        <link href="./custom.css" rel="stylesheet">
+
+        <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="GCHESTER.COM ATOM Feed"/>
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="./" class="navbar-brand">
+<img class="img-responsive pull-left gap-right" src="./images/gchester.png" width=""/> GCHESTER.COM            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="./pages/about.html">
+                             ABOUT
+                          </a></li>
+                        <li class="active">
+                            <a href="./category/data-science.html">Data science</a>
+                        </li>
+                        <li >
+                            <a href="./category/getting-started.html">Getting started</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><span>
+                <form class="navbar-search" action="/search.html">
+                  <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
+                </form></span>
+              </li>
+              <li><a href="./archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<style>
+	#banner{
+	    background-image:url("./images/space.jpg");
+	}
+</style>
+
+<div id="banner">
+	<div class="container-fluid">
+		<div class="copy">
+			<h1>GCHESTER.COM</h1>
+				<p class="intro">Data Science and Python</p>
+		</div>
+	</div>
+</div><!-- End Banner -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9">
+            <ol class="breadcrumb">
+                <li><a href="." title="GCHESTER.COM"><i class="fa fa-home fa-lg"></i></a></li>
+                <li><a href="./category/data-science.html" title="Data Science">Data Science</a></li>
+                <li class="active">Tensorflow Neural Networks on MNIST and CIFAR10</li>
+            </ol>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="./tensorflow-mnist-cifar10.html"
+                       rel="bookmark"
+                       title="Permalink to Tensorflow Neural Networks on MNIST and CIFAR10">
+                        Tensorflow Neural Networks on MNIST and CIFAR10
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2018-05-03T00:00:00+01:00"> Thu 03 May 2018</time>
+    </span>
+
+
+            <span class="label label-default">By</span>
+            <a href="./author/graham-chester.html"><i class="fa fa-user"></i> Graham Chester</a>
+
+        <span class="label label-default">Category</span>
+        <a href="./category/data-science.html">Data Science</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="./tag/python.html">Python</a>
+        /
+	<a href="./tag/data-science.html">Data Science</a>
+        /
+	<a href="./tag/tensorflow.html">Tensorflow</a>
+        /
+	<a href="./tag/uiuc.html">UIUC</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Various Tensorflow Models applied to the MNIST and CIFAR10 image datasets. Code is based on the tensorflow-provided tutorials but with improved performance.</p>
+<h3>Documentation (<a href="/pdfs/tensorflow-mnist-cifar10.pdf">Click Here for pdf</a>)</h3>
+<p><img src="/pdfs/tensorflow-mnist-cifar10.pdf" width="600" height="500"/><br><br></p>
+<h3>Source Code</h3>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">keras.preprocessing.image</span> <span class="kn">import</span> <span class="n">ImageDataGenerator</span>
+<span class="kn">from</span> <span class="nn">keras.datasets</span> <span class="kn">import</span> <span class="n">cifar10</span>
+<span class="kn">from</span> <span class="nn">keras.utils</span> <span class="kn">import</span> <span class="n">to_categorical</span>
+<span class="kn">from</span> <span class="nn">tensorflow.examples.tutorials.mnist</span> <span class="kn">import</span> <span class="n">input_data</span>
+
+
+<span class="n">FLAGS</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">_</span><span class="p">):</span>
+    <span class="c1"># create new log files</span>
+    <span class="k">if</span> <span class="n">tf</span><span class="o">.</span><span class="n">gfile</span><span class="o">.</span><span class="n">Exists</span><span class="p">(</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">log_dir</span><span class="p">):</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">gfile</span><span class="o">.</span><span class="n">DeleteRecursively</span><span class="p">(</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">log_dir</span><span class="p">)</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">gfile</span><span class="o">.</span><span class="n">MakeDirs</span><span class="p">(</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">log_dir</span><span class="p">)</span>
+
+    <span class="n">tf</span><span class="o">.</span><span class="n">reset_default_graph</span><span class="p">()</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">set_random_seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">num_classes</span> <span class="o">=</span> <span class="mi">10</span>
+
+    <span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">cifar10</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Train Images dimensions =&quot;</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Train Labels dimensions =&quot;</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="n">y_train</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+    <span class="n">y_test</span>  <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+
+    <span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+    <span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+    <span class="n">X_train</span> <span class="o">/=</span> <span class="mf">255.0</span>
+    <span class="n">X_test</span> <span class="o">/=</span> <span class="mf">255.0</span>
+
+    <span class="n">label_list_path</span> <span class="o">=</span> <span class="s1">&#39;/Users/graham/.keras/datasets/cifar-10-batches-py/batches.meta&#39;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">label_list_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="s1">&#39;label_names&#39;</span><span class="p">]</span>
+
+    <span class="n">gen</span> <span class="o">=</span> <span class="n">ImageDataGenerator</span><span class="p">(</span><span class="n">rotation_range</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">width_shift_range</span><span class="o">=</span><span class="mf">0.06</span><span class="p">,</span> <span class="n">shear_range</span><span class="o">=</span><span class="mf">0.27</span><span class="p">,</span>     <span class="c1"># could be change to 0.1&#39;s</span>
+                             <span class="n">height_shift_range</span><span class="o">=</span><span class="mf">0.06</span><span class="p">,</span> <span class="n">zoom_range</span><span class="o">=</span><span class="mf">0.06</span><span class="p">,</span> <span class="n">horizontal_flip</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c1"># featurewise_center=False, featurewise_std_normalization=False,</span>
+    <span class="n">train_gen</span> <span class="o">=</span> <span class="n">gen</span><span class="o">.</span><span class="n">flow</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Create a multilayer model.</span>
+    <span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">InteractiveSession</span><span class="p">()</span>
+
+    <span class="c1"># Input placeholders</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">):</span>
+        <span class="n">x</span>  <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="mi">32</span><span class="o">*</span><span class="mi">32</span><span class="o">*</span><span class="mi">3</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x-input&#39;</span><span class="p">)</span>
+        <span class="n">y_</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span>   <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;y-input&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">weight_variable</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a weight variable with appropriate initialization.&quot;&quot;&quot;</span>
+        <span class="n">initial</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">truncated_normal</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">stddev</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">initial</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">bias_variable</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a bias variable with appropriate initialization.&quot;&quot;&quot;</span>
+        <span class="n">initial</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">initial</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">conv2dx</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">conv2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">num_outputs</span><span class="o">=</span><span class="n">num_outputs</span><span class="p">,</span>
+            <span class="n">stride</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;SAME&#39;</span><span class="p">,</span>
+            <span class="n">normalizer_fn</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">batch_normalization</span><span class="p">,</span>
+            <span class="n">normalizer_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;training&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;reuse&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">},</span>
+            <span class="n">activation_fn</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">,)</span>
+
+
+    <span class="n">x_image</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+
+    <span class="c1">#conv1 with batch normalisation</span>
+    <span class="n">h_conv1</span> <span class="o">=</span> <span class="n">conv2dx</span><span class="p">(</span><span class="n">x_image</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;h_conv1&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">h_conv1</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()))</span>
+
+    <span class="c1">#conv2 with batch normalisation</span>
+    <span class="n">h_conv2</span> <span class="o">=</span> <span class="n">conv2dx</span><span class="p">(</span><span class="n">h_conv1</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;h_conv2&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">h_conv2</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()))</span>
+
+    <span class="c1">#pool1</span>
+    <span class="n">h_pool1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">max_pool</span><span class="p">(</span><span class="n">h_conv2</span><span class="p">,</span> <span class="n">ksize</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">strides</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;SAME&#39;</span><span class="p">)</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;h_pool1&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">h_pool1</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()))</span>
+
+    <span class="c1">#conv3 with batch normalisation</span>
+    <span class="n">h_conv3</span> <span class="o">=</span> <span class="n">conv2dx</span><span class="p">(</span><span class="n">h_pool1</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;h_conv1&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">h_conv3</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()))</span>
+
+    <span class="c1">#conv4 with batch normalisation</span>
+    <span class="n">h_conv4</span> <span class="o">=</span> <span class="n">conv2dx</span><span class="p">(</span><span class="n">h_conv3</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;h_conv4&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">h_conv4</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()))</span>
+
+    <span class="c1">#pool2</span>
+    <span class="n">h_pool2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">max_pool</span><span class="p">(</span><span class="n">h_conv4</span><span class="p">,</span> <span class="n">ksize</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">strides</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;SAME&#39;</span><span class="p">)</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;h_pool1&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">h_pool2</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()))</span>
+
+    <span class="c1"># dense1 with flatten</span>
+    <span class="n">W_fc1</span> <span class="o">=</span> <span class="n">weight_variable</span><span class="p">([</span><span class="mi">32</span><span class="o">*</span><span class="mi">32</span><span class="o">*</span><span class="mi">16</span><span class="p">,</span> <span class="mi">512</span><span class="p">])</span>
+    <span class="n">b_fc1</span> <span class="o">=</span> <span class="n">bias_variable</span><span class="p">([</span><span class="mi">512</span><span class="p">])</span>
+
+    <span class="n">h_flat</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">h_conv3</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="o">*</span><span class="mi">32</span><span class="o">*</span><span class="mi">16</span><span class="p">])</span>
+    <span class="n">h_fc1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">h_flat</span><span class="p">,</span> <span class="n">W_fc1</span><span class="p">)</span> <span class="o">+</span> <span class="n">b_fc1</span><span class="p">)</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;h_fc1&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">h_fc1</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()))</span>
+
+    <span class="n">keep_prob</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">h_fc1_drop</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">h_fc1</span><span class="p">,</span> <span class="n">keep_prob</span><span class="p">)</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;h_fc1_drop&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">h_fc1_drop</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()))</span>
+
+    <span class="c1"># dense2 then softmax the output</span>
+    <span class="n">W_fc2</span> <span class="o">=</span> <span class="n">weight_variable</span><span class="p">([</span><span class="mi">512</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+    <span class="n">b_fc2</span> <span class="o">=</span> <span class="n">bias_variable</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">h_fc1_drop</span><span class="p">,</span> <span class="n">W_fc2</span><span class="p">)</span> <span class="o">+</span> <span class="n">b_fc2</span><span class="p">)</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;y&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()))</span>
+
+
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s1">&#39;cross_entropy&#39;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s1">&#39;total&#39;</span><span class="p">):</span>
+            <span class="n">cross_entropy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="o">-</span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span>
+                <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">y_</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">*</span> <span class="n">tf</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">y</span><span class="o">+</span><span class="mf">1e-10</span><span class="p">),</span> <span class="n">reduction_indices</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="c1"># cross_entropy = tf.losses.sparse_softmax_cross_entropy(labels=y_, logits=y)</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="s1">&#39;cross_entropy&#39;</span><span class="p">,</span> <span class="n">cross_entropy</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s1">&#39;train&#39;</span><span class="p">):</span>
+        <span class="n">train_step</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">AdamOptimizer</span><span class="p">(</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">learning_rate</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">cross_entropy</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s1">&#39;accuracy&#39;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s1">&#39;correct_prediction&#39;</span><span class="p">):</span>
+            <span class="n">correct_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> 
+        <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s1">&#39;accuracy&#39;</span><span class="p">):</span>
+            <span class="n">accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">correct_prediction</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+
+
+    <span class="c1"># Merge all the summaries and write them out</span>
+    <span class="n">merged</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">merge_all</span><span class="p">()</span>
+    <span class="n">train_writer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">FileWriter</span><span class="p">(</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">log_dir</span> <span class="o">+</span> <span class="s1">&#39;/train&#39;</span><span class="p">,</span> <span class="n">sess</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span><span class="n">flush_secs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">test_writer</span>  <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">FileWriter</span><span class="p">(</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">log_dir</span> <span class="o">+</span> <span class="s1">&#39;/test&#39;</span><span class="p">,</span><span class="n">flush_secs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">feed_dict</span><span class="p">(</span><span class="n">train</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">train</span><span class="p">:</span>
+            <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">train_gen</span><span class="p">)</span>
+            <span class="n">xs</span> <span class="o">=</span> <span class="n">xs</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">32</span><span class="o">*</span><span class="mi">32</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">FLAGS</span><span class="o">.</span><span class="n">dropout</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span>
+            <span class="n">xs</span> <span class="o">=</span> <span class="n">xs</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">32</span><span class="o">*</span><span class="mi">32</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">xs</span><span class="p">,</span> <span class="n">y_</span><span class="p">:</span> <span class="n">ys</span><span class="p">,</span> <span class="n">keep_prob</span><span class="p">:</span> <span class="n">k</span><span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">max_steps</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Record summaries and test-set accuracy</span>
+            <span class="n">summary</span><span class="p">,</span> <span class="n">acc</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">merged</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="n">feed_dict</span><span class="p">(</span><span class="bp">False</span><span class="p">))</span>
+            <span class="n">test_writer</span><span class="o">.</span><span class="n">add_summary</span><span class="p">(</span><span class="n">summary</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> Accuracy at step </span><span class="si">%s</span><span class="s1">: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="n">i</span><span class="p">,</span> <span class="n">acc</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># Record train set summaries, and train</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">99</span><span class="p">:</span>  <span class="c1"># Record execution stats</span>
+                <span class="n">run_options</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">RunOptions</span><span class="p">()</span>
+                <span class="n">run_metadata</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">RunMetadata</span><span class="p">()</span>
+                <span class="n">summary</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">merged</span><span class="p">,</span> <span class="n">train_step</span><span class="p">],</span>
+                                      <span class="n">feed_dict</span><span class="o">=</span><span class="n">feed_dict</span><span class="p">(</span><span class="bp">True</span><span class="p">),</span>
+                                      <span class="n">options</span><span class="o">=</span><span class="n">run_options</span><span class="p">,</span>
+                                      <span class="n">run_metadata</span><span class="o">=</span><span class="n">run_metadata</span><span class="p">)</span>
+                <span class="n">train_writer</span><span class="o">.</span><span class="n">add_run_metadata</span><span class="p">(</span><span class="n">run_metadata</span><span class="p">,</span> <span class="s1">&#39;step</span><span class="si">%03d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+                <span class="n">train_writer</span><span class="o">.</span><span class="n">add_summary</span><span class="p">(</span><span class="n">summary</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+                <span class="c1"># print(&#39;Adding run metadata for&#39;, i)</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># Record a summary</span>
+                <span class="n">summary</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">merged</span><span class="p">,</span> <span class="n">train_step</span><span class="p">],</span> <span class="n">feed_dict</span><span class="o">=</span><span class="n">feed_dict</span><span class="p">(</span><span class="bp">True</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">train_writer</span><span class="o">.</span><span class="n">add_summary</span><span class="p">(</span><span class="n">summary</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">train_writer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">test_writer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--max_steps&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">80000</span><span class="p">,</span> 
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Number of steps to run trainer.&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--learning_rate&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.0005</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Initial learning rate&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--dropout&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Keep probability for training dropout.&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--data_dir&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+                        <span class="n">default</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;TEST_TMPDIR&#39;</span><span class="p">,</span> <span class="s1">&#39;/tmp&#39;</span><span class="p">),</span> <span class="s1">&#39;tf/cifar10/input_data&#39;</span><span class="p">),</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Directory for storing input data&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--log_dir&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+                        <span class="n">default</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;TEST_TMPDIR&#39;</span><span class="p">,</span> <span class="s1">&#39;/tmp&#39;</span><span class="p">),</span> <span class="s1">&#39;tf/cifar10/augm_bn_convelu&#39;</span><span class="p">),</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Summaries log directory&#39;</span><span class="p">)</span>
+    <span class="n">FLAGS</span><span class="p">,</span> <span class="n">unparsed</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_known_args</span><span class="p">()</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">argv</span><span class="o">=</span><span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="n">unparsed</span><span class="p">)</span>
+</pre></div>
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'gchester'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = 'tensorflow-mnist-cifar10';
+                var disqus_url = './tensorflow-mnist-cifar10.html';
+
+            var disqus_config = function () {
+                this.language = "en";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<div id="aboutme">
+    <p>
+        <strong>About Graham Chester</strong><br/>
+        Data Science Guy, Python Developer, and ex-Financial Systems Consultant
+    </p>
+</div>
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="http://facebook.com/graham.chester"><i class="fa fa-facebook-square fa-lg"></i> Facebook</a></li>
+                <li class="list-group-item"><a href="http://twitter.com/gchester99"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
+                <li class="list-group-item"><a href="http://www.linkedin.com/in/graham-chester-051b176"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
+                <li class="list-group-item"><a href="http://stackoverflow.com/users/3972759/graham-c?tab=profile"><i class="fa fa-stackoverflow-square fa-lg"></i> StackOverflow</a></li>
+              </ul>
+            </li>
+
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                <ul class="list-group" id="recentposts">
+                    <li class="list-group-item">
+                        <a href="./holybooks.html">
+                            Text Similarity Analysis of Major Religious Books
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="./sentiment-analysis.html">
+                            Sentiment Analysis on IMDB Movie reviews
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="./loan-default-prediction.html">
+                            Loan Default Prediction using Scikit-Learn and XGBoost
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="./time-series-analysis.html">
+                            Forecasting Walmart Sales - Time Series Analysis
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="./house-price-prediction.html">
+                            House Price Prediction using Scikit-Learn and XGBoost
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="list-group-item"><a href="./"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group " id="tags">
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/pelican.html">
+                            Pelican
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/python.html">
+                            Python
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/jupyter.html">
+                            Jupyter
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/tensorflow.html">
+                            Tensorflow
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/uiuc.html">
+                            UIUC
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/r.html">
+                            R
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/data-science.html">
+                            Data Science
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/getting-started.html">
+                            Getting Started
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/finance.html">
+                            Finance
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+
+    <li class="list-group-item"><h4><i class="fa fa-github fa-lg"></i><span class="icon-label">GitHub Repos</span></h4>
+        <div id="gh_repos">
+            <p class="list-group-item">Status updating...</p>
+        </div>
+            <a href="https://github.com/chesters99">@chesters99</a> on GitHub
+    </li>
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://kdnuggets.com/" target="_blank">
+                KD Nuggets
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://kaggle.com/" target="_blank">
+                Kaggle
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://opendatascience.com/" target="_blank">
+                Open Data Science
+            </a>
+        </li>
+      </ul>
+    </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container-fluid">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2018 Graham Chester
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="./theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="./theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="./theme/js/respond.min.js"></script>
+
+    <script src="./theme/js/bodypadding.js"></script>
+    <!-- GitHub JS -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if (!window.jXHR) {
+                var jxhr = document.createElement('script');
+                jxhr.type = 'text/javascript';
+                jxhr.src = './theme/js/jXHR.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(jxhr, s);
+            }
+
+            github.showRepos({
+                user: 'chesters99',
+                count: 3,
+                skip_forks: true,
+                target: '#gh_repos'
+            });
+        });
+    </script>
+    <script src="./theme/js/github.js" type="text/javascript"></script>
+    <!-- End GitHub JS Code -->
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'gchester'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-55102590-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>

@@ -12,17 +12,17 @@
 <link rel="canonical" href="./kaggle-nytaxi.html">
 
         <meta name="author" content="Graham Chester" />
-        <meta name="keywords" content="iPython,Data Science" />
-        <meta name="description" content="Python Jupyter notebook - lots of EDA then XGBoost" />
+        <meta name="keywords" content="Jupyter,Data Science" />
+        <meta name="description" content="Python Jupyter notebook - lots of EDA then XGBoost for modelling." />
 
         <meta property="og:site_name" content="GCHESTER.COM" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Kaggle competition - NY Taxi Trip Duration Prediction"/>
         <meta property="og:url" content="./kaggle-nytaxi.html"/>
-        <meta property="og:description" content="Python Jupyter notebook - lots of EDA then XGBoost"/>
+        <meta property="og:description" content="Python Jupyter notebook - lots of EDA then XGBoost for modelling."/>
         <meta property="article:published_time" content="2017-09-30" />
             <meta property="article:section" content="Data Science" />
-            <meta property="article:tag" content="iPython" />
+            <meta property="article:tag" content="Jupyter" />
             <meta property="article:tag" content="Data Science" />
             <meta property="article:author" content="Graham Chester" />
 
@@ -41,8 +41,6 @@
 
 
 
-        <link href="./feeds/data-science.atom.xml" type="application/atom+xml" rel="alternate"
-              title="GCHESTER.COM Data Science ATOM Feed"/>
 
 </head>
 <body>
@@ -135,7 +133,7 @@
 
 
 <span class="label label-default">Tags</span>
-	<a href="./tag/ipython.html">iPython</a>
+	<a href="./tag/jupyter.html">Jupyter</a>
         /
 	<a href="./tag/data-science.html">Data Science</a>
     
@@ -146,9 +144,124 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI colors. */
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -227,12 +340,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -245,27 +366,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -461,7 +594,9 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -471,11 +606,24 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -723,6 +871,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph > img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -761,7 +912,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -883,6 +1034,10 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 
 
 
@@ -899,16 +1054,24 @@ div.output_unrecognized a:hover {
 }
 
 
+
+
+
 .rendered_html pre,
+
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
-.rendered_html td,
 
-
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -924,6 +1087,11 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -974,8 +1142,15 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1114,8 +1289,7 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Kaggle-NY-Taxi-trip-duration-prediction">Kaggle NY Taxi trip duration prediction<a class="anchor-link" href="#Kaggle-NY-Taxi-trip-duration-prediction">¶</a></h2>
 </div>
@@ -1152,8 +1326,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Read-into-dataframes,-and-add-new-features">Read into dataframes, and add new features<a class="anchor-link" href="#Read-into-dataframes,-and-add-new-features">¶</a></h2>
 </div>
@@ -1552,8 +1725,7 @@ Wall time: 22 s
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Perform-EDA-on-fields">Perform EDA on fields<a class="anchor-link" href="#Perform-EDA-on-fields">¶</a></h2>
 </div>
@@ -2339,7 +2511,7 @@ ZIJ9n82/wDuAueX2gxSLcxIR+wC/1+L1BwKfzcxvAgeU+2/VItYEXlzmeSLi3cAvM/NhJCxiaIBk
 6lneYlXqgog4DPhMs+fKeeCSpBlkHpakiUXE31NM+xjvp5l5VLfjkVpxJIYkSZIkSaoF18SQJEmS
 JEm1YBFDkiRJkiTVgkUMSZIkSZJUCxYxJEmSJElSLVjEkCRJkiRJtWARQ5IkSZIk1cL/AwEHgHbY
 /+1UAAAAAElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
@@ -2865,7 +3037,7 @@ lA6gumKyPj7+Pi/XXB+bolMZV9beMXEc8P13qhwRu73P2DqgkyHvhAvRKYorS9KioKCgoKDgX4Ny
 4qKgoKCgoKCgoKCgoKCgoOADi/KOi4KCgoKCgoKCgoKCgoKCgg8sSuKioKCgoKCgoKCgoKCgoKDg
 A4uSuCgoKCgoKCgoKCgoKCgoKPjAoiQuCgoKCgoKCgoKCgoKCgoKPrAoiYuCgoKCgoKCgoKCgoKC
 goIPLErioqCgoKCgoKCgoKCgoKCg4AOL/wYCaI9z0A0/0gAAAABJRU5ErkJggg==
-" />
+">
 </div>
 </div>
 <div class="output_area">
@@ -3132,7 +3304,7 @@ R8T3ge2BKwdyNwHnU50J8a7M/EHbYDLzLKrLQL4DfAH4Rf34dVRNhW/WY/xG/ZSzgKUR8QPgQuAy
 LVm92q8VlyRpMai/JeTQzFw+wWUcCtW3edzN569g4NtHJEnS4uXXmkqSpImKiB2561KSpj0y84pp
 jqckIjakOiOk5B8ys/NmoJIkae55hoUkSZIkSeod72EhSZIkSZJ6x4aFJEmSJEnqHRsWkiRJkiSp
 d2xYSJIkSZKk3rFhIUmSJEmSeseGhSRJkiRJ6p3/D50QvBmFWYq6AAAAAElFTkSuQmCC
-" />
+">
 </div>
 </div>
 <div class="output_area">
@@ -3515,7 +3687,7 @@ tC7l6s/xneATEa8BPtSWuZrvoFfZHk650tPmo5l51hBlk6QFjH2StKilHBcH2d4SxbqI+DTlcbim
 n2TmPkMW5z2UOwp3H3I5ScuZmY51g1iG7cYjKHcFHu/g4Oh5B6EkSZIkSZI0wZyDUJIkSZIkSZpg
 DhBKkiRJkiRJE8wBQkmSJEmSJGmCOUAoSZIkSZIkTTAHCCVJkiRJkqQJ9v8BdMZcjSGHVsUAAAAA
 SUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
@@ -4071,7 +4243,7 @@ cVlJVhQUFBQUFHw5UG5YFBQUFBQUFBQUFBQUFBQUfOlQ3mFRUFBQUFBQUFBQUFBQUFDwpUNJWBQU
 FBQUFBQUFBQUFBQUFHzpUBIWBQUFBQUFBQUFBQUFBQUFXzqUhEVBQUFBQUFBQUFBQUFBQcGXDiVh
 UVBQUFBQUFBQUFBQUFBQ8KVDSVgUFBQUFBQUFBQUFBQUFBR86fD/AQT8pI95uWnsAAAAAElFTkSu
 QmCC
-" />
+">
 </div>
 </div>
 <div class="output_area">
@@ -4373,7 +4545,7 @@ qniwo+S4vQzpAoZExC7gE+Bb4KJepn8P+IyqyPEA8FZEfAFMBh7tLaf+ysw/qN6L8VJEfEn1/NrL
 ERHT+WcLSL25mbnn/8ynkYgYQbXCo5HFmdn0pZySJOnEc8WEJEmSJElqGd8xIUmSJEmSWsbChCRJ
 kiRJahkLE5IkSZIkqWUsTEiSJEmSpJaxMCFJkiRJklrGwoQkSZIkSWqZvwEUerKwiCgB8wAAAABJ
 RU5ErkJggg==
-" />
+">
 </div>
 </div>
 <div class="output_area">
@@ -4726,7 +4898,7 @@ xeWqOrOKvDmOUwbXA8dxytHMOlFJehtV90XkGmyLdZqFqjqsyuxcgO2gGFjlfY6zSVDr+l8JLdi3
 uB7bBTHBJyU2HN8x4TiO4ziO4ziO4zhOYfgZE47jOI7jOI7jOI7jFIZPTDiO4ziO4ziO4ziOUxg+
 MeE4juM4juM4juM4TmH4xITjOI7jOI7jOI7jOIXhExOO4ziO4ziO4ziO4xSGT0w4juM4juM4juM4
 jlMY/w8AmqBRsfSEFQAAAABJRU5ErkJggg==
-" />
+">
 </div>
 </div>
 <div class="output_area">
@@ -5111,7 +5283,7 @@ sC4ivgecBjxG0T19H8WHKH+x+8SyY/otwMcj4uHye79l9AUlCfOdam7OyMhI1TFIs0L5KcufAz/L
 zOuqjkeSesmcJ6kfdu+yOc76XJI0K5jvVKXJtLVKmpzvUrRwv6HqQCSpD8x5kioRER+hmA432ncz
 8x39jkeSesV8p36xc1CSJEmSJElqKdcclCRJkiRJklrK4qAkSZIkSZLUUhYHJUmSJEmSpJayOChJ
 kiRJkiS1lMVBSZIkSZIkqaX+P2udqcBq/8+lAAAAAElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
@@ -5402,7 +5574,7 @@ HZgHLOuOPxG4Cvgh8Cfgt8DDwKqqWllVm2lhaTPwE2DdGE5zB3BnkuPHWpckSdqDecQ8Io0L/1uK
 NAH9/27cfazjDbQwcWVVvZDk+8CWqrqun3VJkqSXn3lE0nhyCpOkftoGTAE2JdlB+9dri/Z9yG5J
 1gBH7uWl67vprJIkSaMxj0ivAM7ckCRJkiRJA809NyRJkiRJ0kCzuSFJkiRJkgaazQ1JkiRJkjTQ
 bG5IkiRJkqSBZnNDkiRJkiQNNJsbkiRJkiRpoP0PkYPY9C8tBCgAAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 <div class="output_area">
@@ -5892,7 +6064,7 @@ gjS8oadNtJiXQNIkY15QN/kIYHVURHyBortas+9k5rnjsP/3AneOsPrczPzOTu7/NuDfD7Pq7sz8
 7Bh29XPg14BnImIrxaM+R3vKh9STzAvbmRekNnU6b0iaeMwL6hR7kkiSJEmSJOGcJJIkSZIkSYBF
 EkmSJEmSJMAiiSRJkiRJEmCRRJIkSZIkCbBIIkmSJEmSBFgkkSRJkiRJAuD/A+T4fJt79sqWAAAA
 AElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
@@ -6189,7 +6361,7 @@ VF/pJ9aDpDmiXZL25TjXFfYfAhYDP5P0JHAeaXEtMzOzluB8xPmIWSO0lUqVOhXNzAYv9/IvKK+4
 Lel+4I6cBJiZmZkNO+cjZiOb16Qws0GR9A7SU4dKPgucn58ElEgrUG8b4utvIq0y3tcDEXHzUF7L
 zMzMmpPzEbPRyyMpzMzMzMzMzKwpeE0KMzMzMzMzM2sK7qQwMzMzMzMzs6bgTgozMzMzMzMzawru
 pDAzMzMzMzOzpuBOCjMzMzMzMzNrCu6kMDMzMzMzM7Om8B/PgVZ4DRmCcgAAAABJRU5ErkJggg==
-" />
+">
 </div>
 </div>
 </div>
@@ -9521,7 +9693,7 @@ R2+tj/NDqrU8bgduqc9LZv6aam2Oz0TEXcCzgD9v4LolSdIAKMpy7S9GJEmS+i8iTqYqcLwvMzsR
 cRXw35m5blFEkiRpmWtwSJKkQfEgsA+4OyIWqR4Te/X2DkmSJA0LZ3BIkiRJkqSh5xockiRJkiRp
 6FngkCRJkiRJQ88ChyRJkiRJGnoWOCRJkiRJ0tCzwCFJkiRJkobe/wNZkvMcWk7VIgAAAABJRU5E
 rkJggg==
-" />
+">
 </div>
 </div>
 </div>
@@ -9705,7 +9877,7 @@ kl/OYGLEQ3l2kh9vrf1dkkcm2TNc/+YM/uj/ZJLnJDnYhI0vSfKB1tpHkzwiyfVJvjODiRMf0lp7
 +YEdq+qWJE9I8prW2jXDcz9hlfEBAMfIhsXFsdwGGgBYQw7cXeEQ8ycAAKzI7R8BgCRJa+13MrgE
 YbkPV9XTj/V4AIDppCMBAAAA6GaOBAAAAKCbIAEAAADoJkgAAAAAugkSAAAAgG6CBAAAAKCbIAEA
 AADo9v8BKlht9vFtODEAAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 <div class="output_area">
@@ -9877,7 +10049,7 @@ kn+R0aaPq3llkh+tqj9OcmaSg+P292YUEHw6yU8nWWkzytcl+UhVfTLJM5J8Psm3ZrQp5GlV9asL
 Hbv77iTPS/K2qrp5/NnPW2N8AMBhsmt+fkuOzgYAptTCKROr7PcAALAsR2YCABtWVf86o2UQS/1R
 d7/ocI8HANieVDoAAAAAg7CnAwAAADAIoQMAAAAwCKEDAAAAMAihAwAAADAIoQMAAAAwCKEDAAAA
 MIj/D8pe8Yt+ecyOAAAAAElFTkSuQmCC
-" />
+">
 </div>
 </div>
 <div class="output_area">
@@ -10061,7 +10233,7 @@ qvru/nY/mOQ/t9b+dhOvCQCYAgEDAGwPf53kvyT5jeNsd15V3ZbkZ9ObkHEjr07yP1TVnyW5MMmh
 ADBFO44eHcstqwGABXfsbg8bzM8AADCU21QCAENV1S+lN5Rhrc+01n582u0BAOaXCgYAAACgM3Mw
 AAAAAJ0JGAAAAIDOBAwAAABAZwIGAAAAoDMBAwAAANCZgAEAAADo7P8Hht34wqL4PCYAAAAASUVO
 RK5CYII=
-" />
+">
 </div>
 </div>
 </div>
@@ -15453,7 +15625,7 @@ Pk9lPH8KHAZGQgh/zcbZKEmSpDVy5fJ6k5Sk9lS9o+LNa9b826nX/SHgUIzx1hBCN5Xm28tijF/d
 yTokSc0nq+ySJElS63BdMGmHVO82/NYaDz8P+IMQwm9QmXF363Y3B0MI/wSMrvPQ22OMb9/O15Ik
 tYak7IoxHt3JeiRJklQfziCUJEmSJEmS2phrEEqSJEmSJEltzAahJEmSJEmS1MZsEEqSJEmSJElt
 zAahJEmSJEmS1MZsEEqSJEmSJElt7H8BA0s+pDimtvoAAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
@@ -20339,15 +20511,14 @@ wXEwK0OSJKmnDCJI6qu+LUT70npwHFq10ZQkSVJje23f3oejxJK0s4i4LzNP+H/Xml4R8RNgGTuy
 Mg4Gfg2LMitDkiSpV8xEkNRXHg/oL7MyJEmSesoggqS+ciHaU7XbaEqSJGl8PM4gSZIkSZLmxBaP
 kiRJkiRpTgwiSJIkSZKkOTGIIEmSJEmS5sQggiRJkiRJmhODCJIkSZIkaU7+Cw4QOw0AvCX2AAAA
 AElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Prepare-Data-for-modelling">Prepare Data for modelling<a class="anchor-link" href="#Prepare-Data-for-modelling">¶</a></h2>
 </div>
@@ -20416,8 +20587,7 @@ After  Xtrain= (1305276, 32), Xvalid= (145864, 32), Xtest= (625134, 32)
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="XGBoost-Model-and-Submission-Generation">XGBoost Model and Submission Generation<a class="anchor-link" href="#XGBoost-Model-and-Submission-Generation">¶</a></h2><p>Performs really well (as usual)</p>
 </div>
@@ -21099,7 +21269,7 @@ dWeSo2geKPcB/rGqbk1yLPDJ9vw/0Sx4pfnvQNa/Rta8RreA5jcTl834XWimHAB8NMntwHLgVVW1
 0noR8C7gL4B3J1mzlsgbgaN8vmiAQfXyFuAjPl80wFnAJ5JcQPNXd95E80zx3y8aZFC9/JxZ/O+X
 odHR0XUfJUmSJEmSpGnha02SJEmSJEk9MpyRJEmSJEnqkeGMJEmSJElSjwxnJEmSJEmSemQ4I0mS
 JEmS1CPDGUmSJEmSpB4ZzkiSJEmSJPXo/wPnGvaw6rC00AAAAABJRU5ErkJggg==
-" />
+">
 </div>
 </div>
 </div>
@@ -21121,8 +21291,7 @@ JEmS1CPDGUmSJEmSpB4ZzkiSJEmSJPXo/wPnGvaw6rC00AAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="XGBoost-model-hyperparameter-search---scikit-optimise">XGBoost model hyperparameter search - scikit optimise<a class="anchor-link" href="#XGBoost-model-hyperparameter-search---scikit-optimise">¶</a></h2>
 </div>
@@ -33462,15 +33631,14 @@ P5Xko2kNQbwmybeTfOAe6rooyUVpfUDflNayh3fezfkXJvlqWh/gL0/yl2kNVvytUsrGJB9L8o20
 ZiwcyjuT/Hop5dtpDVZ88SHOWZf9yyqS1nwFgQEA3AuNZrPZ7xoAAACAAaPDAAAAAJhFYAAAAADM
 IjAAAAAAZhEYAAAAALMIDAAAAIBZBAYAAADALAIDAAAAYBaBAQAAADDL/w+d/B/Xj1AW4gAAAABJ
 RU5ErkJggg==
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="XGBoost-model-hyperparameter-search---RandomSearch-with-cutdown-data">XGBoost model hyperparameter search - RandomSearch with cutdown data<a class="anchor-link" href="#XGBoost-model-hyperparameter-search---RandomSearch-with-cutdown-data">¶</a></h2>
 </div>
@@ -33552,8 +33720,7 @@ print('Validn RMSE =', round(np.sqrt(mean_squared_error(yvalid, XGBvalid_preds))
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Ridge-Regression">Ridge Regression<a class="anchor-link" href="#Ridge-Regression">¶</a></h2><p>Works very poorly as larger values of distance_great_circle cause massive increases in duration predictions</p>
 </div>
@@ -33657,6 +33824,127 @@ _ = feature_importance.sort_values(ascending=False).head(30).plot(kind='bar', co
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
@@ -33741,18 +34029,42 @@ _ = feature_importance.sort_values(ascending=False).head(30).plot(kind='bar', co
               </ul>
             </li>
 
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                <ul class="list-group" id="recentposts">
+                    <li class="list-group-item">
+                        <a href="./holybooks.html">
+                            Text Similarity Analysis of Major Religious Books
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="./sentiment-analysis.html">
+                            Sentiment Analysis on IMDB Movie reviews
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="./loan-default-prediction.html">
+                            Loan Default Prediction using Scikit-Learn and XGBoost
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="./time-series-analysis.html">
+                            Forecasting Walmart Sales - Time Series Analysis
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="./house-price-prediction.html">
+                            House Price Prediction using Scikit-Learn and XGBoost
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
 
             <li class="list-group-item"><a href="./"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
                     <li class="list-group-item tag-1">
-                        <a href="./tag/getting-started.html">
-                            Getting Started
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="./tag/data-science.html">
-                            Data Science
+                        <a href="./tag/pelican.html">
+                            Pelican
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
@@ -33761,18 +34073,38 @@ _ = feature_importance.sort_values(ascending=False).head(30).plot(kind='bar', co
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
+                        <a href="./tag/jupyter.html">
+                            Jupyter
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/tensorflow.html">
+                            Tensorflow
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/uiuc.html">
+                            UIUC
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/r.html">
+                            R
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/data-science.html">
+                            Data Science
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/getting-started.html">
+                            Getting Started
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
                         <a href="./tag/finance.html">
                             Finance
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="./tag/pelican.html">
-                            Pelican
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="./tag/ipython.html">
-                            iPython
                         </a>
                     </li>
                 </ul>
