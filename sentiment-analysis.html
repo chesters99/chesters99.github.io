@@ -1421,22 +1421,22 @@ Files Saved
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-split = 0
-X_train, y_train, X_test, vocab = prep_train_test(revs.copy(), revs.copy())
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">split</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">vocab</span> <span class="o">=</span> <span class="n">prep_train_test</span><span class="p">(</span><span class="n">revs</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">revs</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
 
-t_test = ttest_ind(X_train[y_train==1, :], X_train[y_train==0, :])
+<span class="n">t_test</span> <span class="o">=</span> <span class="n">ttest_ind</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">y_train</span><span class="o">==</span><span class="mi">1</span><span class="p">,</span> <span class="p">:],</span> <span class="n">X_train</span><span class="p">[</span><span class="n">y_train</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span> <span class="p">:])</span>
 
-voc_df = pd.DataFrame({'tstat': t_test.statistic, 'word': vocab})
-voc_df['magn_tstat'] = voc_df.tstat.abs()
-voc_df = voc_df.sort_values('magn_tstat',ascending=False)
+<span class="n">voc_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'tstat'</span><span class="p">:</span> <span class="n">t_test</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span> <span class="s1">'word'</span><span class="p">:</span> <span class="n">vocab</span><span class="p">})</span>
+<span class="n">voc_df</span><span class="p">[</span><span class="s1">'magn_tstat'</span><span class="p">]</span> <span class="o">=</span> <span class="n">voc_df</span><span class="o">.</span><span class="n">tstat</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+<span class="n">voc_df</span> <span class="o">=</span> <span class="n">voc_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'magn_tstat'</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-voc_df = voc_df.head(2900)
-voc_df['weight'] = np.power((voc_df.magn_tstat - voc_df.magn_tstat.min()), 1.2)
-voc_df['weight'] = (voc_df['weight'] / voc_df.weight.max() * 21 * np.sign(voc_df.tstat)).round(4)
+<span class="n">voc_df</span> <span class="o">=</span> <span class="n">voc_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2900</span><span class="p">)</span>
+<span class="n">voc_df</span><span class="p">[</span><span class="s1">'weight'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">((</span><span class="n">voc_df</span><span class="o">.</span><span class="n">magn_tstat</span> <span class="o">-</span> <span class="n">voc_df</span><span class="o">.</span><span class="n">magn_tstat</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span> <span class="mf">1.2</span><span class="p">)</span>
+<span class="n">voc_df</span><span class="p">[</span><span class="s1">'weight'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">voc_df</span><span class="p">[</span><span class="s1">'weight'</span><span class="p">]</span> <span class="o">/</span> <span class="n">voc_df</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mi">21</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">voc_df</span><span class="o">.</span><span class="n">tstat</span><span class="p">))</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 
-voc_df[['word','weight']].to_csv('word_weights.csv', index=False)
-np.savetxt('vocab.txt',voc_df.word.values, fmt='%s')
+<span class="n">voc_df</span><span class="p">[[</span><span class="s1">'word'</span><span class="p">,</span><span class="s1">'weight'</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'word_weights.csv'</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">'vocab.txt'</span><span class="p">,</span><span class="n">voc_df</span><span class="o">.</span><span class="n">word</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">'</span><span class="si">%s</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1697,7 +1697,6 @@ L2, Split:2, AUC:0.96616, Vocab:2985, RunTime: 29.72 secs
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
               <ul class="list-group" id="social">
                 <li class="list-group-item"><a href="http://facebook.com/graham.chester"><i class="fa fa-facebook-square fa-lg"></i> Facebook</a></li>
-                <li class="list-group-item"><a href="http://twitter.com/gchester99"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
                 <li class="list-group-item"><a href="http://www.linkedin.com/in/graham-chester-051b176"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
                 <li class="list-group-item"><a href="http://stackoverflow.com/users/3972759/graham-c?tab=profile"><i class="fa fa-stackoverflow-square fa-lg"></i> StackOverflow</a></li>
               </ul>
@@ -1737,28 +1736,28 @@ L2, Split:2, AUC:0.96616, Vocab:2985, RunTime: 29.72 secs
             <li class="list-group-item"><a href="./"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
                     <li class="list-group-item tag-1">
-                        <a href="./tag/pelican.html">
-                            Pelican
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="./tag/python.html">
-                            Python
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
                         <a href="./tag/jupyter.html">
                             Jupyter
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
-                        <a href="./tag/tensorflow.html">
-                            Tensorflow
+                        <a href="./tag/pelican.html">
+                            Pelican
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/getting-started.html">
+                            Getting Started
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
                         <a href="./tag/uiuc.html">
                             UIUC
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/finance.html">
+                            Finance
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
@@ -1772,13 +1771,13 @@ L2, Split:2, AUC:0.96616, Vocab:2985, RunTime: 29.72 secs
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
-                        <a href="./tag/getting-started.html">
-                            Getting Started
+                        <a href="./tag/python.html">
+                            Python
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
-                        <a href="./tag/finance.html">
-                            Finance
+                        <a href="./tag/tensorflow.html">
+                            Tensorflow
                         </a>
                     </li>
                 </ul>

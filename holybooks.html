@@ -2010,25 +2010,25 @@ books-raw/Torah-Deuteronomy-raw.txt 143169
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-stem = False
-lemmatize = True
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">stem</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">lemmatize</span> <span class="o">=</span> <span class="kc">True</span>
 
 
-if stem:
-    stemmer = nltk.stem.PorterStemmer()
+<span class="k">if</span> <span class="n">stem</span><span class="p">:</span>
+    <span class="n">stemmer</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">stem</span><span class="o">.</span><span class="n">PorterStemmer</span><span class="p">()</span>
     
-    for i, book_text in enumerate(all_books):
-        tokens = [stemmer.stem(word) for word in book_text.split()]
-        all_books[i] = ' '.join(tokens)
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">book_text</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">all_books</span><span class="p">):</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">book_text</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+        <span class="n">all_books</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
         
         
-if lemmatize:
-    lemma = nltk.wordnet.WordNetLemmatizer()
+<span class="k">if</span> <span class="n">lemmatize</span><span class="p">:</span>
+    <span class="n">lemma</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">wordnet</span><span class="o">.</span><span class="n">WordNetLemmatizer</span><span class="p">()</span>
 
-    for i, book_text in enumerate(all_books):
-        tokens = [lemma.lemmatize(word) for word in book_text.split()]
-        all_books[i] = ' '.join(tokens)
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">book_text</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">all_books</span><span class="p">):</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">lemma</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">book_text</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+        <span class="n">all_books</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2059,13 +2059,13 @@ Wall time: 6.49 s
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-# vect = CountVectorizer(stop_words=all_stopwords, ngram_range=(1,2), min_df=0.05, max_df=0.9)
-vect = TfidfVectorizer(stop_words=all_stopwords, ngram_range=(1,2), min_df=0.05, max_df=0.9)
-wc_vectors = vect.fit_transform(all_books)
-feature_names = vect.get_feature_names()
-wc_vectors.shape
-print('Sample feature names:',feature_names[0:20])
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># vect = CountVectorizer(stop_words=all_stopwords, ngram_range=(1,2), min_df=0.05, max_df=0.9)</span>
+<span class="n">vect</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">stop_words</span><span class="o">=</span><span class="n">all_stopwords</span><span class="p">,</span> <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">min_df</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">max_df</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">wc_vectors</span> <span class="o">=</span> <span class="n">vect</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">all_books</span><span class="p">)</span>
+<span class="n">feature_names</span> <span class="o">=</span> <span class="n">vect</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
+<span class="n">wc_vectors</span><span class="o">.</span><span class="n">shape</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Sample feature names:'</span><span class="p">,</span><span class="n">feature_names</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -2096,12 +2096,12 @@ Wall time: 4.38 s
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-lda_model = LatentDirichletAllocation(n_components=28, learning_method = 'batch', random_state=seed)
-X_topics = lda_model.fit_transform(wc_vectors)
-X_topics.shape
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">lda_model</span> <span class="o">=</span> <span class="n">LatentDirichletAllocation</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span> <span class="n">learning_method</span> <span class="o">=</span> <span class="s1">'batch'</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+<span class="n">X_topics</span> <span class="o">=</span> <span class="n">lda_model</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">wc_vectors</span><span class="p">)</span>
+<span class="n">X_topics</span><span class="o">.</span><span class="n">shape</span>
 
-display_topics(lda_model, feature_names, 8)
+<span class="n">display_topics</span><span class="p">(</span><span class="n">lda_model</span><span class="p">,</span> <span class="n">feature_names</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2762,7 +2762,6 @@ Top 12 least related books
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
               <ul class="list-group" id="social">
                 <li class="list-group-item"><a href="http://facebook.com/graham.chester"><i class="fa fa-facebook-square fa-lg"></i> Facebook</a></li>
-                <li class="list-group-item"><a href="http://twitter.com/gchester99"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
                 <li class="list-group-item"><a href="http://www.linkedin.com/in/graham-chester-051b176"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
                 <li class="list-group-item"><a href="http://stackoverflow.com/users/3972759/graham-c?tab=profile"><i class="fa fa-stackoverflow-square fa-lg"></i> StackOverflow</a></li>
               </ul>
@@ -2802,28 +2801,28 @@ Top 12 least related books
             <li class="list-group-item"><a href="./"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
                     <li class="list-group-item tag-1">
-                        <a href="./tag/pelican.html">
-                            Pelican
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="./tag/python.html">
-                            Python
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
                         <a href="./tag/jupyter.html">
                             Jupyter
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
-                        <a href="./tag/tensorflow.html">
-                            Tensorflow
+                        <a href="./tag/pelican.html">
+                            Pelican
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/getting-started.html">
+                            Getting Started
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
                         <a href="./tag/uiuc.html">
                             UIUC
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/finance.html">
+                            Finance
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
@@ -2837,13 +2836,13 @@ Top 12 least related books
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
-                        <a href="./tag/getting-started.html">
-                            Getting Started
+                        <a href="./tag/python.html">
+                            Python
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
-                        <a href="./tag/finance.html">
-                            Finance
+                        <a href="./tag/tensorflow.html">
+                            Tensorflow
                         </a>
                     </li>
                 </ul>
