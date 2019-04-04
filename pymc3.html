@@ -1652,10 +1652,10 @@ Interrupted at 35,700 [44%]: Average Loss = 912.99
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div id="d70f91ae-a5ca-4357-a1e9-2fb00d36cb5f"></div>
+<div id="33aa84d1-be51-4cee-ae7a-88305f0436b7"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#d70f91ae-a5ca-4357-a1e9-2fb00d36cb5f');
+var element = $('#33aa84d1-be51-4cee-ae7a-88305f0436b7');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -7386,19 +7386,19 @@ mR/b/5fAnzig7UvSZRiUUspBHDW8o5RSTqdJXymlHESTvlJKOYgmfaWUchBN+kop5SCa9JVSykE0
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
 
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">with</span> <span class="n">pm</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span> <span class="k">as</span> <span class="n">m1</span><span class="p">:</span>
-    <span class="n">mu</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Uniform</span><span class="p">(</span><span class="s1">'mu'</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
-    <span class="n">sigma</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">HalfNormal</span><span class="p">(</span><span class="s1">'sigma'</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="s1">'y'</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="n">data</span><span class="p">)</span> <span class="c1"># a student T might be better here</span>
+np.random.seed(1)
+with pm.Model() as m1:
+    mu = pm.Uniform('mu', min(data), max(data))
+    sigma = pm.HalfNormal('sigma', sd=10)
+    y = pm.Normal('y', mu=mu, sd=sigma, observed=data) # a student T might be better here
     
-    <span class="n">start</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">find_MAP</span><span class="p">()</span>
-    <span class="n">step</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">NUTS</span><span class="p">()</span> <span class="c1"># pm.Metropolis()</span>
-    <span class="n">trace_m1</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">4000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">njobs</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    start = pm.find_MAP()
+    step = pm.NUTS() # pm.Metropolis()
+    trace_m1 = pm.sample(4000, step=step, start=start, njobs=4)
     
-<span class="n">trace_m1b</span> <span class="o">=</span> <span class="n">trace_m1</span><span class="p">[</span><span class="mi">500</span><span class="p">:]</span>   
+trace_m1b = trace_m1[500:]   
 </pre></div>
 </div>
 </div>
@@ -12582,8 +12582,28 @@ z7gi0+qPHCgAAAAASUVORK5CYII=
             <li class="list-group-item"><a href="./"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
                     <li class="list-group-item tag-1">
-                        <a href="./tag/jupyter.html">
-                            Jupyter
+                        <a href="./tag/finance.html">
+                            Finance
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/python.html">
+                            Python
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/r.html">
+                            R
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/tensorflow.html">
+                            Tensorflow
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/data-science.html">
+                            Data Science
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
@@ -12597,33 +12617,13 @@ z7gi0+qPHCgAAAAASUVORK5CYII=
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
+                        <a href="./tag/jupyter.html">
+                            Jupyter
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
                         <a href="./tag/uiuc.html">
                             UIUC
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="./tag/finance.html">
-                            Finance
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="./tag/r.html">
-                            R
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="./tag/data-science.html">
-                            Data Science
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="./tag/python.html">
-                            Python
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-1">
-                        <a href="./tag/tensorflow.html">
-                            Tensorflow
                         </a>
                     </li>
                 </ul>

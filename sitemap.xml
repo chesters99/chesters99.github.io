@@ -5,21 +5,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://blog.gchester.com/</loc>
-<lastmod>2019-02-09T08:11:30-00:00</lastmod>
+<lastmod>2019-04-04T09:19:39-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.gchester.com/archives.html</loc>
-<lastmod>2019-02-09T08:11:30-00:00</lastmod>
+<lastmod>2019-04-04T09:19:39-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://blog.gchester.com/categories.html</loc>
-<lastmod>2019-02-09T08:11:30-00:00</lastmod>
+<lastmod>2019-04-04T09:19:39-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -76,6 +76,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://blog.gchester.com/tensorflow-mnist-cifar10.html</loc>
 <lastmod>2018-05-03T00:00:00+01:00</lastmod>
+<changefreq>always</changefreq>
+<priority>1</priority>
+</url>
+
+<url>
+<loc>http://blog.gchester.com/academic-paper.html</loc>
+<lastmod>2018-04-26T00:00:00+01:00</lastmod>
 <changefreq>always</changefreq>
 <priority>1</priority>
 </url>
